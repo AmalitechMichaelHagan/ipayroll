@@ -1,9 +1,10 @@
+import React from 'react';
+import { LoginPage } from './components/LoginPage';
+
 const App = () => {
   return (
-    <div className="App">
-      <h1>Test</h1>
-      <p>ipayroll</p>
-      <h4>hello</h4>
+    <div>
+     <LoginPage />
     </div>
   );
 }
