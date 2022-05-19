@@ -29,16 +29,40 @@ try{
 router.put("/:id",async(req,res,next)=>{
     try{
             const {id} = req.params;
-            /*
-            Figure out a way to check if the body has any of the table
-            collumn names then use that to update in multiple if statements
-            rather them creating a route for each table collumn. 
-            Try using .include to check. 
-            */
-            const {firstname} = req.body;
-            const update = await pool.query("UPDATE employees SET firstname = $1 WHERE id = $2",
-            [firstname,id])
-            res.send("Employee name was updated with value "+firstname)
+            let output_str = ""; 
+
+           let collumns = ["firstname",
+            "surname",
+            "date_of_birth",
+            "gender",
+            "email",
+            "department",
+            "rank",
+            "phone_number",
+            "work_start_date",
+            "snnit_number",
+            "loan_status"]
+
+            let check = true; //Will be used to res.send text if invalid or no collumn name is passed
+
+            for(let i=0;i<collumns.length;i++){
+                
+            if(req.body.hasOwnProperty(collumns[i])){
+                check = false;
+                let key = collumns[i]
+                const  value = req.body[key];
+                const update = await pool.query(`UPDATE employees SET ${key} = $1 WHERE id = $2`,
+            [value,id]);
+            output_str+=`Employee ${key} was updated with value ${value}\n`;
+            }
+            }
+
+            if(check){
+            res.send("Attribute passed does not exist or null attribute passed")
+            }else{
+            res.send(output_str);    
+            }
+
         }catch(e){
             res.send(e.message)
         }
