@@ -92,8 +92,7 @@ router.post("/send",async(req,res)=>{
             rank,
             phone_number,
             work_start_date,
-            snnit_number,
-            loan_status
+            snnit_number
         } = req.body;
 
         const newEmployee = await pool.query(`INSERT INTO employees(
@@ -109,7 +108,7 @@ router.post("/send",async(req,res)=>{
             snnit_number,
             loan_status
         ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`
-        ,[firstname,
+        ,[  firstname,
             surname,
             date_of_birth,
             gender,
@@ -119,8 +118,7 @@ router.post("/send",async(req,res)=>{
             phone_number,
             work_start_date,
             snnit_number,
-            loan_status])
-
+            false])
     res.json(newEmployee.rows);        
     }catch(e){
 res.send(e.message);

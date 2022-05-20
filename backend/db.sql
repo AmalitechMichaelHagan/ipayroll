@@ -2,7 +2,7 @@ CREATE DATABASE ipayroll_db;
 
 CREATE TABLE rates(
     id SERIAL PRIMARY KEY,
-    rank VARCHAR(20) NOT NULL,
+    rank VARCHAR(20) NOT NULL UNIQUE,
     salary REAL NOT NULL,
     bonus REAL NOT NULL,
     tax_relief REAL NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE employees(
     surname VARCHAR(50) NOT NULL,
     date_of_birth DATE NOT NULL,
     gender VARCHAR(10) NOT NULL,
-    email VARCHAR(80) NOT NULL,
+    email VARCHAR(80) NOT NULL UNIQUE,
     department VARCHAR(20) NOT NULL,
     rank INTEGER REFERENCES rates(rank) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
