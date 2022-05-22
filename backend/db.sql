@@ -20,13 +20,20 @@ CREATE TABLE employees(
     gender VARCHAR(10) NOT NULL,
     email VARCHAR(80) NOT NULL UNIQUE,
     department VARCHAR(20) NOT NULL,
-    rank INTEGER REFERENCES rates(rank) NOT NULL,
+    rank VARCHAR(20) REFERENCES rates(rank) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
     work_start_date DATE NOT NULL,
     snnit_number VARCHAR(20) NOT NULL,
     loan_status BOOLEAN NOT NULL
 );
 
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    user_password VARCHAR(10) NOT NULL,
+    admin_role BOOLEAN NOT NULL,
+    FOREIGN KEY (email) REFERENCES employees(email) ON DELETE CASCADE  
+);
 
 
 CREATE TABLE loans(
@@ -130,6 +137,8 @@ VALUES
     );
 
 
+
+
     /*
 CREATE TABLE work_hours(
     id SERIAL PRIMARY KEY,
@@ -149,13 +158,3 @@ CREATE TABLE work_hours(
     CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
 );
 */
-
---CREATE extension IF NOT EXISTS "uuid-ossp";
-
-/*CREATE TABLE users(
-    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    username VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    upassword VARCHAR(255) NOT NULL,
-    department VARCHAR(50)
-);*/

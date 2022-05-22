@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db");
+const password = require('../passwordGen');
 
 router.get("/", function(req, res, next) {
     res.send("Employee Dashboard");
@@ -18,8 +19,8 @@ res.json(employees.rows);
 
 router.get("/:id",async(req,res,next)=>{
 try{
-    const rates = await pool.query("SELECT * FROM employees WHERE id=($1)",[req.params.id]);
-    res.json(rates.rows);
+    const employee = await pool.query("SELECT * FROM employees WHERE id=($1)",[req.params.id]);
+    res.json(employee.rows);
 }catch(e){
     res.send(e.message)
     }
@@ -31,7 +32,8 @@ router.put("/:id",async(req,res,next)=>{
             const {id} = req.params;
             let output_str = ""; 
 
-           let collumns = ["firstname",
+           let collumns = [
+            "firstname",
             "surname",
             "date_of_birth",
             "gender",
@@ -41,7 +43,8 @@ router.put("/:id",async(req,res,next)=>{
             "phone_number",
             "work_start_date",
             "snnit_number",
-            "loan_status"]
+            "loan_status"
+                        ]
 
             let check = true; //Will be used to res.send text if invalid or no collumn name is passed
 
@@ -92,8 +95,16 @@ router.post("/send",async(req,res)=>{
             rank,
             phone_number,
             work_start_date,
-            snnit_number
+            snnit_number,
+            admin_role
         } = req.body;
+
+        /*
+    email VARCHAR(50) NOT NULL,
+    user_password VARCHAR(255) NOT NULL,
+    admin_role BOOLEAN NOT NULL,
+    emp_id INTEGER NOT NULL,
+        */
 
         const newEmployee = await pool.query(`INSERT INTO employees(
             firstname,
@@ -119,7 +130,23 @@ router.post("/send",async(req,res)=>{
             work_start_date,
             snnit_number,
             false])
-    res.json(newEmployee.rows);        
+
+        //Creates a user in the user table for new employee. Allows employee to log in.
+        let user_password = password.generate();
+
+        const newUser = await pool.query(`INSERT INTO users(
+            "email",
+            "user_password",
+            "admin_role"
+          ) VALUES($1,$2,$3) RETURNING *`
+          ,[  email,
+              user_password,
+              admin_role
+              ])
+    
+              
+    res.send("Employee: "+JSON.stringify(newEmployee.rows)+"\n"+"User: "+JSON.stringify(newUser.rows));
+
     }catch(e){
 res.send(e.message);
     }
