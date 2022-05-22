@@ -99,12 +99,6 @@ router.post("/send",async(req,res)=>{
             admin_role
         } = req.body;
 
-        /*
-    email VARCHAR(50) NOT NULL,
-    user_password VARCHAR(255) NOT NULL,
-    admin_role BOOLEAN NOT NULL,
-    emp_id INTEGER NOT NULL,
-        */
 
         const newEmployee = await pool.query(`INSERT INTO employees(
             firstname,
