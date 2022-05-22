@@ -18,8 +18,8 @@ res.json(wages.rows);
 
 router.get("/:id",async(req,res,next)=>{
 try{
-    const rates = await pool.query("SELECT * FROM wages WHERE id=($1)",[req.params.id]);
-    res.json(rates.rows);
+    const wage = await pool.query("SELECT * FROM wages WHERE id=($1)",[req.params.id]);
+    res.json(wage.rows);
 }catch(e){
     res.send(e.message)
     }
