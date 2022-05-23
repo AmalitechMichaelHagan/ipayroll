@@ -42,7 +42,8 @@ CREATE TABLE loans(
     month INTEGER NOT NULL,
     year INTEGER NOT NULL,
     initial_amount REAL NOT NULL,
-    amount_left REAL NOT NULL
+    amount_left REAL NOT NULL,
+    approval_status BOOLEAN NOT NULL
 );
 
 

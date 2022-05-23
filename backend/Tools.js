@@ -1,11 +1,12 @@
+    const nodemailer = require('nodemailer');
 
     class gen{
-
-    constructor(){
+    
+      constructor(){
 
     }
 
-    generate=()=>{
+    generatePassword=()=>{
 
         let constructs = ["abcdefghijklmnopgrstuvwxyz","@#$&[]!?.","0123456789"];
         let user_password = "";
@@ -23,6 +24,27 @@
         }
     return user_password;
     }
+
+    async sendMail(recipient,subject, message){
+        let transporter = nodemailer.createTransport({
+          service:'gmail',
+          auth: {
+            user: 'amalitechipayroll@gmail.com',
+            pass: 'iPayroll123',
+          },
+        });
+      
+        let info = await transporter.sendMail({
+          from: `"Amalitech HR" <amalitechipayroll@gmail.com>`,
+          to: recipient,
+          subject: subject,
+          text: message,
+          html: "",
+        });
+      
+        console.log("Message sent: %s", info.messageId);
+      }
+    
 
 }
 
