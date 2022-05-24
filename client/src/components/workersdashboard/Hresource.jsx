@@ -36,3 +36,20 @@ export default function Hresource() {
                             navigate("/form")
                         }}>
                             Add Employee
+                            Add Employee
+                            <i className="fas fa-user"></i></button>
+                    </div>
+
+                    <form action="/" method="POST">
+                        <table className="table">
+                            <thead className="thead-color">
+                                <tr>
+                                    <th>First</th>
+                                    <th>Last</th>
+                                    <th>E-mail</th>
+                                    <th>Phone Number</th>
+                                    <th>SSNIT Number</th>
+                                    <th>Gender</th>
+                                    <th>Department</th>
+                                    <th>Start Date</th>
+                                    <th>Rank</th>
