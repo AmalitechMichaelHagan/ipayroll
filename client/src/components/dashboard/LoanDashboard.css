@@ -133,5 +133,22 @@ input[type="submit"],
   transition: 0.3s all;
 }
 
+ 
+button[type="button"] {
+  padding: 5px;
+  background: #516391;
+  color: white;
+  letter-spacing: 0px;
+  text-transform: none;
+  padding: 5px;
+  letter-spacing: 1px;
+}
+
+input[type="submit"]:hover,
+button[type="button"]:hover {
+  background: #bf1650;
+  color: white;
+}
+
 
 
