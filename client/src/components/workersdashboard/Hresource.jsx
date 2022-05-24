@@ -53,14 +53,14 @@ export default function Hresource() {
                                     <th>Department</th>
                                     <th>Start Date</th>
                                     <th>Rank</th>
-                                    </tr>
+                                </tr>
                             </thead>
                             <tbody>
 
-                            {APIData.map((data) => {
+                                {APIData.map((data) => {
 
 
-                                return (
+                                    return (
                                         <tr>
                                             <td>{data.firstName}</td>
                                             <td>{data.lastName}</td>
@@ -71,4 +71,27 @@ export default function Hresource() {
                                             <td>{data.rank}</td>
                                             <td>{data.phoneNumber}</td>
                                             <td>{data.ssnitNumber}</td>
+
+
+                                        </tr>
+                                    )
+
+
+                                })}
+                            </tbody>
+                        </table>
+
+                    </form>
+                    <Rate />
+
+                </div>
+
+            </main>
+
+
+
+        </>
+    )
+}
+
 
