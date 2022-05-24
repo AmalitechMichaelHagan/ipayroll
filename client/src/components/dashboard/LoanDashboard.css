@@ -100,3 +100,17 @@ input {
   margin-left: 40px;
   font-size: 14px;
 }
+
+
+.label,
+section > label {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  margin-bottom: 13px;
+  margin-top: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+}
+
