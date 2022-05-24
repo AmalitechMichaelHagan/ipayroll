@@ -30,3 +30,20 @@ export default function Userform() {
             "rank" :rank,
         }    
         console.log(myData)
+        //   axios.post(`/send`, {
+        //      firstName,
+        //      lastName,
+        //      gender,
+        //      email,
+        //      department,
+        //      rank,
+        //      phoneNumber,
+        //      workstartDate,
+        //      ssnitNumber
+        // })
+        axios({
+            method: 'post',
+            url: 'http://localhost:9000/employees/send',
+            data: myData,
+            headers: {'Authorization': 'Bearer ...'}
+        });
