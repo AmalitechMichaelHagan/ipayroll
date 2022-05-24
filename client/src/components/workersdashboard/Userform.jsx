@@ -57,3 +57,15 @@ export default function Userform() {
                 <input {...register("firstName")} placeholder="Enter FirstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                 <input {...register("lastName")} placeholder="Enter LastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 <input {...register("gender")} placeholder="Gender"  value={gender} onChange={(e) => setGender(e.target.value)} />
+                <input {...register("email")} placeholder="Enter Email"  value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input {...register("department")} placeholder="Enter Department" value={department} onChange={(e) => setDepartment(e.target.value)} />
+                <input {...register("phonenumber")} placeholder="Enter phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                <input {...register("ssnitNumber")} placeholder="Enter SSnit Number"  value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
+                <input {...register("workstartDate")} placeholder="Enter Start Date" value={workstartDate} onChange={(e) => setWorkstartdate(e.target.value)} />
+                <input {...register("rank")} placeholder="Enter Rank"  value={rank} onChange={(e) => setRank(e.target.value)} />
+                <input type="submit" />
+
+            </form>
+        </div>
+    );   
+}
