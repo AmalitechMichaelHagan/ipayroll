@@ -2,3 +2,8 @@
     margin: 0;
     margin-left: px;
 }
+
+.rate-text{
+    font-weight: bold;
+    text-align: center;
+}

@@ -21,7 +21,6 @@ export function LoginPage() {
         <input type="submit" onClick={() => {
           navigate("/home")
         }} />
-        console.log({data});
       </form>
     </div>
   );

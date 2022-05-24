@@ -24,12 +24,12 @@ form{
 }
 
 .admin{
-    width: 80%;
-    margin-left: 270px;
-    background-color:rgb(232, 228, 236);
+    width: 85%;
+    margin-left: 70px;
+    background-color:rgb(138, 135, 135);
     margin-top: 35px;
     border-radius: 10px;
-    border: 10px solid #ece7e7e5
+    border: 2px solid #ece7e7e5
 }
 
 
@@ -77,15 +77,16 @@ table{
 .button1{
     padding: 15px;
     width: 20%;
-    border-radius: 8px;
+    border-radius: 5px;
     margin-left: 20px;
-    background-color:#777;
+    /* background-color:#777; */
     font-weight: bold;
+    border: 2px solid rgb(126, 110, 110)
 
 }
 
 .button1:hover{
-    background-color:rgba(77, 4, 4, 0)
+    background-color:rgba(218, 31, 31, 0)
 }
 
 .table .thead-dark th{
@@ -145,8 +146,9 @@ height: 35px;
 display: flex;
 justify-content: center;
 align-items: center;
-background-color: rgb(98, 112, 98);
+background-color: rgb(119, 114, 115);
 min-height: 30vh;
 padding-top: 20px;
 margin: 1px;
+border-radius: 5px;
 }
