@@ -30,8 +30,19 @@ export default function LoanDashboard() {
                 <option value="B">ebenezer coffie</option>
               </select>
               <input {...register("loanAmount")} placeholder="Loan Amount" className="inner-shadow" />
+              <input type="date" {...register("month")} placeholder="Month" className="inner-shadow" />
+              <p>{data}</p>
+              <input type="submit" />
+            </form>
+          </div>
+
+          <div className="salary-set1">
+            <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+              <h4 className="month-salary">Calculate Mounth Salary</h4>
+              <hr className="line" />
               <input type="date" {...register("montth")} placeholder="Month" className="inner-shadow" />
               <p>{data}</p>
               <input type="submit" />
             </form>
           </div>
+        </div>
