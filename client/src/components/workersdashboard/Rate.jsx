@@ -36,5 +36,18 @@ export default function Rate() {
                                     <option value="3">Accountant</option>
                                 </select>
                             </div>
+                            <div className="input_text">
+                                <span>SALARY</span>
+                                <input {...register("salary")} type="number" min="0" max="100" classs="input-field" value={salary} onChange={(e) => setSalary(e.target.value)} />
+                            </div>
+                            <div className="input_text">
+                                <span>BONUS</span>
+                                <input {...register("bonus")} mini="0" maxi="100" classs="input-field" value={bonus} onChange={(e) => setBonus(e.target.value)} />
+
+                            </div>
+                            <div className="input_text">
+                                <span>TAX-RELIEF</span>
+                                <input {...register("taxrelief")} mini="0" maxi="100" classs="input-field" value={taxrelief} onChange={(e) => setTaxrelief(e.target.value)} />
+                            </div>
 
 }
