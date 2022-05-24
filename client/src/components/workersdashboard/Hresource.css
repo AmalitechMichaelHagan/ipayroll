@@ -104,3 +104,19 @@ table{
         top: -9999px;
         left: -9999px;
     }
+    tr { border: 1px solid var(--border);}
+
+    td{
+        border: none;
+        position: relative;
+    }
+
+}
+
+
+form {
+margin: 5px;
+margin-top: 10px;
+/* background-color:#0000; */
+
+}
