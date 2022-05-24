@@ -4,3 +4,7 @@ import "./LoanDashboard.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
+
+export default function LoanDashboard() {
+  const { register, handleSubmit } = useForm();
+  const [data, setData] = useState("");
