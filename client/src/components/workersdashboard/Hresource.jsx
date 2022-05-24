@@ -53,3 +53,22 @@ export default function Hresource() {
                                     <th>Department</th>
                                     <th>Start Date</th>
                                     <th>Rank</th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+
+                            {APIData.map((data) => {
+
+
+                                return (
+                                        <tr>
+                                            <td>{data.firstName}</td>
+                                            <td>{data.lastName}</td>
+                                            <td>{data.workstartDate}</td>
+                                            <td>{data.gender}</td>
+                                            <td>{data.email}</td>
+                                            <td>{data.department}</td>
+                                            <td>{data.rank}</td>
+                                            <td>{data.phoneNumber}</td>
+                                            <td>{data.ssnitNumber}</td>
+
