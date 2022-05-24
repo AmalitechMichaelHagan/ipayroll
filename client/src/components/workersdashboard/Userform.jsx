@@ -15,3 +15,18 @@ export default function Userform() {
     const [department, setDepartment] = useState('');
     const [workstartDate, setWorkstartdate] = useState('')
     const [rank, setRank] = useState('');
+
+    const postData = e => {
+        e.preventDefault();
+        let myData ={
+            "firstname" : firstName,
+            "surname" :  lastName,
+            "date_of_birth":"1997-08-07",
+            "gender" : gender,
+            "email" : email,
+            "department": department,
+            "snnit_number": ssnitNumber,
+            "work_start_date": workstartDate,
+            "rank" :rank,
+        }    
+        console.log(myData)
