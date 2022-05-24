@@ -13,7 +13,6 @@ export default function Topbar() {
                     </div>
                 <div className="topright">
                     <div className="topbatIcons">
-                        {/* < AcUnit /> */}
                     </div>
                 </div>
             </div>
