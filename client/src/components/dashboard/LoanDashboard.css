@@ -150,5 +150,20 @@ button[type="button"]:hover {
   color: white;
 }
 
+input[type="submit"]:active {
+  transition: 0.3s all;
+  top: 2px;
+}
+
+.preact {
+  opacity: 0;
+  color: white;
+}
+
+.preact:hover {
+  opacity: 1;
+}
+
+
 
 
