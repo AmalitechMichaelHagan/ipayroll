@@ -55,3 +55,19 @@ table{
 .table tr:hover{
     background-color:rgb(247, 239, 239);
 }
+
+
+.table td > a.btn{
+    padding: .3em 1em;
+    font-size: 1.1em;
+    margin: 0 .2em;
+} 
+
+.table tr:hover td > a{
+    box-shadow: none;
+}
+
+.Add-User{
+    margin-top: 30px;
+    
+}
