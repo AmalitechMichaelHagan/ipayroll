@@ -16,6 +16,25 @@ export default function Rate() {
     const SubmitForm = (e) => {
         e.preventDefault();
 
-
     };
+     
+    
+    return (
+        <>
+
+            <div className="container">
+                <div className="card">
+                    <h2 className="h2-head">SET SALARY</h2>
+
+                    <form className='form-style'>
+                        <div className="flex">
+                            <div className="input_text">
+                                <span>RANK</span>
+                                <select {...register("rank")} id="levelid" name="levelid" classs="input-field" value={rank} onChange={(e) => setRank(e.target.value)}>
+                                    <option value="1">Employee</option>
+                                    <option value="2">Manager</option>
+                                    <option value="3">Accountant</option>
+                                </select>
+                            </div>
+
 }
