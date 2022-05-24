@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db");
-const password = require('../passwordGen');
+const tool = require('../Tools');
 
 router.get("/", function(req, res, next) {
     res.send("Employee Dashboard");
@@ -99,12 +99,6 @@ router.post("/send",async(req,res)=>{
             admin_role
         } = req.body;
 
-        /*
-    email VARCHAR(50) NOT NULL,
-    user_password VARCHAR(255) NOT NULL,
-    admin_role BOOLEAN NOT NULL,
-    emp_id INTEGER NOT NULL,
-        */
 
         const newEmployee = await pool.query(`INSERT INTO employees(
             firstname,
@@ -132,7 +126,7 @@ router.post("/send",async(req,res)=>{
             false])
 
         //Creates a user in the user table for new employee. Allows employee to log in.
-        let user_password = password.generate();
+        let user_password = tool.generatePassword();
 
         const newUser = await pool.query(`INSERT INTO users(
             "email",
@@ -143,9 +137,20 @@ router.post("/send",async(req,res)=>{
               user_password,
               admin_role
               ])
-    
+
+              let message = 
+             `\tHello ${firstname}, your Amalitech iPayroll account is now active. Kindly sign in with the following credentials.
+              Email: ${email}
+              Password: ${user_password}
+
+              Regards,
+              The HR Team
+              `;
+              let subject = "iPayroll Account";
               
-    res.send("Employee: "+JSON.stringify(newEmployee.rows)+"\n"+"User: "+JSON.stringify(newUser.rows));
+        tool.sendMail(email,subject,message).catch(console.error);      
+        res.send("Employee: "+JSON.stringify(newEmployee.rows)+"\n"+"User: "+JSON.stringify(newUser.rows));
+  
 
     }catch(e){
 res.send(e.message);

@@ -42,7 +42,8 @@ CREATE TABLE loans(
     month INTEGER NOT NULL,
     year INTEGER NOT NULL,
     initial_amount REAL NOT NULL,
-    amount_left REAL NOT NULL
+    amount_left REAL NOT NULL,
+    approval_status BOOLEAN NOT NULL
 );
 
 
@@ -80,7 +81,7 @@ INSERT INTO
     )
 VALUES
     (
-        1,
+        "Upper",
         10000,
         0.1,
         0.05,
@@ -103,7 +104,7 @@ VALUES
     )
 VALUES
     (
-        2,
+        "Mid",
         7000,
         0.2,
         0.05,
@@ -126,7 +127,7 @@ VALUES
     )
 VALUES
     (
-        3,
+        "Lower",
         5000,
         0.2,
         0.05,
