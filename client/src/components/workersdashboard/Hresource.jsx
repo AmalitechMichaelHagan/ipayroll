@@ -16,3 +16,23 @@ export default function Hresource() {
                 setAPIData(response.data);
             })
     }, [])
+
+    const [APIData, setAPIData] = useState([]);
+    useEffect(() => {
+
+    }, [])
+    return (
+        <>
+            <Topbar />
+
+            <main>
+                <div className="">
+                    <Sidebar />
+
+                </div>
+                <div className="admin">
+                    <div className="Add-User">
+                        <button className="button1" onClick={() => {
+                            navigate("/form")
+                        }}>
+                            Add Employee
