@@ -46,3 +46,13 @@ export default function LoanDashboard() {
             </form>
           </div>
         </div>
+        <div className="flex3">
+          <div className="salary-set2">
+            <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+              <h4 className="month-salary">Generate employee payslips</h4>
+              <hr className="line" />
+              <input type="date" {...register("montth")} placeholder="Month" className="inner-shadow" />
+              <p>{data}</p>
+              <input type="submit" />
+            </form>
+          </div>
