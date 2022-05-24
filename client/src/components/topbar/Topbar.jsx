@@ -10,4 +10,13 @@ export default function Topbar() {
                 <div className="topleft"> 
                     <img src={PayrollImg} alt="ipayroll" className="icon"/>
                     <span className="logo">AMALITECH.ORG</span>
-             
+                    </div>
+                <div className="topright">
+                    <div className="topbatIcons">
+                        {/* < AcUnit /> */}
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
