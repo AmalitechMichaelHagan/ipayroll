@@ -47,3 +47,23 @@ return (
             <h3 className="sidebarTitle">Dashboard</h3>
             <ul className="sidebarLists">
             <li className="sidebarItems" onClick={() => {
+                        navigate("/")
+                    }}> Home  </li>
+                <li className="sidebarItems" onClick={() => {
+                        navigate("/admin")
+                    }}>
+                    Administrator 
+                </li>
+                <li className="sidebarItems" onClick={() => {
+                    navigate("/mplo")
+                }}>
+                    Employee
+                </li>
+                <li className="sidebarItems">Account</li>
+
+                </ul>
+            </div>
+        </div>
+        </div>
+    )
+    }
