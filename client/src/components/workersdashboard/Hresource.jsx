@@ -36,7 +36,6 @@ export default function Hresource() {
                             navigate("/form")
                         }}>
                             Add Employee
-                            Add Employee
                             <i className="fas fa-user"></i></button>
                     </div>
 
