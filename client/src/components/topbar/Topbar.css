@@ -17,3 +17,15 @@
     align-items: center;
     justify-content: space-between;
 }
+
+
+.icon{
+    height: 55px;
+}
+
+.logo{
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+
+}
