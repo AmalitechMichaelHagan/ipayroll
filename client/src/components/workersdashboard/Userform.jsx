@@ -10,3 +10,8 @@ export default function Userform() {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [ssnitNumber, setSsnitNumber] = useState('');
+    const [gender, setGender] = useState('');
+    const [department, setDepartment] = useState('');
+    const [workstartDate, setWorkstartdate] = useState('')
+    const [rank, setRank] = useState('');
