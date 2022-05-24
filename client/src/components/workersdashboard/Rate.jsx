@@ -13,4 +13,9 @@ export default function Rate() {
     const [tiertwo, setTiertwo] = useState('');
     const [loandeduction, setLoandeduction] = useState('')
 
+    const SubmitForm = (e) => {
+        e.preventDefault();
+
+
+    };
 }
