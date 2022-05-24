@@ -118,3 +118,32 @@ margin: 5px;
 margin-top: 10px;
 
 }
+
+.input_text{
+    color: #000000;
+    padding-left: 10px;
+    margin: 10px;
+    
+    }
+    
+    .h2-head{
+    text-align: center;
+    
+    }
+    
+    .number{
+    color: #777;
+    width: 290px;
+    height: 35px;
+    }
+    
+    .flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(98, 112, 98);
+    min-height: 30vh;
+    padding-top: 20px;
+    margin: 1px;
+    }
+    
