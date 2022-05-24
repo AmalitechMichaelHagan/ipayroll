@@ -45,3 +45,9 @@
     color: rgb(24, 20, 20);
     font-family: bold;
 }
+
+.sidebarLists{
+    list-style: none;
+    padding: 10px;
+
+}
