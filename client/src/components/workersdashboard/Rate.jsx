@@ -49,5 +49,26 @@ export default function Rate() {
                                 <span>TAX-RELIEF</span>
                                 <input {...register("taxrelief")} mini="0" maxi="100" classs="input-field" value={taxrelief} onChange={(e) => setTaxrelief(e.target.value)} />
                             </div>
+                            </div>
+                        <div className="flex">
+                            <div className="flex">
+                                <div className="input_text">
+                                    <span>INCOME-TAX</span>
+                                    <input {...register("incometax")} mini="0" maxi="100" classs="input" value={incometax} onChange={(e) => setIncometax(e.target.value)} />
+                                </div>
+                                <div className="input_text">
+                                    <span>TIER 1</span>
+                                    <input {...register("tierone")} mini="0" maxi="100" classs="input" value={tierone} onChange={(e) => setTierone(e.target.value)} />
+                                </div>
+                                <div className="input_text">
+                                    <span>TIER 2</span>
+                                    <input {...register("tiertwo")} mini="0" maxi="100" vclasss="input" alue={tiertwo} onChange={(e) => setTiertwo(e.target.value)} />
+                                </div>
+                                <div className="input_text">
+                                    <span>LOAN</span>
+                                    <input {...register("loandeduction")} mini="0" maxi="100" classs="input" value={loandeduction} onChange={(e) => setLoandeduction(e.target.value)} />
+                                </div>
+                            </div>
+                        </div>
 
 }
