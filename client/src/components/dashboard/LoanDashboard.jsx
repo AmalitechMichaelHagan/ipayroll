@@ -29,3 +29,9 @@ export default function LoanDashboard() {
                 <option value="B">hagar coffie</option>
                 <option value="B">ebenezer coffie</option>
               </select>
+              <input {...register("loanAmount")} placeholder="Loan Amount" className="inner-shadow" />
+              <input type="date" {...register("montth")} placeholder="Month" className="inner-shadow" />
+              <p>{data}</p>
+              <input type="submit" />
+            </form>
+          </div>
