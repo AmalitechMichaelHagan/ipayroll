@@ -70,5 +70,19 @@ export default function Rate() {
                                 </div>
                             </div>
                         </div>
+                        <div className="flex">
+                            <div className="btn">
+                                <input type="submit" />
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+        </>
+    );
 
 }
