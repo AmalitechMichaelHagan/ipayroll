@@ -47,3 +47,13 @@ export default function Userform() {
             data: myData,
             headers: {'Authorization': 'Bearer ...'}
         });
+
+    }
+
+    return (
+        <div>
+            <form className='form-style' onSubmit={postData}>
+                <h1 className='title'> Add New Employees </h1>
+                <input {...register("firstName")} placeholder="Enter FirstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                <input {...register("lastName")} placeholder="Enter LastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                <input {...register("gender")} placeholder="Gender"  value={gender} onChange={(e) => setGender(e.target.value)} />
