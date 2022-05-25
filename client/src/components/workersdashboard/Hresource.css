@@ -24,9 +24,9 @@ form{
 }
 
 .admin{
-    width: 85%;
-    margin-left: 70px;
-    background-color:rgb(138, 135, 135);
+    width: 100%;
+    margin-right: 02px;
+    background-color:rgb(151, 148, 148);
     margin-top: 35px;
     border-radius: 10px;
     border: 2px solid #ece7e7e5
@@ -45,7 +45,7 @@ table{
 }
 
 .thead-color{
-    background-color: rgb(172, 163, 163);
+    background-color: rgb(185, 176, 176);
 }
 
 .table td, .table th{

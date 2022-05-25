@@ -11,8 +11,7 @@ import "./App.css"
 import Hresource from "./components/workersdashboard/Hresource";
 import Userform from "./components/workersdashboard/Userform";
 import LoanDashboard from "./components/dashboard/LoanDashboard";
-
-
+import Rate from './components/workersdashboard/Rate';
 
 
 function App() {
@@ -24,6 +23,10 @@ function App() {
         <Route path="/admin" element={<Hresource />} />
         <Route path="/form" element={<Userform />} />
         <Route path="/employee" element={<LoanDashboard />} />
+        <Route path="/rate" element={<Rate />} />
+        <Route path="/user" element={<Userform />} />
+
+
 
       </Routes>
     </BrowserRouter>

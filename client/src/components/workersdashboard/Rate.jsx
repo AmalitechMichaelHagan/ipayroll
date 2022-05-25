@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import React, { useEffect, useState } from 'react';
 import "./Rate.css"
+import Topbar from "../topbar/Topbar";
+import Sidebar from "../sidebar/Sidebar";
 
 
 export default function Rate() {
@@ -22,11 +24,11 @@ export default function Rate() {
     
     return (
         <>
-
+        <Topbar />
+        <Sidebar />
             <div className="container">
                 <div className="card">
                     <h2 className="h2-head">SET SALARY</h2>
-
                     <form className='form-style'>
                         <div className="flex">
                             <div className="input_text">

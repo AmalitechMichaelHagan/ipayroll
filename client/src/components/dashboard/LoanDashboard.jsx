@@ -21,14 +21,7 @@ export default function LoanDashboard() {
             <form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
               <h4 className="loan">Loan request section</h4>
               <hr className="line" />
-              <select {...register("category")} className="inner-shadow">
-                <option value="">Select employee...</option>
-                <option value="A">francis coffie</option>
-                <option value="B">stephen coffie</option>
-                <option value="B">monica coffie</option>
-                <option value="B">hagar coffie</option>
-                <option value="B">ebenezer coffie</option>
-              </select>
+             
               <input {...register("loanAmount")} placeholder="Loan Amount" className="inner-shadow" />
               <input type="date" {...register("month")} placeholder="Month" className="inner-shadow" />
               <p>{data}</p>

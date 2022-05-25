@@ -25,7 +25,11 @@ export default function Sidebar() {
                         }}>
                             Employee
                         </li>
-                        <li className="sidebarItems">Account</li>
+                        <li className="sidebarItems"onClick={() => {
+                            navigate("/rate")
+                        }}>
+                            Account
+                            </li>
 
                     </ul>
                 </div>

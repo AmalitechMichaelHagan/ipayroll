@@ -46,7 +46,7 @@ export default function Hresource() {
                                     <th>First</th>
                                     <th>Last</th>
                                     <th>E-mail</th>
-                                    <th>Phone Number</th>
+                                    <th>Phone </th>
                                     <th>SSNIT Number</th>
                                     <th>Gender</th>
                                     <th>Department</th>
@@ -58,20 +58,18 @@ export default function Hresource() {
 
                                 {APIData.map((data) => {
 
-
+                    
                                     return (
                                         <tr>
-                                            <td>{data.firstName}</td>
-                                            <td>{data.lastName}</td>
-                                            <td>{data.workstartDate}</td>
-                                            <td>{data.gender}</td>
+                                            <td>{data.firstname}</td>
+                                            <td>{data.surname}</td>
                                             <td>{data.email}</td>
+                                            <td>{data.phone_number}</td>
+                                            <td>{data.snnit_number}</td>
+                                            <td>{data.gender}</td>
                                             <td>{data.department}</td>
+                                            <td>{data.work_start_date}</td>
                                             <td>{data.rank}</td>
-                                            <td>{data.phoneNumber}</td>
-                                            <td>{data.ssnitNumber}</td>
-
-
                                         </tr>
                                     )
 
@@ -81,7 +79,7 @@ export default function Hresource() {
                         </table>
 
                     </form>
-                    <Rate />
+                    {/* <Rate /> */}
 
                 </div>
 
