@@ -95,7 +95,7 @@ INSERT INTO
     )
 VALUES
     (
-        "Upper",
+        "Level 1",
         10000,
         0.1,
         0.05,
@@ -118,7 +118,7 @@ VALUES
     )
 VALUES
     (
-        "Mid",
+        "Level 2",
         7000,
         0.2,
         0.05,
@@ -141,7 +141,7 @@ VALUES
     )
 VALUES
     (
-        "Lower",
+        "Level 3",
         5000,
         0.2,
         0.05,
