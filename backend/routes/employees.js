@@ -43,6 +43,7 @@ router.put("/:id",async(req,res,next)=>{
             "phone_number",
             "work_start_date",
             "snnit_number",
+            "tax_relief",
             "loan_status"
                         ]
 
@@ -111,6 +112,7 @@ router.post("/send",async(req,res)=>{
             phone_number,
             work_start_date,
             snnit_number,
+            tax_relief,
             loan_status
         ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`
         ,[  firstname,
@@ -123,6 +125,7 @@ router.post("/send",async(req,res)=>{
             phone_number,
             work_start_date,
             snnit_number,
+            false,
             false])
 
         //Creates a user in the user table for new employee. Allows employee to log in.
