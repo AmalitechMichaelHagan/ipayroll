@@ -34,12 +34,12 @@ router.put("/:id",async(req,res,next)=>{
        let collumns = [
             "rank",
             "salary",
-            "bonus",
-            "tax_relief",
-            "income_tax",
-            "tier_one",
-            "tier_two",
-            "loan_deduction"
+            "cash_allowance",
+            "paye",
+            "pf_employee",
+            "pf_employer",
+            "ssnit_tier_one",
+            "ssnit_tier_two"
     ]
 
         let check = true; //Will be used to res.send text if invalid or no collumn name is passed
@@ -83,32 +83,34 @@ router.post("/send",async(req,res)=>{
         const {
             rank,
             salary,
-            bonus,
-            tax_relief,
-            income_tax,
-            tier_one,
-            tier_two,
-            loan_deduction
+            cash_allowance,
+            paye,
+            pf_employee,
+            pf_employer,
+            ssnit_tier_one,
+            ssnit_tier_two
         } = req.body;
 
         const newRate = await pool.query(`INSERT INTO rates(
             rank,
             salary,
-            bonus,
-            tax_relief,
-            income_tax,
-            tier_one,
-            tier_two,
-            loan_deduction
+            cash_allowance,
+            paye,
+            pf_employee,
+            pf_employer,
+            ssnit_tier_one,
+            ssnit_tier_two,
         ) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`
-        ,[ rank,
+        ,[ 
+            rank,
             salary,
-            bonus,
-            tax_relief,
-            income_tax,
-            tier_one,
-            tier_two,
-            loan_deduction])
+            cash_allowance,
+            paye,
+            pf_employee,
+            pf_employer,
+            ssnit_tier_one,
+            ssnit_tier_two,
+        ])
     res.json(newRate.rows);        
     }catch(e){
 res.send(e.message);
