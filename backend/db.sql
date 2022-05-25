@@ -24,8 +24,8 @@ CREATE TABLE employees(
     phone_number VARCHAR(20) NOT NULL,
     work_start_date DATE NOT NULL,
     snnit_number VARCHAR(20) NOT NULL,
-    tax_relief BOOLEAN NOT NULL,
-    loan_status BOOLEAN NOT NULL
+    tax_relief BOOLEAN DEFAULT false,
+    loan_status BOOLEAN DEFAULT false
 );
 
 CREATE TABLE users(
@@ -44,8 +44,8 @@ CREATE TABLE loans(
     year INTEGER NOT NULL,
     initial_amount REAL NOT NULL,
     amount_left REAL NOT NULL,
-    loan_deduction_rate REAL,   --Deduction rate will be calculated and submitted to employee.
-    approval_status BOOLEAN NOT NULL
+    loan_deduction_rate REAL DEFAULT 0.0,   --Deduction rate will be calculated and submitted to employee.
+    approval_status BOOLEAN DEFAULT false
 );
 
 CREATE TABLE tax_relief(
@@ -56,7 +56,6 @@ CREATE TABLE tax_relief(
     monthly_amount REAL NOT NULL,
     relief_desc VARCHAR (100)
 );
-
 
 
 CREATE TABLE wages(
