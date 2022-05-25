@@ -1,21 +1,37 @@
-
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import './Style.css'
+import './LoginPage.css';
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
-export function LoginPage(){
+export function LoginPage() {
   const { register, handleSubmit } = useForm();
-  const [data, setData] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() =>{
+    axios.get(`http://localhost:9000/employees/all`)
+    .then(response =>
+      setAPIData(response.data));
+  },[])
+
+  const [APIData, setAPIData] = useState([]);
+  useEffect(() => {
+
+  }, [])
 
   return (
-    <form className= 'form-style' onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
-      <hi className = 'title'>LOGIN</hi>
-        <input {...register("email")} placeholder="Enter Email" />
-      <input {...register("password")} placeholder="Enter password" />
-      <input type="submit" />
-      console.log({data});
-    </form>
+    <div className="login-form">
+      <form className='form-style2' onSubmit={handleSubmit((APIData) => setAPIData(JSON.stringify(APIData)))}>
+      <div className="loh-header"> 
+      <h1 className='login-title'>LOGIN</h1>
+      </div> 
+        <input {...register("email")} placeholder="Enter Email" className="inner-shadow" />
+        <input {...register("password")} placeholder="Enter password" className="inner-shadow"/>
+        <input type="submit1" onClick={() => {
+          navigate("/home")
+        }}  className="login-button"/>
+      </form>
+    </div>
   );
 }

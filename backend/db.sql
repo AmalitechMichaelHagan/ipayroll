@@ -27,6 +27,8 @@ CREATE TABLE employees(
     loan_status BOOLEAN NOT NULL
 );
 
+<<<<<<< HEAD
+=======
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     email VARCHAR(50) NOT NULL UNIQUE,
@@ -34,6 +36,7 @@ CREATE TABLE users(
     admin_role BOOLEAN NOT NULL,
     FOREIGN KEY (email) REFERENCES employees(email) ON DELETE CASCADE  
 );
+>>>>>>> 5b404a3c92df0af1e844e04f3f4355919594ee3b
 
 
 CREATE TABLE loans(
@@ -138,8 +141,11 @@ VALUES
     );
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 5b404a3c92df0af1e844e04f3f4355919594ee3b
     /*
 CREATE TABLE work_hours(
     id SERIAL PRIMARY KEY,
@@ -159,3 +165,16 @@ CREATE TABLE work_hours(
     CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
 );
 */
+<<<<<<< HEAD
+
+--CREATE extension IF NOT EXISTS "uuid-ossp";
+
+/*CREATE TABLE users(
+    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    upassword VARCHAR(255) NOT NULL,
+    department VARCHAR(50)
+);*/
+=======
+>>>>>>> 5b404a3c92df0af1e844e04f3f4355919594ee3b
