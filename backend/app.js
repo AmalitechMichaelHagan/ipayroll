@@ -32,7 +32,7 @@ app.use('/employees', employeesRouter);
 app.use('/loans', loansRouter);
 app.use('/rates', ratesRouter);
 app.use('/wages', wagesRouter);
-app.use('./tax_relief', tax_reliefRouter);
+app.use('/tax_relief', tax_reliefRouter);
 
 
 
