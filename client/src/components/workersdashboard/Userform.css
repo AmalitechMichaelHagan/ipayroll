@@ -1,29 +1,4 @@
-<<<<<<< HEAD
 
-.emplo-form{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    margin-right:180px;
-
-}
-
-.form-style{
-    position: relative;
-    align-items: center;
-}
-
-.title{
-    text-align: center;
-    margin-top: 40px
-}
-.emplo-form{
-    padding: 20px;
-    border-bottom: 1px solid rgb(59, 4, 4)
-}
-
-
-=======
 .check{
     padding-left: 50px;
     display: flex;
@@ -36,4 +11,4 @@ margin-top: 8px;
 margin-left: 3%;
 transform : scale(1.7);
 }
->>>>>>> 8584a83e7ee4bb656fb61c96aaae3b5307b22d40
+

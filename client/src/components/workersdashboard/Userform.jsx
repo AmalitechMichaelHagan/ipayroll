@@ -95,14 +95,7 @@ export default function Userform() {
                     <option value={'Level 2'}>Level 2</option>
                     <option value={'Level 3'}>Level 3</option>
                 </select>
-<<<<<<< HEAD
-                <button className="button1" onClick={() => {
-                            Navigate("/newuser")
-                        }}>
-                            Add Employee
-                        </button>
-            </div>
-=======
+
                <div className="check">
                 <label>
                 Admin Rights
@@ -118,7 +111,7 @@ export default function Userform() {
           Navigate("/user")
         }}  className="login-button"/>
 
->>>>>>> 8584a83e7ee4bb656fb61c96aaae3b5307b22d40
+</div>
             </form>
 
         </div>
