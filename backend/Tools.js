@@ -134,20 +134,20 @@ class Tools {
       "month": month,
       "year": year,
       "salary": base_salary,
-      "cash_allowance": cash_allowance,
+      "cash_allowance": cash_allowance.toFixed(2),
       "tax_relief": tax_relief,
-      "paye": cumpaye,
-      "loan_deduction": loan_deducted,
+      "paye": cumpaye.toFixed(2),
+      "loan_deduction": loan_deducted.toFixed(2),
       "loan_remainder": loan_remainder,
-      "ssnit_tier_one": ssnit_tear1,
-      "ssnit_tier_two": ssnit_tear2,
-      "ssnit_tier_total": total_ssnit,
-      "pf_employee": pf_employee,
-      "pf_employer": pf_employer,
-      "pf_total": total_pf,
-      "total_earnings": total_earnings,
-      "total_deductions": total_deductions,
-      "take_home_salary": take_home_salary
+      "ssnit_tier_one": ssnit_tear1.toFixed(2),
+      "ssnit_tier_two": ssnit_tear2.toFixed(2),
+      "ssnit_tier_total": total_ssnit.toFixed(2),
+      "pf_employee": pf_employee.toFixed(2),
+      "pf_employer": pf_employer.toFixed(2),
+      "pf_total": total_pf.toFixed(2),
+      "total_earnings": total_earnings.toFixed(2),
+      "total_deductions": total_deductions.toFixed(2),
+      "take_home_salary": take_home_salary.toFixed(2)
     }
 
   }
