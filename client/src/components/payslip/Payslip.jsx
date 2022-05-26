@@ -15,3 +15,16 @@ export function Payslip({ paySlipData }) {
                         <div class="text-center lh-1 mb-2">
                             <h6 class="fw-bold">Payslip</h6> <span class="fw-normal">Employee payslip for the month</span>
                         </div>
+                        <div class="row">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">Employee id:</span> <small class="ms-3">{element.employee_id}</small> </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">Rank:</span> <small class="ms-3">{element.rank}</small> </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">Period</span> <small class="ms-3">{element.month_year}</small> </div>
+                        </div>
+                    </div>
