@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db");
+const tool = require("../Tools");
 
 router.get("/", function (req, res, next) {
     res.send("loan Dashboard");
@@ -15,6 +16,89 @@ router.get("/all", async (req, res, next) => {
     }
 
 })
+
+router.post("/send", async (req, res) => {
+    try {
+        const {
+            employee_id,
+            month,
+            year,
+            initial_amount,
+            amount_left
+        } = req.body;
+
+        const newLoan = await pool.query(`INSERT INTO loans(
+            employee_id,
+            month,
+            year,
+            initial_amount,
+            amount_left
+        ) VALUES($1,$2,$3,$4,$5) RETURNING *`
+            , [
+                employee_id,
+                month,
+                year,
+                initial_amount,
+                amount_left
+            ])
+
+        res.json(newLoan.rows);
+    } catch (e) {
+        res.send(e.message);
+    }
+})
+
+router.put("/review", async(req,res)=>{
+
+    try {
+
+        let {response,employee_id,deduction_rate} = req.body; // response will be boolean
+        let employee = await pool.query(`SELECT firstname , email FROM employees WHERE id = ${employee_id}`);
+        employee = employee.rows[0];
+        if(response){
+            const update = await pool.query(`UPDATE loans SET approval_status = $1, loan_deduction_rate = $2 WHERE employee_id = $3`,
+            [response, deduction_rate, employee_id]);
+            const update2 = await pool.query(`UPDATE employees SET loan_status = $1 WHERE id = $2`,[response,employee_id]);
+            tool.sendMail(
+                employee.email,
+                "Loan Review",
+                `Hello ${employee.firstname},
+                your loan request has been accepted at a salary  deduction rate of ${deduction_rate}%.
+                Kindly contact the finance department if you have any questions
+                    
+                Regards,
+                The HR Team    
+                    `
+            )
+        }else{
+
+            const del = await pool.query("DELETE FROM loans where employee_id = $1", [employee_id]);
+
+            tool.sendMail(
+                employee.email,
+                "Loan Review",
+                `Hello ${employee.firstname},
+                we are sorry to inform you your loan request has been declined.
+                Kindly contact the finance department if you have any questions
+                    
+                Regards,
+                The HR Team    
+                    `
+            )
+
+
+
+        }
+
+        res.send("Loan Updated");
+
+    } catch (e) {
+
+        res.send(e.message)
+    
+    }
+
+} )
 
 router.get("/:id", async (req, res, next) => {
     try {
@@ -74,37 +158,5 @@ router.delete("/:id", async (req, res, next) => {
     }
 
 })
-
-router.post("/send", async (req, res) => {
-    try {
-        const {
-            employee_id,
-            month,
-            year,
-            initial_amount,
-            amount_left
-        } = req.body;
-
-        const newLoan = await pool.query(`INSERT INTO loans(
-            employee_id,
-            month,
-            year,
-            initial_amount,
-            amount_left
-        ) VALUES($1,$2,$3,$4,$5) RETURNING *`
-            , [
-                employee_id,
-                month,
-                year,
-                initial_amount,
-                amount_left
-            ])
-
-        res.json(newLoan.rows);
-    } catch (e) {
-        res.send(e.message);
-    }
-})
-
 
 module.exports = router;
