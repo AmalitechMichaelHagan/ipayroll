@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db");
+const tool = require("../Tools");
 
 router.get("/", function(req, res, next) {
     res.send("wage Dashboard");
@@ -44,6 +45,9 @@ router.put("/:id",async(req,res,next)=>{
         "ssnit_tier_one",
         "ssnit_tier_two",
         "ssnit_tier_total",
+        "pf_employee",
+        "pf_employer",
+        "pf_total",
         "total_earnings",
         "total_deductions",
         "take_home_salary"
@@ -101,6 +105,9 @@ router.post("/send",async(req,res)=>{
         ssnit_tier_one,
         ssnit_tier_two,
         ssnit_tier_total,
+        pf_employee,
+        pf_employer,
+        pf_total,
         total_earnings,
         total_deductions,
         take_home_salary
@@ -119,11 +126,15 @@ router.post("/send",async(req,res)=>{
             ssnit_tier_one,
             ssnit_tier_two,
             ssnit_tier_total,
+            pf_employee,
+            pf_employer,
+            pf_total,
             total_earnings,
             total_deductions,
             take_home_salary
-        ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *`
-        ,[ employee_id,
+        ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18) RETURNING *`
+        ,[ 
+            employee_id,
             month,
             year,
             salary,
@@ -135,11 +146,18 @@ router.post("/send",async(req,res)=>{
             ssnit_tier_one,
             ssnit_tier_two,
             ssnit_tier_total,
+            pf_employee,
+            pf_employer,
+            pf_total,
             total_earnings,
             total_deductions,
             take_home_salary])
 
-    res.json(newWage.rows);        
+        const update = await pool.query(`UPDATE loans SET amount_left = $1 WHERE employee_id = $2`,
+        [loan_remainder,employee_id]);
+
+    res.json(newWage.rows);
+
     }catch(e){
 res.send(e.message);
     }
@@ -147,21 +165,53 @@ res.send(e.message);
 
 router.get("/generate/:id",async(req,res,next)=>{
     try{
-    const {email} = req.body;
+    const {email,month,year} = req.body;
 
     const employee_data = await pool.query("SELECT * FROM employees WHERE email=($1)",[email]);
     employee_data = employee_data.rows;
     const employee_rank = await pool.query("SELECT * FROM rates WHERE rank=($1)",[employee_data.rank]);
-    
+    employee_rank = employee_rank.rows;
+
+    let loan_deduction;
+    let loan_remainder;
+    let tax_relief;
     if(employee_data.loan_status){
-        //write loan implementation
+    const loan_data = await pool.query("SELECT * FROM loans WHERE employee_id=($1)",[employee_data.id]);
+    loan_data = loan_data.rows;
+    loan_deduction = loan_data.loan_deduction_rate;
+    loan_remainder = loan_data.amount_left;
+    }else{
+        loan_deduction = 0;
+        loan_remainder = 0;
     }
+
     if(employee_data.tax_relief){
-        //write tax relief implementation
+    
+        
+    const tax_relief_data = await pool.query("SELECT monthly_amount FROM tax_relief WHERE email=($1)",[email]);
+    tax_relief_data = tax_relief_data.rows;
+    tax_relief = tax_relief_data.monthly_amount;
+    
+    }else{
+        tax_relief = 0;
     }
 
+    const result = tool.taxCalc(
+        employee_data.id,
+        month,
+        year,
+        employee_rank.salary,
+        employee_rank.cash_allowance,
+        tax_relief,
+        loan_deduction,
+        loan_remainder,
+        employee_rank.ssnit_tier_one,
+        employee_rank.ssnit_tier_two,
+        employee_rank.pf_employee,
+        employee_rank.pf_employer
+    );
 
-    res.json(wages.rows);
+    res.json(result);
     
     }catch(e){
         res.send(e.message)
