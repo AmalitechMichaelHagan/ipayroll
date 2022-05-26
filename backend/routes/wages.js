@@ -145,5 +145,16 @@ res.send(e.message);
     }
 })
 
+router.post("/send",async(req,res,next)=>{
+    try{
+    
+
+        
+    }catch(e){
+        res.send(e.message)
+    }
+    
+    })
+
 
 module.exports = router;
