@@ -4,12 +4,12 @@ CREATE TABLE rates(
     id SERIAL PRIMARY KEY,
     rank VARCHAR(20) NOT NULL UNIQUE,
     salary REAL NOT NULL,
-    bonus REAL NOT NULL,
-    tax_relief REAL NOT NULL,
-    income_tax REAL NOT NULL,
-    tier_one REAL NOT NULL,
-    tier_two REAL NOT NULL,
-    loan_deduction REAL NOT NULL
+    cash_allowance REAL NOT NULL,
+    paye REAL NOT NULL,
+    pf_employee REAL NOT NULL,
+    pf_employer REAL NOT NULL,
+    ssnit_tier_one REAL NOT NULL,
+    ssnit_tier_two REAL NOT NULL
 );
 
 CREATE TABLE employees(
@@ -24,11 +24,10 @@ CREATE TABLE employees(
     phone_number VARCHAR(20) NOT NULL,
     work_start_date DATE NOT NULL,
     snnit_number VARCHAR(20) NOT NULL,
-    loan_status BOOLEAN NOT NULL
+    tax_relief BOOLEAN DEFAULT false,
+    loan_status BOOLEAN DEFAULT false
 );
 
-<<<<<<< HEAD
-=======
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     email VARCHAR(50) NOT NULL UNIQUE,
@@ -36,7 +35,6 @@ CREATE TABLE users(
     admin_role BOOLEAN NOT NULL,
     FOREIGN KEY (email) REFERENCES employees(email) ON DELETE CASCADE  
 );
->>>>>>> 5b404a3c92df0af1e844e04f3f4355919594ee3b
 
 
 CREATE TABLE loans(
@@ -45,7 +43,18 @@ CREATE TABLE loans(
     month INTEGER NOT NULL,
     year INTEGER NOT NULL,
     initial_amount REAL NOT NULL,
-    amount_left REAL NOT NULL
+    amount_left REAL NOT NULL,
+    loan_deduction_rate REAL DEFAULT 0.0,   --Deduction rate will be calculated and submitted to employee.
+    approval_status BOOLEAN DEFAULT false
+);
+
+CREATE TABLE tax_relief(
+    id SERIAL PRIMARY KEY,
+    employee_email VARCHAR(80) REFERENCES employees(email) NOT NULL,
+    tax_relief_type VARCHAR(25),
+    annual_amomunt REAL NOT NULL,
+    monthly_amount REAL NOT NULL,
+    relief_desc VARCHAR (100)
 );
 
 
@@ -55,17 +64,20 @@ CREATE TABLE wages(
     month INTEGER NOT NULL,
     year INTEGER NOT NULL,
     salary REAL NOT NULL,
-    bonus REAL NOT NULL,
+    cash_allowance REAL NOT NULL,
     tax_relief REAL NOT NULL,
-    income_tax REAL NOT NULL,
+    paye REAL NOT NULL,
     loan_deduction REAL NOT NULL,
     loan_remainder REAL NOT NULL,
-    tier_one REAL NOT NULL,
-    tier_two REAL NOT NULL,
+    ssnit_tier_one REAL NOT NULL,
+    ssnit_tier_two REAL NOT NULL,
+    ssnit_tier_total REAL NOT NULL,
+    pf_employee REAL NOT NULL,
+    pf_employer REAL NOT NULL,
+    pf_total REAL NOT NULL,
     total_earnings REAL NOT NULL,
     total_deductions REAL NOT NULL,
-    total_tiers REAL NOT NULL,
-    net_salary REAL NOT NULL,
+    take_home_salary REAL NOT NULL,
     CONSTRAINT WAGE_PER_MONTH UNIQUE(employee_id, month, year)
 );
 
@@ -74,16 +86,16 @@ INSERT INTO
     rates(
     rank,
     salary,
-    bonus,
-    tax_relief,
-    income_tax,
-    tier_one,
-    tier_two,
-    loan_deduction
+    cash_allowance,
+    paye,
+    pf_employee,
+    pf_employer,
+    ssnit_tier_one,
+    ssnit_tier_two
     )
 VALUES
     (
-        1,
+        'Level 1',
         10000,
         0.1,
         0.05,
@@ -97,16 +109,16 @@ VALUES
     rates(
     rank,
     salary,
-    bonus,
-    tax_relief,
-    income_tax,
-    tier_one,
-    tier_two,
-    loan_deduction
+    cash_allowance,
+    paye,
+    pf_employee,
+    pf_employer,
+    ssnit_tier_one,
+    ssnit_tier_two
     )
 VALUES
     (
-        2,
+        'Level 2',
         7000,
         0.2,
         0.05,
@@ -120,16 +132,16 @@ VALUES
     rates(
     rank,
     salary,
-    bonus,
-    tax_relief,
-    income_tax,
-    tier_one,
-    tier_two,
-    loan_deduction
+    cash_allowance,
+    paye,
+    pf_employee,
+    pf_employer,
+    ssnit_tier_one,
+    ssnit_tier_two
     )
 VALUES
     (
-        3,
+        'Level 3',
         5000,
         0.2,
         0.05,
@@ -140,11 +152,8 @@ VALUES
     );
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 5b404a3c92df0af1e844e04f3f4355919594ee3b
     /*
 CREATE TABLE work_hours(
     id SERIAL PRIMARY KEY,
@@ -164,16 +173,3 @@ CREATE TABLE work_hours(
     CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
 );
 */
-<<<<<<< HEAD
-
---CREATE extension IF NOT EXISTS "uuid-ossp";
-
-/*CREATE TABLE users(
-    id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    username VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    upassword VARCHAR(255) NOT NULL,
-    department VARCHAR(50)
-);*/
-=======
->>>>>>> 5b404a3c92df0af1e844e04f3f4355919594ee3b

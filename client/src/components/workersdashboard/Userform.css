@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .emplo-form{
     display: flex;
@@ -22,3 +23,17 @@
 }
 
 
+=======
+.check{
+    padding-left: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.box{
+width: auto;
+margin-top: 8px;
+margin-left: 3%;
+transform : scale(1.7);
+}
+>>>>>>> 8584a83e7ee4bb656fb61c96aaae3b5307b22d40
