@@ -36,18 +36,19 @@ router.put("/:id",async(req,res,next)=>{
         "month",
         "year",
         "salary",
-        "bonus",
+        "cash_allowance",
         "tax_relief",
-        "income_tax",
+        "paye",
         "loan_deduction",
         "loan_remainder",
-        "tier_one",
-        "tier_two",
+        "ssnit_tier_one",
+        "ssnit_tier_two",
+        "ssnit_tier_total",
         "total_earnings",
         "total_deductions",
-        "total_tiers",
-        "net_salary"
+        "take_home_salary"
     ]
+    
 
         let check = true; //Will be used to res.send text if invalid or no collumn name is passed
 
@@ -88,21 +89,21 @@ router.put("/:id",async(req,res,next)=>{
 router.post("/send",async(req,res)=>{
     try{
         const {
-            employee_id,
-            month,
-            year,
-            salary,
-            bonus,
-            tax_relief,
-            income_tax,
-            loan_deduction,
-            loan_remainder,
-            tier_one,
-            tier_two,
-            total_earnings,
-            total_deductions,
-            total_tiers,
-            net_salary
+        employee_id,
+        month,
+        year,
+        salary,
+        cash_allowance,
+        tax_relief,
+        paye,
+        loan_deduction,
+        loan_remainder,
+        ssnit_tier_one,
+        ssnit_tier_two,
+        ssnit_tier_total,
+        total_earnings,
+        total_deductions,
+        take_home_salary
             } = req.body;
 
         const newWage = await pool.query(`INSERT INTO wages(
@@ -110,33 +111,33 @@ router.post("/send",async(req,res)=>{
             month,
             year,
             salary,
-            bonus,
+            cash_allowance,
             tax_relief,
-            income_tax,
+            paye,
             loan_deduction,
             loan_remainder,
-            tier_one,
-            tier_two,
+            ssnit_tier_one,
+            ssnit_tier_two,
+            ssnit_tier_total,
             total_earnings,
             total_deductions,
-            total_tiers,
-            net_salary
+            take_home_salary
         ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING *`
-        ,[  employee_id,
+        ,[ employee_id,
             month,
             year,
             salary,
-            bonus,
+            cash_allowance,
             tax_relief,
-            income_tax,
+            paye,
             loan_deduction,
             loan_remainder,
-            tier_one,
-            tier_two,
+            ssnit_tier_one,
+            ssnit_tier_two,
+            ssnit_tier_total,
             total_earnings,
             total_deductions,
-            total_tiers,
-            net_salary])
+            take_home_salary])
 
     res.json(newWage.rows);        
     }catch(e){

@@ -11,6 +11,8 @@ var employeesRouter = require('./routes/employees');
 var loansRouter = require('./routes/loans');
 var ratesRouter = require('./routes/rates');
 var wagesRouter = require('./routes/wages');
+var tax_reliefRouter = require('./routes/tax_relief')
+
 var app = express();
 
 // view engine setup
@@ -30,7 +32,7 @@ app.use('/employees',employeesRouter);
 app.use('/loans',loansRouter);
 app.use('/rates',ratesRouter);
 app.use('/wages',wagesRouter);
-
+app.use('./tax_relief',tax_reliefRouter);
 
 
 
