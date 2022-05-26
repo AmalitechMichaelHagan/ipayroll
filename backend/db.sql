@@ -5,7 +5,6 @@ CREATE TABLE rates(
     rank VARCHAR(20) NOT NULL UNIQUE,
     salary REAL NOT NULL,
     cash_allowance REAL NOT NULL,
-    paye REAL NOT NULL,
     pf_employee REAL NOT NULL,
     pf_employer REAL NOT NULL,
     ssnit_tier_one REAL NOT NULL,
