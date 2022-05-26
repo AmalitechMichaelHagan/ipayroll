@@ -114,7 +114,7 @@ router.post("/send",async(req,res)=>{
             snnit_number,
             tax_relief,
             loan_status
-        ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`
+        ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`
         ,[  firstname,
             surname,
             date_of_birth,
