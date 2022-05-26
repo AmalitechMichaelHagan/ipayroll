@@ -73,3 +73,9 @@ export function Payslip({ paySlipData }) {
                             <td>{element.initial_amount} </td>
                             <td>GHC{element.total_deduction}</td>
                         </tr>
+                        <tr>
+                            <th scope="row">INCOME TAX</th>
+                            <td>{element.income_tax}</td>
+                            <td>GHC{element.total_deduction}</td>
+                        </tr>
+                        <tr>
