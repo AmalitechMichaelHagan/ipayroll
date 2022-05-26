@@ -145,11 +145,24 @@ res.send(e.message);
     }
 })
 
-router.post("/send",async(req,res,next)=>{
+router.get("/generate/:id",async(req,res,next)=>{
     try{
-    
+    const {email} = req.body;
 
-        
+    const employee_data = await pool.query("SELECT * FROM employees WHERE email=($1)",[email]);
+    employee_data = employee_data.rows;
+    const employee_rank = await pool.query("SELECT * FROM rates WHERE rank=($1)",[employee_data.rank]);
+    
+    if(employee_data.loan_status){
+        //write loan implementation
+    }
+    if(employee_data.tax_relief){
+        //write tax relief implementation
+    }
+
+
+    res.json(wages.rows);
+    
     }catch(e){
         res.send(e.message)
     }
