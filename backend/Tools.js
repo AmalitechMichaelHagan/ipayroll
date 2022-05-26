@@ -116,9 +116,6 @@
     cumpaye += (rates[i]/100)*income[i];
     amount_taxable-=income[i];
     
-    console.log(cumpaye+"\n"+amount_taxable+"\n");
-    
-    
     }else{
     cumpaye += (rates[i]/100)*amount_taxable;
     break;     
@@ -126,9 +123,9 @@
     
     }
     
-    total_earnings = base_salary + cash_allowance;
-    total_deductions = cumpaye + ssnit_tear1 + pf_employee + loan_deducted;
-    take_home_salary = total_earnings - total_deductions;
+    let total_earnings = base_salary + cash_allowance;
+    let total_deductions = cumpaye + ssnit_tear1 + pf_employee + loan_deducted;
+    let take_home_salary = total_earnings - total_deductions;
     
     
     
