@@ -39,3 +39,16 @@ export function Payslip({ paySlipData }) {
                             <div> <span class="fw-bolder">Date Join</span> <small class="ms-3">{moment.utc(element.date_join).format("YYYY-MM-DD")}</small> </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">SSNIT Number.</span> <small class="ms-3">{element.ssnit_number}</small> </div>
+                        </div>
+                       </div>
+                <table class="mt-4 table table-bordered">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th scope="col">CRITERION</th>
+                            <th scope="col">EARNING</th>
+                            <th scope="col">DEDUCTION</th>
+                        </tr>
+                    </thead>
