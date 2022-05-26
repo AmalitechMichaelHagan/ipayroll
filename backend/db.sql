@@ -72,6 +72,9 @@ CREATE TABLE wages(
     ssnit_tier_one REAL NOT NULL,
     ssnit_tier_two REAL NOT NULL,
     ssnit_tier_total REAL NOT NULL,
+    pf_employee REAL NOT NULL,
+    pf_employer REAL NOT NULL,
+    pf_total REAL NOT NULL,
     total_earnings REAL NOT NULL,
     total_deductions REAL NOT NULL,
     take_home_salary REAL NOT NULL,
@@ -83,16 +86,16 @@ INSERT INTO
     rates(
     rank,
     salary,
-    bonus,
-    tax_relief,
-    income_tax,
-    tier_one,
-    tier_two,
-    loan_deduction
+    cash_allowance,
+    paye,
+    pf_employee,
+    pf_employer,
+    ssnit_tier_one,
+    ssnit_tier_two
     )
 VALUES
     (
-        "Level 1",
+        'Level 1',
         10000,
         0.1,
         0.05,
@@ -106,16 +109,16 @@ VALUES
     rates(
     rank,
     salary,
-    bonus,
-    tax_relief,
-    income_tax,
-    tier_one,
-    tier_two,
-    loan_deduction
+    cash_allowance,
+    paye,
+    pf_employee,
+    pf_employer,
+    ssnit_tier_one,
+    ssnit_tier_two
     )
 VALUES
     (
-        "Level 2",
+        'Level 2',
         7000,
         0.2,
         0.05,
@@ -129,16 +132,16 @@ VALUES
     rates(
     rank,
     salary,
-    bonus,
-    tax_relief,
-    income_tax,
-    tier_one,
-    tier_two,
-    loan_deduction
+    cash_allowance,
+    paye,
+    pf_employee,
+    pf_employer,
+    ssnit_tier_one,
+    ssnit_tier_two
     )
 VALUES
     (
-        "Level 3",
+        'Level 3',
         5000,
         0.2,
         0.05,
