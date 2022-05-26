@@ -87,7 +87,6 @@ INSERT INTO
     rank,
     salary,
     cash_allowance,
-    paye,
     pf_employee,
     pf_employer,
     ssnit_tier_one,
@@ -97,12 +96,11 @@ VALUES
     (
         'Level 1',
         10000,
-        0.1,
-        0.05,
-        0.13,
-        0.13,
-        0.26,
-        0.2
+        1500,
+        6,
+        10.5,
+        5.5,
+        13.5
     );
 
     INSERT INTO
@@ -110,7 +108,6 @@ VALUES
     rank,
     salary,
     cash_allowance,
-    paye,
     pf_employee,
     pf_employer,
     ssnit_tier_one,
@@ -118,14 +115,13 @@ VALUES
     )
 VALUES
     (
-        'Level 2',
-        7000,
-        0.2,
-        0.05,
-        0.13,
-        0.13,
-        0.26,
-        0.2
+      'Level 2',
+        75000,
+        1000,
+        6,
+        10.5,
+        5.5,
+        13.5
     );
 
     INSERT INTO
@@ -133,7 +129,6 @@ VALUES
     rank,
     salary,
     cash_allowance,
-    paye,
     pf_employee,
     pf_employer,
     ssnit_tier_one,
@@ -141,14 +136,13 @@ VALUES
     )
 VALUES
     (
-        'Level 3',
+       'Level 3',
         5000,
-        0.2,
-        0.05,
-        0.13,
-        0.13,
-        0.26,
-        0.2
+        500,
+        5,
+        11.5,
+        5.5,
+        13.5
     );
 
 
