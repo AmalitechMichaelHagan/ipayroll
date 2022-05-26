@@ -28,3 +28,14 @@ export function Payslip({ paySlipData }) {
                             <div> <span class="fw-bolder">Period</span> <small class="ms-3">{element.month_year}</small> </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">Employee Name:</span> <small class="ms-3">{element.full_name}</small> </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">Department</span> <small class="ms-3">{element.department}</small> </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div> <span class="fw-bolder">Date Join</span> <small class="ms-3">{moment.utc(element.date_join).format("YYYY-MM-DD")}</small> </div>
+                        </div>
+                    </div>
