@@ -39,7 +39,7 @@ CREATE TABLE users(
 
 CREATE TABLE loans(
     id SERIAL PRIMARY KEY,
-    employee_id INTEGER REFERENCES employees(id) NOT NULL,
+    employee_id INTEGER REFERENCES employees(id) NOT NULL UNIQUE, --Employee cannot take more than one loan.
     month INTEGER NOT NULL,
     year INTEGER NOT NULL,
     initial_amount REAL NOT NULL,
