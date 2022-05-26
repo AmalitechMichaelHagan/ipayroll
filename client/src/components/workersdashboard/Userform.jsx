@@ -54,12 +54,15 @@ export default function Userform() {
     return (
         <div>
             <form className='form-style' onSubmit={postData}>
-                <h1 className='title'> Add New Employees </h1>
+              <h1 className='title'> Add New Employees </h1>
+              <div className="emplo-form">
                 <input {...register("firstName")} placeholder="Enter FirstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                 <input {...register("lastName")} placeholder="Enter LastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 <input {...register("email")} placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input {...register("phonenumber")} placeholder="Enter phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                 <input {...register("ssnitNumber")} placeholder="Enter SSnit Number" value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
+             </div>
+             <div className="emplo-form">
                 <select {...register("gender")} onChange={(e) => setGender(e.target.value)}>
                     <option>Select Gender</option>
                     <option value={gender}>male</option>
@@ -73,11 +76,14 @@ export default function Userform() {
                     <option value={rank}>upper</option>
                     <option value={rank}>lower</option>
                 </select>
-                <input type="submit" onClick={() => {
-          Navigate("/user")
-        }}  className="login-button"/>
-
+                <button className="button1" onClick={() => {
+                            Navigate("/newuser")
+                        }}>
+                            Add Employee
+                        </button>
+            </div>
             </form>
+
         </div>
     );
 }

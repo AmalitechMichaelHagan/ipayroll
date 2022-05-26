@@ -1,0 +1,24 @@
+
+.emplo-form{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin-right:180px;
+
+}
+
+.form-style{
+    position: relative;
+    align-items: center;
+}
+
+.title{
+    text-align: center;
+    margin-top: 40px
+}
+.emplo-form{
+    padding: 20px;
+    border-bottom: 1px solid rgb(59, 4, 4)
+}
+
+

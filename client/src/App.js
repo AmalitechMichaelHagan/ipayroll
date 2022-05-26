@@ -24,7 +24,7 @@ function App() {
         <Route path="/form" element={<Userform />} />
         <Route path="/employee" element={<LoanDashboard />} />
         <Route path="/rate" element={<Rate />} />
-        <Route path="/user" element={<Userform />} />
+        <Route path="/newuser" element={<Userform />} />
 
 
 
