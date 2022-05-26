@@ -52,3 +52,14 @@ export function Payslip({ paySlipData }) {
                             <th scope="col">DEDUCTION</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">BASIC SALARY</th>
+                            <td>{element.basic_salary}</td>
+                            <td>GHC{element.total_deduction}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">WORKERS BONUS</th>
+                            <td>{element.bonus}</td>
+                            <td>GHC{element.total_deduction}</td>
+                        </tr>
