@@ -80,7 +80,7 @@ router.post("/send", async (req, res) => {
                 total_deductions,
                 take_home_salary])
             
-            if(loan_remainder === 0){
+            if(loan_remainder === 0 && loan_deduction > 0){
                 try {
                     
                     const del = await pool.query("DELETE FROM loans where employee_id = $1", [employee_id])
@@ -132,7 +132,7 @@ router.get("/generate", async (req, res, next) => {
 
         if (employee_data.tax_relief) {
 
-            let tax_relief_data = await pool.query("SELECT monthly_amount FROM tax_relief WHERE email=($1)", [email]);
+            let tax_relief_data = await pool.query("SELECT monthly_amount FROM tax_relief WHERE employee_email=($1)", [email]);
             tax_relief_data = tax_relief_data.rows[0];
             tax_relief = tax_relief_data.monthly_amount;
 
