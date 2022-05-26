@@ -34,7 +34,7 @@ router.put("/:id", async (req, res, next) => {
         let collumns = [
             "employee_email",
             "tax_relief_type",
-            "annual_amomunt",
+            "annual_amount",
             "monthly_amount",
             "relief_desc"
         ]
@@ -81,7 +81,7 @@ router.post("/send", async (req, res) => {
         const {
             employee_email,
             tax_relief_type,
-            annual_amomunt,
+            annual_amount,
             monthly_amount,
             relief_desc
         } = req.body;
@@ -89,16 +89,23 @@ router.post("/send", async (req, res) => {
         const newTaxRelief = await pool.query(`INSERT INTO tax_relief(
         "employee_email",
         "tax_relief_type",
-        "annual_amomunt",
+        "annual_amount",
         "monthly_amount",
         "relief_desc"
     ) VALUES($1,$2,$3,$4,$5) RETURNING *`
             , [employee_email,
                 tax_relief_type,
-                annual_amomunt,
+                annual_amount,
                 monthly_amount,
                 relief_desc
             ])
+
+            try{
+                const update = await pool.query(`UPDATE employees SET tax_relief = $1 WHERE email = $2`,
+                [true, employee_email]);
+                    }catch (e){
+                    console.log(e.message);
+                    }
 
 
         res.json(newTaxRelief.rows);
