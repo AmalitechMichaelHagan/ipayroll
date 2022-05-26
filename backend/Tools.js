@@ -9,7 +9,7 @@
     const oAuth2Client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,REDIRECT_URI);
     oAuth2Client.setCredentials({refresh_token: REFRESH_TOKEN});
 
-    class gen{
+    class Tools{
     
       constructor(){
 
@@ -60,10 +60,104 @@
       
         console.log("Message sent: %s", info.messageId);
       }
+
+
+      taxCalc =(
+        employee_id,
+        month,
+        year,
+        base_salary,
+        cash_allowance,
+        tax_relief,
+        loan_deduction,
+        loan_remainder,
+        tear1,
+        tear2,
+        employeePF,
+        employerPF)=>{
+    
+    let ssnit_tear1 = (tear1/100)*base_salary;
+    
+    let ssnit_tear2 = (tear2/100)*base_salary;
+    
+    let total_ssnit = ssnit_tear1 + ssnit_tear2;
+    
+    let pf_employee = (employeePF/100)*base_salary;
+    
+    let pf_employer = (employerPF/100)*base_salary;
+    
+    let total_pf = pf_employee+pf_employer;
+    
+    let amount_taxable = base_salary - (ssnit_tear1 + pf_employee);
+    
+    amount_taxable -= tax_relief;
+    
+    amount_taxable += cash_allowance;
+    
+    var loan_deducted;
+
+    let loan_deductable = (loan_deduction/100)*base_salary;
+
+    if(loan_deductable <= loan_remainder){ 
+     loan_deducted = loan_deductable;
+     loan_remainder -= loan_deducted;
+    }else{
+      loan_deducted = loan_remainder;
+      loan_remainder = 0;
+    }
+    
+    let cumpaye = 0;
+    let rates = [0,5,10,17.5,25,30];
+    let income = [365,110,130,3000,16395,20000]
+    
+    for(let i = 0; i<rates.length; i++){
+    
+    if(amount_taxable>income[i]){
+    cumpaye += (rates[i]/100)*income[i];
+    amount_taxable-=income[i];
+    
+    console.log(cumpaye+"\n"+amount_taxable+"\n");
+    
+    
+    }else{
+    cumpaye += (rates[i]/100)*amount_taxable;
+    break;     
+    }
+    
+    }
+    
+    total_earnings = base_salary + cash_allowance;
+    total_deductions = cumpaye + ssnit_tear1 + pf_employee + loan_deducted;
+    take_home_salary = total_earnings - total_deductions;
+    
+    
+    
+    return {
+        "employee_id":employee_id,
+        "month":month,
+        "year":year,
+        "salary":base_salary,
+        "cash_allowance":cash_allowance,
+        "tax_relief":tax_relief,
+        "paye":cumpaye,
+        "loan_deduction":loan_deducted,
+        "loan_remainder":loan_remainder,
+        "ssnit_tier_one":ssnit_tear1,
+        "ssnit_tier_two":ssnit_tear2,
+        "ssnit_tier_total":total_ssnit,
+        "pf_employee":pf_employee,
+        "pf_employer":pf_employer,
+        "pf_total":total_pf,
+        "total_earnings":total_earnings,
+        "total_deductions":total_deductions,
+        "take_home_salary":take_home_salary
+    }
+    
+    }
     
 
 }
 
-const gen1 = new gen;
+const Tool = new Tools;
 
-module.exports = gen1;
+module.exports = Tool;
