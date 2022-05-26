@@ -95,3 +95,14 @@ export function Payslip({ paySlipData }) {
                 <div class="col-md-4"> <br/> <span class="fw-bold">Net Pay : {element.net_salary}</span> </div>
             </div>
             <div class="d-flex justify-content-end">
+            <div class="d-flex flex-column mt-2"> <span class="fw-bolder">{element.full_name}</span> <span class="mt-4">Authorised Signatory</span> </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+);
+})}
+</section>
+  );
+}
