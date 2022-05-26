@@ -88,3 +88,10 @@ export function Payslip({ paySlipData }) {
                             <td>{Element.loan_deduction}</td>
                             <td>GHC{element.total_deduction}</td>
                         </tr>
+                        </tbody>
+                        </table>
+                        </div>
+            <div class="row">
+                <div class="col-md-4"> <br/> <span class="fw-bold">Net Pay : {element.net_salary}</span> </div>
+            </div>
+            <div class="d-flex justify-content-end">
