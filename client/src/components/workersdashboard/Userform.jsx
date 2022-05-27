@@ -72,12 +72,15 @@ export default function Userform() {
     return (
         <div>
             <form className='form-style' onSubmit={postData}>
-                <h1 className='title'> Add New Employees </h1>
+              <h1 className='title'> Add New Employees </h1>
+              <div className="emplo-form">
                 <input {...register("firstName")} placeholder="Enter FirstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                 <input {...register("lastName")} placeholder="Enter LastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 <input {...register("email")} placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input {...register("phonenumber")} placeholder="Enter phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                 <input {...register("ssnitNumber")} placeholder="Enter SSnit Number" value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
+             </div>
+             <div className="emplo-form">
                 <select {...register("gender")} onChange={(e) => setGender(e.target.value)}>
                     <option>Select Gender</option>
                     <option value={'Male'}>Male</option>
@@ -92,6 +95,7 @@ export default function Userform() {
                     <option value={'Level 2'}>Level 2</option>
                     <option value={'Level 3'}>Level 3</option>
                 </select>
+
                <div className="check">
                 <label>
                 Admin Rights
@@ -107,7 +111,9 @@ export default function Userform() {
           Navigate("/user")
         }}  className="login-button"/>
 
+</div>
             </form>
+
         </div>
     );
 }

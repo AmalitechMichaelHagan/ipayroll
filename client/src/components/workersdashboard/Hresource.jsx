@@ -36,7 +36,7 @@ export default function Hresource() {
                             navigate("/form")
                         }}>
                             Add Employee
-                            <i className="fas fa-user"></i></button>
+                        </button>
                     </div>
 
                     <form action="/" method="POST">
@@ -79,7 +79,6 @@ export default function Hresource() {
                         </table>
 
                     </form>
-                    {/* <Rate /> */}
 
                 </div>
 
