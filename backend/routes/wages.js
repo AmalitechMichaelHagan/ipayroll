@@ -81,21 +81,22 @@ router.post("/send", async (req, res) => {
                 take_home_salary])
             
             if(loan_remainder === 0 && loan_deduction > 0){
-                try {
                     
                     const del = await pool.query("DELETE FROM loans where employee_id = $1", [employee_id])
+
+                    const update = await pool.query(`UPDATE employees SET loan_status = $1 WHERE id = $2`,
+                    [false, employee_id]);
+                    
                     console.log("loan was succesfully deleted")
-                } catch (e) {
-                    console.log(e.message);
-                }
+
+
+                
 
             }else{    
-                try{
-            const update = await pool.query(`UPDATE loans SET amount_left = $1 WHERE employee_id = $2`,
+        
+                const update = await pool.query(`UPDATE loans SET amount_left = $1 WHERE employee_id = $2`,
             [loan_remainder, employee_id]);
-                }catch (e){
-                    console.log(e.message);
-                }
+                
         }
 
         res.json(newWage.rows);
