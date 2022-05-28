@@ -25,9 +25,6 @@ function App() {
         <Route path="/employee" element={<LoanDashboard />} />
         <Route path="/rate" element={<Rate />} />
         <Route path="/newuser" element={<Userform />} />
-
-
-
       </Routes>
     </BrowserRouter>
   );

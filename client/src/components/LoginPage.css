@@ -9,6 +9,10 @@ button[type="button"]:hover {
       display: flex;
       justify-content: center;
       position: relative;
+      background-image: url("../assets/ipayroii.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
   }
 
   .login-title{
@@ -20,11 +24,15 @@ button[type="button"]:hover {
   .login-button{
       background-color: rgb(43, 37, 37);
       color: wheat;
-
   }
   .form-style2{
       background-color: rgb(95, 6, 12);
       width: 40%;
       border-color: rgba(29, 27, 28, 0.185);
       border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 auto;
   }
