@@ -78,9 +78,10 @@ export default function Userform() {
                 <input {...register("lastName")} placeholder="Enter LastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 <input {...register("email")} placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input {...register("phonenumber")} placeholder="Enter phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+               </div>
+               <hr/>
+                <div className="emplo-form">
                 <input {...register("ssnitNumber")} placeholder="Enter SSnit Number" value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
-             </div>
-             <div className="emplo-form">
                 <select {...register("gender")} onChange={(e) => setGender(e.target.value)}>
                     <option>Select Gender</option>
                     <option value={'Male'}>Male</option>
@@ -88,31 +89,37 @@ export default function Userform() {
                     <option value={'Others'}>Others</option>
                 </select>
                 <input {...register("department")} placeholder="Enter Department" value={department} onChange={(e) => setDepartment(e.target.value)} />
-                <input {...register("workstartDate")} placeholder="Enter Start Date" value={workstartDate} onChange={(e) => setWorkstartdate(e.target.value)} />
-                <select {...register("rank")} onChange={(e) => setRank(e.target.value)}>
+                   <input {...register("workstartDate")} placeholder="Enter Start Date" value={workstartDate} onChange={(e) => setWorkstartdate(e.target.value)} />
+                   </div>
+                   <hr/>
+                   <div className="emplo-form">
+                <select {...register("rank")} onChange={(e) => setRank(e.target.value)} className="rank">
                     <option>Select Rank</option>
                     <option value={'Level 1'}>Level 1</option>
                     <option value={'Level 2'}>Level 2</option>
                     <option value={'Level 3'}>Level 3</option>
                 </select>
-
                <div className="check">
                 <label>
-                Admin Rights
+                AdminRights
                 </label>
                   <input
                     className="box"
                     type="checkbox"
                     checked={admin}
-                    onChange={handleChange}
-                    />
+                          onChange={handleChange}/>
                 </div>
+
                 <input type="submit" onClick={() => {
           Navigate("/user")
-        }}  className="login-button"/>
+        }}  className="login-button2"/> 
 
-</div>
-            </form>
+                </div>   
+                <hr/>
+     
+            
+
+        </form>
 
         </div>
     );

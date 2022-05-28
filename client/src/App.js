@@ -12,6 +12,8 @@ import Hresource from "./components/workersdashboard/Hresource";
 import Userform from "./components/workersdashboard/Userform";
 import LoanDashboard from "./components/dashboard/LoanDashboard";
 import Rate from './components/workersdashboard/Rate';
+import EmployeeDashBoard from './components/employeedata/EmployeeDashBoard';
+
 
 
 function App() {
@@ -25,9 +27,7 @@ function App() {
         <Route path="/employee" element={<LoanDashboard />} />
         <Route path="/rate" element={<Rate />} />
         <Route path="/newuser" element={<Userform />} />
-
-
-
+        <Route path="/employee2" element={<EmployeeDashBoard/>} />
       </Routes>
     </BrowserRouter>
   );

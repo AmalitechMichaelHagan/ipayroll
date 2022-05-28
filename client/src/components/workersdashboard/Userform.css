@@ -1,14 +1,45 @@
+.form-style{
+    /* background-color:aliceblue; */
+    top: 40px;
+    right: 30px;
+}
+
+
+.emplo-form{
+    display:flex;
+    justify-content: center;
+    justify-items: center;
+    /* margin-right: 20px;; */
+    padding-top:30px;
+}
 
 .check{
     padding-left: 50px;
     display: flex;
     flex-direction: row;
+    /* margin-top: 35px; */
+
 }
 
 .box{
 width: auto;
-margin-top: 8px;
+margin-top: 35px;
 margin-left: 3%;
 transform : scale(1.7);
 }
 
+.rank{
+    width: 20%;
+    position: relative;
+    left: -9.5rem;
+}
+
+
+.login-button2{
+    width: px;
+}
+
+.title{
+    text-align: center;
+    padding-top: 30px;
+}

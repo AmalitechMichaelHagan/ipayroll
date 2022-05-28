@@ -30,6 +30,12 @@ export default function Sidebar() {
                         }}>
                             Account
                             </li>
+                            <li className="sidebarItems"onClick={() => {
+                            navigate("/employee2")
+                        }}>
+                            Employee DashBoard
+                            </li>
+
 
                     </ul>
                 </div>

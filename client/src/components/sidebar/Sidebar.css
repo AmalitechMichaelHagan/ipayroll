@@ -2,8 +2,8 @@
     margin-top: 0px;
     height: calc(100vh - 50px);
     background-color: rgb(172, 163, 163);
-    position: fixed;
-    min-width: 15%;
+    position: absolute;
+    width: 10%;
 }
 
 .sidebarWrapper{
