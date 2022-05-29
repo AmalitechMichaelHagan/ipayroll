@@ -6,30 +6,30 @@
 
 }
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+.head{
+    text-align: center;
+    padding-top: 40px; 
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    color: rgb(73, 4, 4);
+
+
 }
 
-main {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
     
 
-}
 
 form{
     margin-top: 20px;
-}
+} */
 
-.admin{
+.admin2{
     width: 100%;
     margin-right: 02px;
-    /* background-color:rgb(197, 192, 192); */
+    background-color:rgb(151, 148, 148);
     margin-top: 35px;
     border-radius: 10px;
-    /* border: 2px solid #ece7e7e5 */
+    border: 2px solid #9b0404e5
 }
 
 
@@ -38,12 +38,12 @@ form{
     box-shadow: 5px 10px 20px #df7474;
 }
 
-
+/* 
 table{
     border-spacing: 0px;
     width: 100%;
-}
-
+} */
+/* 
 .thead-color{
     background-color: rgb(185, 176, 176);
 }
@@ -53,24 +53,27 @@ table{
     vertical-align: top;
     text-align: center;
     border-top: 1px solid var(--border);
-} 
+}  */
 
 .table tr:hover{
     background-color:rgb(247, 239, 239);
 }
-
+/* 
 .table td > a.btn{
     padding: .3em 1em;
     font-size: 1.1em;
     margin: 0 .2em;
-} 
+}  */
 
 .table tr:hover td > a{
     box-shadow: none;
 }
 
-.Add-User{
-    margin-top: 30px;
+.ad-User{
+    height: 10px;;
+    position: relative;
+    display: flex;
+    justify-content: center;
     
 }
 
@@ -78,24 +81,23 @@ table{
     padding: 15px;
     width: 20%;
     border-radius: 5px;
-    margin-left: 10px;
-    background-color:rgb(85, 21, 21);
+    margin-left: 20px;
+    /* background-color:#777; */
     font-weight: bold;
-    color:rgb(253, 252, 252);
-
+    border: 2px solid rgb(126, 110, 110)
 
 }
 
 .button1:hover{
     background-color:rgba(218, 31, 31, 0)
 }
-
+/* 
 .table .thead-dark th{
     color: #fff;
     background-color: var(--dark) ;
     border-color: #32383e;
-} 
-
+}  */
+/* 
 @media only screen and (max-width: 1024px){
     table, thead, tbody, th, td, tr{
         display: block;
@@ -114,14 +116,31 @@ table{
         position: relative;
     }
 
-}
-
+} */
 
 /* 
-.input_text{
+form {
+margin: 5px;
+margin-top: 10px;
+/* background-color:#0000; */
+
+
+
+
+/* .input_text{
 color: #000000;
 padding-left: 10px;
 margin: 10px;
 
+} */
+
+/* .h2-head{
+text-align: center;
+
 }
- */
+
+.number{
+color: #777;
+width: 290px;
+height: 35px;
+} */
