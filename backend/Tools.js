@@ -1,5 +1,11 @@
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
+const puppeteer = require('puppeteer');
+const fs = require('fs-extra');
+const hbs = require('handlebars');
+const path = require('path');
+const excelJS = require("exceljs");
+
 
 const CLIENT_ID = '161536499376-9cbd1u2mm617trsmudnh3ehpr6koksrq.apps.googleusercontent.com';
 const CLIENT_SECRET = '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';
@@ -34,8 +40,8 @@ class Tools {
     return user_password;
   }
 
-  async sendMail(recipient, subject, message) {
-
+  async sendMail(recipient, subject, message, attachments) {
+   try{ 
     const accessToken = await oAuth2Client.getAccessToken();
 
     let transporter = nodemailer.createTransport({
@@ -56,14 +62,28 @@ class Tools {
       subject: subject,
       text: message,
       html: "",
+      attachments: [
+        {
+          filename: attachments.filename,    
+          path: attachments.path
+        },
+      ]
     });
 
     console.log("Message sent: %s", info.messageId);
+  }catch(e){
+    console.log(e.message);
+  }
   }
 
 
   taxCalc = (
     employee_id,
+    firstname,
+    surname,
+    department,
+    ssnit,
+    rank,
     month,
     year,
     base_salary,
@@ -75,6 +95,10 @@ class Tools {
     tear2,
     employeePF,
     employerPF) => {
+     
+    let full_name = `${firstname} ${surname}`;
+
+    let date = '';
 
     let ssnit_tear1 = (tear1 / 100) * base_salary;
 
@@ -127,6 +151,21 @@ class Tools {
     let total_deductions = cumpaye + ssnit_tear1 + pf_employee + loan_deducted;
     let take_home_salary = total_earnings - total_deductions;
 
+    switch(month){
+      case 1: date = `January ${year}`;break;
+      case 2: date = `February ${year}`;break;
+      case 3: date = `March ${year}`;break;
+      case 4: date = `April ${year}`;break;
+      case 5: date = `May ${year}`;break;
+      case 6: date = `June ${year}`;break;
+      case 7: date = `July ${year}`;break;
+      case 8: date = `August ${year}`;break;
+      case 9: date = `September ${year}`;break;
+      case 10: date = `October ${year}`;break;
+      case 11: date = `November ${year}`;break;
+      case 12: date = `December ${year}`;break;
+    }
+
 
 
     return {
@@ -147,13 +186,88 @@ class Tools {
       "pf_total": total_pf.toFixed(2)*1,
       "total_earnings": total_earnings.toFixed(2)*1,
       "total_deductions": total_deductions.toFixed(2)*1,
-      "take_home_salary": take_home_salary.toFixed(2)*1
+      "take_home_salary": take_home_salary.toFixed(2)*1,
+      "full_name":full_name,
+      "date":date,
+      "department":department,
+      "ssnit_number":ssnit,
+      "rank":rank
     }
 
   }
 
+  async compile(data){
+    const filePath = path.join(process.cwd(), 'Payslips/template', `Payslip.hbs`)
+    const html = await fs.readFile(filePath, 'utf-8');
+    return hbs.compile(html)(data);
+    
+    }
+    
+    async pdfgen(data){
+        
+        const result = await this.compile(data);
+    
+        try{
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+    
+        await page.addStyleTag({url:'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css'});
+        await page.addStyleTag({url:'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css'});
+        await page.setContent(result);
+        await page.emulateMediaType('screen');
+        await page.pdf({
+        path: `Payslips/${data.employee_id}_${data.month}_${data.year}.pdf`, //Define where you want files to be stored.
+        format: 'A4',
+        printBackground: true
+        });
+    
+        console.log('done');
+        await browser.close();
+    
+        }catch(e){
+            console.log(e);
+        }
+    }
 
-}
+    async reportgen(data){
+
+        const workbook = new excelJS.Workbook();
+        const worksheet = workbook.addWorksheet("Sheet 1"); // New Worksheet
+        const path = "./Reports";  // Path to download excel
+        
+      let columns = [];
+      let keys = Object.keys(data[0]);
+
+      keys.forEach((col) => {
+        columns.push({
+          header:col,
+          key:col,
+          with:10
+        }) // Add data in worksheet
+      });
+
+      worksheet.columns = columns;
+
+      data.forEach((row) => {
+        worksheet.addRow(row); // Add data in worksheet
+      });
+      
+      // Making first line in excel bold
+      worksheet.getRow(1).eachCell((cell) => {
+        cell.font = { bold: true };
+      });
+      
+      
+      
+      const data2 = await workbook.xlsx.writeFile(`${path}/report.xlsx`);
+ 
+      return `${path}/report.xlsx`;
+
+
+    }
+
+
+  }
 
 const Tool = new Tools;
 
