@@ -57,7 +57,7 @@ router.post("/generate", async (req, res, next) => {
             employee_data.firstname,
             employee_data.surname,
             employee_data.department,
-            employee_data.snnit_number,
+            employee_data.ssnit_number,
             employee_data.rank,
             month,
             year,
@@ -72,7 +72,7 @@ router.post("/generate", async (req, res, next) => {
             employee_rank.pf_employer
         );
 
-        tool.pdfgen(result);
+        await tool.pdfgen(result);
 
         const path = `./Payslips/${result.employee_id}_${result.month}_${result.year}.pdf`;
         const file = `${result.employee_id}_${result.month}_${result.year}.pdf`;
