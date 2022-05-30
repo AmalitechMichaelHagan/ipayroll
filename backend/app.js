@@ -12,6 +12,7 @@ var loansRouter = require('./routes/loans');
 var ratesRouter = require('./routes/rates');
 var wagesRouter = require('./routes/wages');
 var tax_reliefRouter = require('./routes/tax_relief')
+var filing = require('./routes/contributions')
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/loans', loansRouter);
 app.use('/rates', ratesRouter);
 app.use('/wages', wagesRouter);
 app.use('/tax_relief', tax_reliefRouter);
+app.use('/filing',filing)
 
 
 
