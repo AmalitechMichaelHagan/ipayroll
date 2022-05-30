@@ -32,7 +32,7 @@ export default function Userform() {
             "gender": gender,
             "email": email,
             "department": department,
-            "snnit_number": ssnitNumber,
+            "ssnit_number": ssnitNumber,
             "work_start_date": workstartDate,
             "phone_number":phoneNumber,
             "rank": rank,
@@ -91,9 +91,9 @@ export default function Userform() {
                 <input {...register("workstartDate")} placeholder="Enter Start Date" value={workstartDate} onChange={(e) => setWorkstartdate(e.target.value)} />
                 <select {...register("rank")} onChange={(e) => setRank(e.target.value)}>
                     <option>Select Rank</option>
-                    <option value={'Level 1'}>Level 1</option>
-                    <option value={'Level 2'}>Level 2</option>
-                    <option value={'Level 3'}>Level 3</option>
+                    <option value={'Level1'}>Level1</option>
+                    <option value={'Level2'}>Level2</option>
+                    <option value={'Level3'}>Level3</option>
                 </select>
 
                <div className="check">
