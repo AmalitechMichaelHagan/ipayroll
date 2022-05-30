@@ -4,6 +4,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 const hbs = require('handlebars');
 const path = require('path');
+const excelJS = require("exceljs");
 
 
 const CLIENT_ID = '161536499376-9cbd1u2mm617trsmudnh3ehpr6koksrq.apps.googleusercontent.com';
@@ -228,7 +229,45 @@ class Tools {
         }
     }
 
-}
+    async reportgen(data){
+
+        const workbook = new excelJS.Workbook();
+        const worksheet = workbook.addWorksheet("Sheet 1"); // New Worksheet
+        const path = "./Reports";  // Path to download excel
+        
+      let columns = [];
+      let keys = Object.keys(data[0]);
+
+      keys.forEach((col) => {
+        columns.push({
+          header:col,
+          key:col,
+          with:10
+        }) // Add data in worksheet
+      });
+
+      worksheet.columns = columns;
+
+      data.forEach((row) => {
+        worksheet.addRow(row); // Add data in worksheet
+      });
+      
+      // Making first line in excel bold
+      worksheet.getRow(1).eachCell((cell) => {
+        cell.font = { bold: true };
+      });
+      
+      
+      
+      const data2 = await workbook.xlsx.writeFile(`${path}/report.xlsx`);
+ 
+      return `${path}/report.xlsx`;
+
+
+    }
+
+
+  }
 
 const Tool = new Tools;
 
