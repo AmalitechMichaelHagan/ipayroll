@@ -40,7 +40,7 @@ class Tools {
     return user_password;
   }
 
-  async sendMail(recipient, subject, message, attachments) {
+  async sendMail(recipient, subject, message, attachments = false) {
    try{ 
     const accessToken = await oAuth2Client.getAccessToken();
 
@@ -56,6 +56,7 @@ class Tools {
       },
     });
 
+    if(attachments){
     let info = await transporter.sendMail({
       from: `"Amalitech HR" <amalitechipayroll@gmail.com>`,
       to: recipient,
@@ -69,7 +70,16 @@ class Tools {
         },
       ]
     });
+  }else{
+    let info = await transporter.sendMail({
+      from: `"Amalitech HR" <amalitechipayroll@gmail.com>`,
+      to: recipient,
+      subject: subject,
+      text: message,
+      html: ""
+    });
 
+  }
     console.log("Message sent: %s", info.messageId);
   }catch(e){
     console.log(e.message);
@@ -242,7 +252,7 @@ class Tools {
         columns.push({
           header:col,
           key:col,
-          with:10
+          with:20
         }) // Add data in worksheet
       });
 
