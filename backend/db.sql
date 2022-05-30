@@ -21,8 +21,9 @@ CREATE TABLE employees(
     rank VARCHAR(20) REFERENCES rates(rank) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
     work_start_date DATE NOT NULL,
-    snnit_number VARCHAR(20) NOT NULL,
+    ssnit_number VARCHAR(20) NOT NULL,
     tax_relief BOOLEAN DEFAULT false,
+    tin_number VARCHAR(20),
     loan_status BOOLEAN DEFAULT false
 );
 CREATE TABLE users(
@@ -84,7 +85,7 @@ INSERT INTO rates(
         ssnit_tier_two
     )
 VALUES (
-        'Level 1',
+        'Level1',
         10000,
         1500,
         6,
@@ -102,7 +103,7 @@ INSERT INTO rates(
         ssnit_tier_two
     )
 VALUES (
-        'Level 2',
+        'Level2',
         75000,
         1000,
         6,
@@ -120,7 +121,7 @@ INSERT INTO rates(
         ssnit_tier_two
     )
 VALUES (
-        'Level 3',
+        'Level3',
         5000,
         500,
         5,
@@ -139,7 +140,7 @@ INSERT INTO employees(
         rank,
         phone_number,
         work_start_date,
-        snnit_number
+        ssnit_number
     )
 VALUES(
         'admin',
@@ -148,7 +149,7 @@ VALUES(
         'Other',
         'admin',
         'admin',
-        'Level 1',
+        'Level1',
         '00000000',
         '10-10-2000',
         '00000000'
