@@ -253,7 +253,7 @@ class Tools {
           header:col,
           key:col,
           with:20
-        }) // Add data in worksheet
+        }) // Add Headers in worksheet
       });
 
       worksheet.columns = columns;
@@ -262,7 +262,7 @@ class Tools {
         worksheet.addRow(row); // Add data in worksheet
       });
       
-      // Making first line in excel bold
+      // Making Headers bold
       worksheet.getRow(1).eachCell((cell) => {
         cell.font = { bold: true };
       });

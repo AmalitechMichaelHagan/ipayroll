@@ -19,6 +19,7 @@
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
     "swagger-jsdoc": "^6.2.1",
-    "swagger-ui-express": "^4.4.0"
+    "swagger-ui-express": "^4.4.0",
+    "xml": "^1.0.1"
   }
 }
