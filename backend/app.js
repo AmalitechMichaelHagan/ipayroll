@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,7 +16,29 @@ var wagesRouter = require('./routes/wages');
 var tax_reliefRouter = require('./routes/tax_relief')
 var filing = require('./routes/contributions')
 
+const options = {
+definition:{
+  openapi:"3.0.0",
+  info: {
+    title:"iPayroll API",
+    version:"1.0.0",
+    description:"An express API for managing payrolls"
+  },
+  servers: [
+    {
+      url: "http://localhost:9000"
+    }
+  ],
+},
+apis:[`./routes/*.js`],
+};
+
+const specs = swaggerJsDoc(options);
+
 var app = express();
+
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
