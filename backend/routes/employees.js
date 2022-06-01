@@ -42,7 +42,7 @@ router.put("/:id", async (req, res, next) => {
             "rank",
             "phone_number",
             "work_start_date",
-            "snnit_number",
+            "ssnit_number",
             "tax_relief",
             "loan_status"
         ]
@@ -96,7 +96,7 @@ router.post("/send", async (req, res) => {
             rank,
             phone_number,
             work_start_date,
-            snnit_number,
+            ssnit_number,
             admin_role
         } = req.body;
 
@@ -111,7 +111,7 @@ router.post("/send", async (req, res) => {
             rank,
             phone_number,
             work_start_date,
-            snnit_number,
+            ssnit_number,
             tax_relief,
             loan_status
         ) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) RETURNING *`
@@ -124,7 +124,7 @@ router.post("/send", async (req, res) => {
                 rank,
                 phone_number,
                 work_start_date,
-                snnit_number,
+                ssnit_number,
                 false,
                 false])
 

@@ -17,7 +17,89 @@ router.get("/all", async (req, res, next) => {
 
 })
 
-router.post("/send", async (req, res) => {
+router.post("/generate", async (req, res, next) => {
+    try {
+        const { email, month, year } = req.body;
+
+        let employee_data = await pool.query("SELECT * FROM employees WHERE email=($1)", [email]);
+        employee_data = employee_data.rows[0];
+        let employee_rank = await pool.query("SELECT * FROM rates WHERE rank=($1)", [employee_data.rank]);
+        employee_rank = employee_rank.rows[0];
+
+        //console.log("data: "+employee_data);
+        //console.log("rank: "+employee_rank);
+
+        let loan_deduction;
+        let loan_remainder;
+        let tax_relief;
+        if (employee_data.loan_status) {
+            let loan_data = await pool.query("SELECT * FROM loans WHERE employee_id=($1)", [employee_data.id]);
+            loan_data = loan_data.rows[0];
+            loan_deduction = loan_data.loan_deduction_rate;
+            loan_remainder = loan_data.amount_left;
+        } else {
+            loan_deduction = 0;
+            loan_remainder = 0;
+        }
+
+        if (employee_data.tax_relief) {
+
+            let tax_relief_data = await pool.query("SELECT monthly_amount FROM tax_relief WHERE employee_email=($1)", [email]);
+            tax_relief_data = tax_relief_data.rows[0];
+            tax_relief = tax_relief_data.monthly_amount;
+
+        } else {
+            tax_relief = 0;
+        }
+
+        const result = tool.taxCalc(
+            employee_data.id,
+            employee_data.firstname,
+            employee_data.surname,
+            employee_data.department,
+            employee_data.ssnit_number,
+            employee_data.rank,
+            month,
+            year,
+            employee_rank.salary,
+            employee_rank.cash_allowance,
+            tax_relief,
+            loan_deduction,
+            loan_remainder,
+            employee_rank.ssnit_tier_one,
+            employee_rank.ssnit_tier_two,
+            employee_rank.pf_employee,
+            employee_rank.pf_employer
+        );
+
+        await tool.pdfgen(result);
+
+        const path = `./Payslips/${result.employee_id}_${result.month}_${result.year}.pdf`;
+        const file = `${result.employee_id}_${result.month}_${result.year}.pdf`;
+
+        console.log(path,"\n",file);
+
+        tool.sendMail(email,"Payslip",`Hello ${employee_data.firstname},
+        find attached your Payslip for ${result.date}
+        
+        Regards,
+        Finance`,
+        {
+        "filename": file,    
+        "path":path
+        }
+        ).catch(console.error);
+
+        req.body = result;
+        next();
+
+    } catch (e) {
+        res.send(e.message)
+    }
+
+})
+
+router.post("/generate", async (req, res) => {
     try {
         const {
             employee_id,
@@ -104,64 +186,6 @@ router.post("/send", async (req, res) => {
     } catch (e) {
         res.send(e.message);
     }
-})
-
-router.get("/generate", async (req, res, next) => {
-    try {
-        const { email, month, year } = req.body;
-
-        let employee_data = await pool.query("SELECT * FROM employees WHERE email=($1)", [email]);
-        employee_data = employee_data.rows[0];
-        let employee_rank = await pool.query("SELECT * FROM rates WHERE rank=($1)", [employee_data.rank]);
-        employee_rank = employee_rank.rows[0];
-
-        //console.log("data: "+employee_data);
-        //console.log("rank: "+employee_rank);
-
-        let loan_deduction;
-        let loan_remainder;
-        let tax_relief;
-        if (employee_data.loan_status) {
-            let loan_data = await pool.query("SELECT * FROM loans WHERE employee_id=($1)", [employee_data.id]);
-            loan_data = loan_data.rows[0];
-            loan_deduction = loan_data.loan_deduction_rate;
-            loan_remainder = loan_data.amount_left;
-        } else {
-            loan_deduction = 0;
-            loan_remainder = 0;
-        }
-
-        if (employee_data.tax_relief) {
-
-            let tax_relief_data = await pool.query("SELECT monthly_amount FROM tax_relief WHERE employee_email=($1)", [email]);
-            tax_relief_data = tax_relief_data.rows[0];
-            tax_relief = tax_relief_data.monthly_amount;
-
-        } else {
-            tax_relief = 0;
-        }
-
-        const result = tool.taxCalc(
-            employee_data.id,
-            month,
-            year,
-            employee_rank.salary,
-            employee_rank.cash_allowance,
-            tax_relief,
-            loan_deduction,
-            loan_remainder,
-            employee_rank.ssnit_tier_one,
-            employee_rank.ssnit_tier_two,
-            employee_rank.pf_employee,
-            employee_rank.pf_employer
-        );
-
-        res.json(result);
-
-    } catch (e) {
-        res.send(e.message)
-    }
-
 })
 
 router.get("/:id", async (req, res, next) => {
