@@ -4,39 +4,44 @@
     width: 100%;
     margin-right: 50px;
 }
-.card{
+
+.card {
     align-items: center;
     max-width: 80%;
     margin-top: 60px;
     margin-left: 50px
 }
-.form-style{
+
+.form-style {
     width: 100%;
     margin-left: 80px;
     position: relative;
 
 }
+.btn{
+    color:rgb(252, 237, 240);
+}
 
 
-.h2-head{
+.h2-head {
     text-align: center;
-    
-    }
-    
 
-.rate-text{
+}
+
+
+.rate-text {
     font-weight: bold;
     text-align: center;
 }
 
 
-.number{
+.number {
     color: #777;
     width: 290px;
     height: 35px;
-    }
-    
-    .flex{
+}
+
+.flex {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,4 +50,4 @@
     padding-top: 20px;
     margin: 1px;
     border-radius: 5px;
-    }
+}

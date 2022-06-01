@@ -6,6 +6,7 @@ import "./EmployeeDashBoard.css";
 import React, { useEffect, useState } from 'react';
 import './EmployeeModal';
 import EmployeeModal from './EmployeeModal';
+import Footer from '../footer/Footer';
 
 
 
@@ -84,6 +85,7 @@ export default function EmployeeDashBoard() {
                     </form>
 
                 </div>
+                {/* <Footer /> */}
 
     </>
   )

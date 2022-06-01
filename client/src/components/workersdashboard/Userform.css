@@ -1,47 +1,43 @@
-.form-style{
-    /* background-color:aliceblue; */
+.form-style {
     top: 40px;
     right: 30px;
 }
 
 
-.emplo-form{
-    display:flex;
+.emplo-form {
+    display: flex;
     justify-content: center;
     justify-items: center;
-    /* margin-right: 20px;; */
-    padding-top:30px;
+    padding-top: 30px;
 }
 
-.check{
+.check {
     padding-left: 50px;
     display: flex;
     flex-direction: row;
-    /* margin-top: 35px; */
-
 }
 
-.box{
-width: auto;
-margin-top: 35px;
-margin-left: 3%;
-transform : scale(1.7);
+.box {
+    width: auto;
+    margin-top: 35px;
+    margin-left: 3%;
+    transform: scale(1.7);
 }
 
-.rank{
+.rank {
     width: 20%;
     position: relative;
     left: -9.5rem;
 }
 
 
-.login-button2{
+.login-button2 {
     width: px;
 }
 
-.title{
+.title {
     text-align: center;
-    padding-top: 30px;  
+    padding-top: 30px;
     font-family: 'Dancing Script', cursive;
     font-weight: bold;
     color: rgb(73, 4, 4);

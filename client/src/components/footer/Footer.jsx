@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className='footer'>
       <div className="footer-content">
         <h4>
-          <strong>i</strong> Payroll System
+          <strong></strong> Payroll System
         </h4>
         <p>AmaliTech Training Center |
         TTU Main Campus,

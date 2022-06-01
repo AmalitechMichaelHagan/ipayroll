@@ -4,7 +4,7 @@ import "./Hresource.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import Rate from "./Rate";
+import Footer from "../footer/Footer";
 
 
 export default function Hresource() {
@@ -58,7 +58,7 @@ export default function Hresource() {
 
                                 {APIData.map((data) => {
 
-                    
+
                                     return (
                                         <tr>
                                             <td>{data.firstname}</td>
@@ -72,21 +72,15 @@ export default function Hresource() {
                                             <td>{data.rank}</td>
                                         </tr>
                                     )
-
-
                                 })}
                             </tbody>
                         </table>
-
                     </form>
-
                 </div>
-
             </main>
-
-
-
+            <Footer />
         </>
+
     )
 }
 
