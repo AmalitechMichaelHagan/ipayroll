@@ -5,13 +5,11 @@ CREATE TABLE rates(
     rank VARCHAR(20) NOT NULL UNIQUE,
     salary REAL NOT NULL,
     cash_allowance REAL NOT NULL,
-    paye REAL NOT NULL,
     pf_employee REAL NOT NULL,
     pf_employer REAL NOT NULL,
     ssnit_tier_one REAL NOT NULL,
     ssnit_tier_two REAL NOT NULL
 );
-
 CREATE TABLE employees(
     id SERIAL PRIMARY KEY,
     firstname VARCHAR(50) NOT NULL,
@@ -23,41 +21,38 @@ CREATE TABLE employees(
     rank VARCHAR(20) REFERENCES rates(rank) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
     work_start_date DATE NOT NULL,
-    snnit_number VARCHAR(20) NOT NULL,
+    ssnit_number VARCHAR(20) NOT NULL,
     tax_relief BOOLEAN DEFAULT false,
+    tin_number VARCHAR(20),
     loan_status BOOLEAN DEFAULT false
 );
-
 CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     email VARCHAR(50) NOT NULL UNIQUE,
     user_password VARCHAR(10) NOT NULL,
     admin_role BOOLEAN NOT NULL,
-    FOREIGN KEY (email) REFERENCES employees(email) ON DELETE CASCADE  
+    FOREIGN KEY (email) REFERENCES employees(email) ON DELETE CASCADE
 );
-
-
 CREATE TABLE loans(
     id SERIAL PRIMARY KEY,
-    employee_id INTEGER REFERENCES employees(id) NOT NULL,
+    employee_id INTEGER REFERENCES employees(id) NOT NULL UNIQUE,
+    --Employee cannot take more than one loan.
     month INTEGER NOT NULL,
     year INTEGER NOT NULL,
     initial_amount REAL NOT NULL,
     amount_left REAL NOT NULL,
-    loan_deduction_rate REAL DEFAULT 0.0,   --Deduction rate will be calculated and submitted to employee.
+    loan_deduction_rate REAL DEFAULT 0.0,
+    --Deduction rate will be calculated and submitted to employee.
     approval_status BOOLEAN DEFAULT false
 );
-
 CREATE TABLE tax_relief(
     id SERIAL PRIMARY KEY,
     employee_email VARCHAR(80) REFERENCES employees(email) NOT NULL,
     tax_relief_type VARCHAR(25),
-    annual_amomunt REAL NOT NULL,
+    annual_amount REAL NOT NULL,
     monthly_amount REAL NOT NULL,
     relief_desc VARCHAR (100)
 );
-
-
 CREATE TABLE wages(
     id SERIAL PRIMARY KEY,
     employee_id INTEGER REFERENCES employees(id),
@@ -80,96 +75,119 @@ CREATE TABLE wages(
     take_home_salary REAL NOT NULL,
     CONSTRAINT WAGE_PER_MONTH UNIQUE(employee_id, month, year)
 );
-
-
-INSERT INTO
-    rates(
-    rank,
-    salary,
-    cash_allowance,
-    paye,
-    pf_employee,
-    pf_employer,
-    ssnit_tier_one,
-    ssnit_tier_two
+INSERT INTO rates(
+        rank,
+        salary,
+        cash_allowance,
+        pf_employee,
+        pf_employer,
+        ssnit_tier_one,
+        ssnit_tier_two
     )
-VALUES
-    (
-        'Level 1',
+VALUES (
+        'Level1',
         10000,
-        0.1,
-        0.05,
-        0.13,
-        0.13,
-        0.26,
-        0.2
+        1500,
+        6,
+        10.5,
+        5.5,
+        13.5
     );
-
-    INSERT INTO
-    rates(
-    rank,
-    salary,
-    cash_allowance,
-    paye,
-    pf_employee,
-    pf_employer,
-    ssnit_tier_one,
-    ssnit_tier_two
+INSERT INTO rates(
+        rank,
+        salary,
+        cash_allowance,
+        pf_employee,
+        pf_employer,
+        ssnit_tier_one,
+        ssnit_tier_two
     )
-VALUES
-    (
-        'Level 2',
-        7000,
-        0.2,
-        0.05,
-        0.13,
-        0.13,
-        0.26,
-        0.2
+VALUES (
+        'Level2',
+        75000,
+        1000,
+        6,
+        10.5,
+        5.5,
+        13.5
     );
-
-    INSERT INTO
-    rates(
-    rank,
-    salary,
-    cash_allowance,
-    paye,
-    pf_employee,
-    pf_employer,
-    ssnit_tier_one,
-    ssnit_tier_two
+INSERT INTO rates(
+        rank,
+        salary,
+        cash_allowance,
+        pf_employee,
+        pf_employer,
+        ssnit_tier_one,
+        ssnit_tier_two
     )
-VALUES
-    (
-        'Level 3',
+VALUES (
+        'Level3',
         5000,
-        0.2,
-        0.05,
-        0.13,
-        0.13,
-        0.26,
-        0.2
+        500,
+        5,
+        11.5,
+        5.5,
+        13.5
+    );
+
+INSERT INTO employees(
+        firstname,
+        surname,
+        date_of_birth,
+        gender,
+        email,
+        department,
+        rank,
+        phone_number,
+        work_start_date,
+        ssnit_number
+    )
+VALUES(
+        'admin',
+        'admin',
+        '2000-01-01',
+        'Other',
+        'admin',
+        'admin',
+        'Level1',
+        '00000000',
+        '10-10-2000',
+        '00000000'
     );
 
 
+    INSERT INTO users(
+        email,
+        user_password,
+        admin_role
+    )
+VALUES(
+        'admin',
+        'admin',
+        true
+    );
 
-
-    /*
-CREATE TABLE work_hours(
-    id SERIAL PRIMARY KEY,
-    employee_id INTEGER REFERENCES employees(id) NOT NULL,
-    work_date DATE NOT NULL,
-    working_hours REAL NOT NULL,
-    CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
-);
-
-
-CREATE TABLE work_hours(
-    id SERIAL PRIMARY KEY,
-    employee_id INTEGER REFERENCES employees(id) NOT NULL,
-    check_in DATE NOT NULL,
-    check_out DATE NOT NULL,
-    over_time REAL,
-    CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
-);
-*/
+/*
+ 
+ UPDATE users SET user_password = 'admin' WHERE email = 'admin';
+ 
+ */
+/*
+ CREATE TABLE work_hours(
+ id SERIAL PRIMARY KEY,
+ employee_id INTEGER REFERENCES employees(id) NOT NULL,
+ work_date DATE NOT NULL,
+ working_hours REAL NOT NULL,
+ CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
+ );
+ 
+ 
+ CREATE TABLE work_hours(
+ id SERIAL PRIMARY KEY,
+ employee_id INTEGER REFERENCES employees(id) NOT NULL,
+ check_in DATE NOT NULL,
+ check_out DATE NOT NULL,
+ over_time REAL,
+ CONSTRAINT ONE_HOURS_PER_DAY UNIQUE(employee_id, work_date)
+ );
+ */

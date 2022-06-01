@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2';
 
+
 export function LoginPage() {
+
   const [mail, setMail] = useState('');
   const [pass, setPass] = useState('');
   const { register, handleSubmit } = useForm();
@@ -42,9 +44,14 @@ export function LoginPage() {
         )
       }
 
+
+
+
     }).catch(err => {
       console.log(err);
     });
+
+
 
   }
 

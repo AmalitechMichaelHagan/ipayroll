@@ -65,7 +65,7 @@ export default function Hresource() {
                                             <td>{data.surname}</td>
                                             <td>{data.email}</td>
                                             <td>{data.phone_number}</td>
-                                            <td>{data.snnit_number}</td>
+                                            <td>{data.ssnit_number}</td>
                                             <td>{data.gender}</td>
                                             <td>{data.department}</td>
                                             <td>{data.work_start_date}</td>

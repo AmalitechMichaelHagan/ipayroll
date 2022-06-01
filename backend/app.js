@@ -12,6 +12,7 @@ var loansRouter = require('./routes/loans');
 var ratesRouter = require('./routes/rates');
 var wagesRouter = require('./routes/wages');
 var tax_reliefRouter = require('./routes/tax_relief')
+var filing = require('./routes/contributions')
 
 var app = express();
 
@@ -28,22 +29,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/employees',employeesRouter);
-app.use('/loans',loansRouter);
-app.use('/rates',ratesRouter);
-app.use('/wages',wagesRouter);
-app.use('./tax_relief',tax_reliefRouter);
+app.use('/employees', employeesRouter);
+app.use('/loans', loansRouter);
+app.use('/rates', ratesRouter);
+app.use('/wages', wagesRouter);
+app.use('/tax_relief', tax_reliefRouter);
+app.use('/filing',filing)
 
 
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
