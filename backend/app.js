@@ -18,7 +18,7 @@ var filing = require('./routes/contributions')
 
 const options = {
 definition:{
-  openapi:"3.0.0",
+  openapi:"3.0.3",
   info: {
     title:"iPayroll API",
     version:"1.0.0",

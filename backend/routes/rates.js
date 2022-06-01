@@ -6,44 +6,44 @@ const pool = require("../db");
 
 /**
  * @swagger
- * components:
- *   schemas:
- *     Rate:
- *       type: object
- *         properties:
- *           id:
- *               type: integer
- *               format:int64
- *               description: The auto generated ID for a rate
- *           rank:    
+ *components:
+ *  schemas:
+ *    Rate:
+ *      type: object
+ *        properties:
+ *          id:
+ *              type: integer
+ *              format:int64
+ *              description: The auto generated ID for a rate
+ *          rank:    
  *               type: integer
  *               format:int64
  *               description: The rank of the employee corresponding to how much he earns, and his deduction rates.
- *           salary:    
+ *          salary:    
  *               type: number
  *               format:double
  *               description: How much the employee earns in a month
- *           cash_allowance:  
+ *          cash_allowance:  
  *               type: number
  *               format:double
  *               description: Cash allowance for a given month
- *           pf_employee:    
+ *          pf_employee:    
  *               type: number
  *               format:float
  *               description: Rate deducted for provident fund contribution from employee salary
- *           pf_employer:    
+ *          pf_employer:    
  *               type: number
  *               format:float
  *               description: Rate payed by employer as provident fund calculated with respect to employee salary but is not deducted from salary
- *           ssnit_tier_one:    
+ *          ssnit_tier_one:    
  *               type: number
  *               format:float
  *               description: Rate deducted for ssnit contribution from employee salary
- *           ssnit_tier_two:    
+ *          ssnit_tier_two:    
  *               type: number
  *               format:float
  *               description: Rate payed by employer as ssnit calculated with respect to employee salary but is not deducted from salary
- *           example:
+ *          example:
  *               id: 2
  *               rank: Level3
  *               salary: 20000
@@ -99,7 +99,7 @@ router.get("/:id", async (req, res, next) => {
 
 })
 
-router.put("/:id", async (req, res, next) => {
+router.put("/update/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         let output_str = "";
@@ -139,7 +139,7 @@ router.put("/:id", async (req, res, next) => {
 
 })
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/delete/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         const del = await pool.query("DELETE FROM rates where rank = $1", [id])
@@ -169,8 +169,8 @@ router.post("/send", async (req, res) => {
             pf_employee,
             pf_employer,
             ssnit_tier_one,
-            ssnit_tier_two,
-        ) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`
+            ssnit_tier_two
+        ) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`
             , [
                 rank,
                 salary,
@@ -178,7 +178,7 @@ router.post("/send", async (req, res) => {
                 pf_employee,
                 pf_employer,
                 ssnit_tier_one,
-                ssnit_tier_two,
+                ssnit_tier_two
             ])
         res.json(newRate.rows);
     } catch (e) {

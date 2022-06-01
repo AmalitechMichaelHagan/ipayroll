@@ -110,7 +110,7 @@ router.get("/:id", async (req, res, next) => {
 
 })
 
-router.put("/:id", async (req, res, next) => {
+router.put("/update/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         let output_str = "";
@@ -148,7 +148,7 @@ router.put("/:id", async (req, res, next) => {
 
 })
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/delete/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         const del = await pool.query("DELETE FROM loans where id = $1", [id])
