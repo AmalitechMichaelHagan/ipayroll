@@ -22,21 +22,21 @@ export function LoginPage() {
     }
   }
 
-  const handleClick = () => {
+  const handleClick =()=>{
 
     const data = getUserData();
 
     data.then(val => {
       var check = false;
-      val.data.forEach((element) => {
-        if (element.email === mail && element.user_password === pass) {
+      val.data.forEach((element)=>{
+        if(element.email === mail && element.user_password === pass){
           check = true;
         }
       })
-
-      if (check) {
+      
+      if(check){
         navigate("/home")
-      } else {
+      }else{
         Swal.fire(
           'Oops!',
           'Wrong Credentials',
@@ -45,22 +45,22 @@ export function LoginPage() {
       }
 
       //console.log(val.data);
-
-
-
+  
+  
+  
     }).catch(err => {
       console.log(err);
-    });
-
-
-
+  }); 
+    
+    
+  
   }
 
-  useEffect(() => {
+  useEffect(() =>{
     axios.get(`http://localhost:9000/employees/all`)
-      .then(response =>
-        setAPIData(response.data));
-  }, [])
+    .then(response =>
+      setAPIData(response.data));
+  },[])
 
   const [APIData, setAPIData] = useState([]);
   useEffect(() => {
@@ -70,12 +70,12 @@ export function LoginPage() {
   return (
     <div className="login-form">
       <form className='form-style2' onSubmit={handleSubmit((APIData) => setAPIData(JSON.stringify(APIData)))}>
-        <div className="loh-header">
-          <h1 className='login-title'>LOGIN</h1>
-        </div>
+      <div className="loh-header"> 
+      <h1 className='login-title'>LOGIN</h1>
+      </div> 
         <input {...register("email")} placeholder="Enter Email" className="inner-shadow" value={mail} onChange={(e) => setMail(e.target.value)} />
-        <input {...register("password")} placeholder="Enter password" className="inner-shadow" value={pass} onChange={(e) => setPass(e.target.value)} />
-        <input type="submit" onClick={handleClick} className="login-button" />
+        <input {...register("password")} placeholder="Enter password" className="inner-shadow" value={pass} onChange={(e) => setPass(e.target.value)}/>
+        <input type="submit" onClick={handleClick}  className="login-button"/>
       </form>
     </div>
   );
