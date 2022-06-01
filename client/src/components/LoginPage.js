@@ -44,8 +44,6 @@ export function LoginPage() {
         )
       }
 
-      //console.log(val.data);
-
 
 
     }).catch(err => {
