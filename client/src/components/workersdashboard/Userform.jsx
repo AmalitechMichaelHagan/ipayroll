@@ -18,6 +18,8 @@ export default function Userform() {
   const [workstartDate, setWorkstartdate] = useState('')
   const [rank, setRank] = useState('');
   const [admin, setAdmin] = useState(false);
+  const [tinNumber, setTin] = useState('');
+
 
   const navigate = useNavigate();
 
@@ -38,7 +40,8 @@ export default function Userform() {
       "work_start_date": workstartDate,
       "phone_number": phoneNumber,
       "rank": rank,
-      "admin_role": admin
+      "admin_role": admin,
+      "tin_number":tinNumber
     }
 
     console.log(myData)
@@ -68,7 +71,7 @@ export default function Userform() {
     setWorkstartdate('')
     setRank('')
     setAdmin(false)
-
+    setTin('')
   }
 
   return (
@@ -84,6 +87,7 @@ export default function Userform() {
         <hr />
         <div className="emplo-form">
           <input {...register("ssnitNumber")} placeholder="Enter SSnit Number" value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
+          <input {...register("tinNumber")} placeholder="Enter TIN Number" value={tinNumber} onChange={(e) => setTin(e.target.value)} />
           <select {...register("gender")} onChange={(e) => setGender(e.target.value)}>
             <option>Select Gender</option>
             <option value={'Male'}>Male</option>

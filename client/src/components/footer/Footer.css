@@ -1,9 +1,10 @@
 footer {
+    position: absolute;
     display: flex;
-     margin: 0;
+    margin: 0;
     bottom: 0;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     background-color: #330808;
     height: 8rem;
     width: 100%;
@@ -29,4 +30,11 @@ footer p {
     font-size: 14px;
     text-align: center;
     font-weight: 500;
+}
+
+@media screen and (max-width:768px) {
+    footer {
+       height: 9rem;
+       position: static;
+    }
 }

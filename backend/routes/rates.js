@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const pool = require("../db");
 
+
 router.get("/", function (req, res, next) {
     res.send("rate Dashboard");
 });
@@ -26,7 +27,7 @@ router.get("/:id", async (req, res, next) => {
 
 })
 
-router.put("/:id", async (req, res, next) => {
+router.put("/update/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         let output_str = "";
@@ -66,7 +67,7 @@ router.put("/:id", async (req, res, next) => {
 
 })
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/delete/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         const del = await pool.query("DELETE FROM rates where rank = $1", [id])
@@ -96,8 +97,8 @@ router.post("/send", async (req, res) => {
             pf_employee,
             pf_employer,
             ssnit_tier_one,
-            ssnit_tier_two,
-        ) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`
+            ssnit_tier_two
+        ) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`
             , [
                 rank,
                 salary,
@@ -105,7 +106,7 @@ router.post("/send", async (req, res) => {
                 pf_employee,
                 pf_employer,
                 ssnit_tier_one,
-                ssnit_tier_two,
+                ssnit_tier_two
             ])
         res.json(newRate.rows);
     } catch (e) {

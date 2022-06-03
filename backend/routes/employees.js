@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db");
-const tool = require('../Tools');
+const tool = require('../tools');
 
 router.get("/", function (req, res, next) {
     res.send("Employee Dashboard");
@@ -27,7 +27,7 @@ router.get("/:id", async (req, res, next) => {
 
 })
 
-router.put("/:id", async (req, res, next) => {
+router.put("/update/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         let output_str = "";
@@ -73,7 +73,7 @@ router.put("/:id", async (req, res, next) => {
 
 })
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/delete/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
         const del = await pool.query("DELETE FROM employees where id = $1", [id])
@@ -158,6 +158,16 @@ router.post("/send", async (req, res) => {
     } catch (e) {
         res.send(e.message);
     }
+})
+
+router.get("/retrieve/:email", async (req, res, next) => {
+    try {
+        const employee = await pool.query("SELECT * FROM employees WHERE email=($1)", [req.params.email]);
+        res.json(employee.rows[0]);
+    } catch (e) {
+        res.send(e.message)
+    }
+
 })
 
 
