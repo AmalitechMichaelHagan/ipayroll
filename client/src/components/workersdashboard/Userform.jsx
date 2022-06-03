@@ -20,6 +20,7 @@ export default function Userform() {
   const [admin, setAdmin] = useState(false);
   const [tinNumber, setTin] = useState('');
 
+
   const navigate = useNavigate();
 
   const handleChange = () => {
@@ -71,7 +72,6 @@ export default function Userform() {
     setRank('')
     setAdmin(false)
     setTin('')
-
   }
 
   return (

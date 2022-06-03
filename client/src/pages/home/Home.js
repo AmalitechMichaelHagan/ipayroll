@@ -172,6 +172,7 @@ export default function Home() {
                         <div className="icons">
                             <BsGift />
                             </div>
+
                             <h2 className="grid">Tax Relief</h2>
                             <p className="grid2">{reliefState}</p>
                             <p className="grid2"></p>

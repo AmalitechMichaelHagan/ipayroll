@@ -71,7 +71,6 @@ export function LoginPage() {
           'error'
         )
       }
-    
     }
     
     ).catch(err => {
