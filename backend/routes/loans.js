@@ -1,9 +1,8 @@
 var express = require("express");
-const path = require("path");
 var router = express.Router();
 const pool = require("../db");
-const filepath = path.join(__dirname,'..','tools');
-const tool = import(filepath);
+const path = require('path');
+const tool = require(path.join(__dirname,"..","tools.js"));
 
 router.get("/", function (req, res, next) {
     res.send("loan Dashboard");

@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const path = require("path");
 const pool = require("../db");
-const filepath = path.join(__dirname,'..','tools');
-const tool = import(filepath);
+const path = require('path');
+const tool = require(path.join(__dirname,"..","tools.js"));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

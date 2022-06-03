@@ -50,7 +50,7 @@ export default function Userform() {
 
     axios({
       method: 'post',
-      url: 'http://localhost:9000/employees/send',
+      url: 'postgres://rhuijitkydpord:14ec022c01b999a5f15363cf63b18f3bb9180f48f1b5c7fa9aabd4cbd336380f@ec2-3-226-163-72.compute-1.amazonaws.com:5432/d6q5704oqrvd16/employees/send',
       data: myData,
       headers: { 'Authorization': 'Bearer ...' }
     });
