@@ -1,7 +1,5 @@
 import "./Sidebar.css"
-import { useNavigate } from "react-router-dom"
-import {useState} from 'react'
-
+import { useNavigate, NavLink } from "react-router-dom";
 
 
 export default function Sidebar() {
@@ -13,27 +11,86 @@ export default function Sidebar() {
             <div className="sidebarWrapper">
                 <div className="sidebarMenu">
                     <h3 className="sidebarTitle">Dashboard</h3>
-                    <ul className="sidebarLists">
-                        <li className="sidebarItems active" onClick={() => {
-                            navigate("/")
-                        }}> Home  </li>
-                        <li className="sidebarItems" onClick={() => {
-                            navigate("/admin")
-                        }}>
-                            Administrator
-                        </li>
-                        <li className="sidebarItems" onClick={() => {
-                            navigate("/employee")
-                        }}>
-                            Employee
-                        </li>
-                        <li className="sidebarItems"onClick={() => {
-                            navigate("/rate")
-                        }}>
-                            Account
-                            </li>
+                    <div className="menu-container">
+                        <NavLink to="/" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "white" : "black",
+                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
+                            width: "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            // fontWeight: "bold",
+                            fontSize: "1.2em"
+                        })}
+                        >
+                            Home
+                        </NavLink>
 
-                    </ul>
+                        <NavLink to="/admin" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "white" : "black",
+                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
+                            width: "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            fontSize: "1.2em"
+
+                        })}>
+                            Administrator
+                        </NavLink>
+
+                        <NavLink to="/employee" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "white" : "black",
+                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
+                            width: "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            fontSize: "1.2em"
+
+                        })}>
+                            Employee
+                        </NavLink>
+
+                        <NavLink to="/rate" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "white" : "black",
+                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
+                            width: "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            fontSize: "1.2em"
+                        })}>
+                            Account
+                        </NavLink>
+
+                        <NavLink to="/employee2" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "white" : "black",
+                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
+                            width: "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            fontSize: "1.2em"
+                        })}>
+                            Employee DashBoard
+                        </NavLink>
+                    </div>
                 </div>
             </div>
         </div>

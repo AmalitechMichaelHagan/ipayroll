@@ -1,12 +1,12 @@
-:root{
+:root {
     --dark: #4a4b53;
     --light: #494242;
---border: #0000;
---border-btn: #5212;
+    --border: #0000;
+    --border-btn: #5212;
 
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -15,140 +15,110 @@
 main {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    
+
 
 }
 
-form{
+form {
     margin-top: 20px;
 }
 
-.admin{
+.admin {
     width: 100%;
     margin-right: 02px;
-    background-color:rgb(151, 148, 148);
     margin-top: 35px;
     border-radius: 10px;
-    border: 2px solid #ece7e7e5
 }
 
 
-.border-shadow{
-    /* border: 1px solid #da3333; */
+.border-shadow {
+
     box-shadow: 5px 10px 20px #df7474;
 }
 
 
-table{
+table {
     border-spacing: 0px;
     width: 100%;
 }
 
-.thead-color{
+.thead-color {
     background-color: rgb(185, 176, 176);
 }
 
-.table td, .table th{
+.table td,
+.table th {
     padding: .75em;
     vertical-align: top;
     text-align: center;
     border-top: 1px solid var(--border);
-} 
-
-.table tr:hover{
-    background-color:rgb(247, 239, 239);
 }
 
-.table td > a.btn{
+.table tr:hover {
+    background-color: rgb(247, 239, 239);
+}
+
+.table td>a.btn {
     padding: .3em 1em;
     font-size: 1.1em;
     margin: 0 .2em;
-} 
+}
 
-.table tr:hover td > a{
+.table tr:hover td>a {
     box-shadow: none;
 }
 
-.Add-User{
+.Add-User {
     margin-top: 30px;
-    
+
 }
 
-.button1{
+.button1 {
     padding: 15px;
     width: 20%;
     border-radius: 5px;
-    margin-left: 20px;
-    /* background-color:#777; */
+    margin-left: 10px;
+    background-color: rgb(85, 21, 21);
     font-weight: bold;
-    border: 2px solid rgb(126, 110, 110)
+    color: rgb(253, 252, 252);
+
 
 }
 
-.button1:hover{
-    background-color:rgba(218, 31, 31, 0)
+.button1:hover {
+    background-color: rgba(218, 31, 31, 0)
 }
 
-.table .thead-dark th{
+.table .thead-dark th {
     color: #fff;
-    background-color: var(--dark) ;
+    background-color: var(--dark);
     border-color: #32383e;
-} 
+}
 
-@media only screen and (max-width: 1024px){
-    table, thead, tbody, th, td, tr{
+@media only screen and (max-width: 1024px) {
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
         display: block;
     }
 
-    thead tr{
+    thead tr {
         position: absolute;
         top: -9999px;
         left: -9999px;
     }
 
-    tr { border: 1px solid var(--border);}
+    tr {
+        border: 1px solid var(--border);
+    }
 
-    td{
+    td {
         border: none;
         position: relative;
     }
 
-}
-
-
-form {
-margin: 5px;
-margin-top: 10px;
-/* background-color:#0000; */
-
-}
-
-
-.input_text{
-color: #000000;
-padding-left: 10px;
-margin: 10px;
-
-}
-
-.h2-head{
-text-align: center;
-
-}
-
-.number{
-color: #777;
-width: 290px;
-height: 35px;
-}
-
-.flex{
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: rgb(119, 114, 115);
-min-height: 30vh;
-padding-top: 20px;
-margin: 1px;
-border-radius: 5px;
 }

@@ -20,12 +20,12 @@ export default function Rate() {
         e.preventDefault();
 
     };
-     
-    
+
+
     return (
         <>
-        <Topbar />
-        <Sidebar />
+            <Topbar />
+            <Sidebar />
             <div className="container">
                 <div className="card">
                     <h2 className="h2-head">SET SALARY</h2>
@@ -46,13 +46,12 @@ export default function Rate() {
                             <div className="input_text">
                                 <span className="rate-text">BONUS</span>
                                 <input {...register("bonus")} mini="0" maxi="100" className="inner-shadow" value={bonus} onChange={(e) => setBonus(e.target.value)} />
-
                             </div>
                             <div className="input_text">
                                 <span className="rate-text">TAX-RELIEF</span>
                                 <input {...register("taxrelief")} mini="0" maxi="100" className="inner-shadow" value={taxrelief} onChange={(e) => setTaxrelief(e.target.value)} />
                             </div>
-                            </div>
+                        </div>
                         <div className="flex">
                             <div className="flex">
                                 <div className="input_text">
@@ -78,12 +77,8 @@ export default function Rate() {
                                 <input type="submit" />
                             </div>
                         </div>
-
                     </form>
-
                 </div>
-
-
             </div>
         </>
     );

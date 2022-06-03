@@ -15,7 +15,7 @@ const REFRESH_TOKEN = '1//04DUgytzR5FcUCgYIARAAGAQSNwF-L9IrOnSjMXkqSSraPE4XLCx2V
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-class Tools {
+class tools {
 
   constructor() {
 
@@ -279,6 +279,6 @@ class Tools {
 
   }
 
-const Tool = new Tools;
+const tool = new tools;
 
-module.exports = Tool;
+module.exports = tool;

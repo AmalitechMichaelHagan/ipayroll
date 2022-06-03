@@ -1,8 +1,7 @@
-
-.topbar{
+.topbar {
     width: 100%;
     height: 50%;
-    background-color:#330808;
+    background-color: #330808;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -11,7 +10,7 @@
 
 }
 
-.topbarWrapper{
+.topbarWrapper {
     padding: 0px 20px;
     display: flex;
     align-items: center;
@@ -19,13 +18,38 @@
 }
 
 
-.icon{
+.icon {
     height: 55px;
 }
 
-.logo{
+.logo {
     color: white;
     font-family: 'Dancing Script', cursive;
     font-weight: bold;
 
+}
+
+ .btn {
+    display:inline-block;
+    color:#444;
+    border:1px solid #CCC;
+    background:rgb(63, 4, 4);
+    box-shadow: 0 0 5px -1px rgb(63, 4, 4);
+    cursor:pointer;
+    vertical-align:middle;
+    max-width: 100px;
+    padding: 5px;
+    text-align: center;
+}
+
+.btn:active {
+    border: #330808;
+    box-shadow: 0 0 5px -1px #CCC;
+    background: #CCC;
+}
+
+.btn:hover {
+    border: #330808;
+    box-shadow: 0 0 5px -1px #CCC;
+    background: #CCC;
 }
