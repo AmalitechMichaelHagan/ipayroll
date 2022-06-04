@@ -50,7 +50,7 @@ export default function Userform() {
 
     axios({
       method: 'post',
-      url: 'https://localhost:9000/employees/send',
+      url: 'https://amalitechipayroll.herokuapp.com/employees/send',
       data: myData,
       headers: { 'Authorization': 'Bearer ...' }
     });

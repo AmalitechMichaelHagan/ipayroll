@@ -26,7 +26,7 @@ definition:{
   },
   servers: [
     {
-      url: "https://localhost:9000/"
+      url: "https://amalitechipayroll.herokuapp.com"
     }
   ],
 },

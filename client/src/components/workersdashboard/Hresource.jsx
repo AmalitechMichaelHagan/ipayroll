@@ -11,7 +11,7 @@ export default function Hresource() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://localhost:9000/employees/all`)
+        axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)
             .then(response => {
                 setAPIData(response.data);
             })
