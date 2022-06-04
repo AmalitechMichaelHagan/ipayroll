@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import "./Rate.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
+import Footer from "../footer/Footer";
 
 
 export default function Rate() {
@@ -73,13 +74,14 @@ export default function Rate() {
                             </div>
                         </div>
                         <div className="flex">
-                            <div className="btn">
-                                <input type="submit" />
-                            </div>
+                            {/* <div className="btn"> */}
+                                <input type="submit"  style={{ color: "white", width: "12em", marginLeft: "2em" }}/>
+                            {/* </div> */}
                         </div>
                     </form>
                 </div>
             </div>
+            < Footer />
         </>
     );
 

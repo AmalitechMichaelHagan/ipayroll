@@ -47,7 +47,7 @@ export default function Home() {
 
     let loanCheck = async () =>{
         try {
-            return await axios.get("https://amalitechipayroll.herokuapp.com/loans/all");
+            return await axios.get("https://localhost:9000/loans/all");
           }
           catch (error) {
             console.log(error);
@@ -112,7 +112,7 @@ export default function Home() {
               
                   axios({
                     method: 'post',
-                    url: 'https://amalitechipayroll.herokuapp.com/loans/send',
+                    url: 'https://localhost:9000/loans/send',
                     data: myData,
                     headers: { 'Authorization': 'Bearer ...' }
                   });

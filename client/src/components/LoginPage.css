@@ -9,7 +9,7 @@ button[type="button"]:hover {
       display: flex;
       justify-content: center;
       position: relative;
-      background-image: url("../assets/ipayroii.jpg");
+      /* background-image: url("../assets/ipayroii.jpg"); */
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
