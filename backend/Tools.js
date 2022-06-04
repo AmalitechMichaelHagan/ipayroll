@@ -221,7 +221,11 @@ class tools {
         const result = await this.compile(data);
     
         try{
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch(
+          { 
+            args: ['--no-sandbox'] 
+          }
+        );
         const page = await browser.newPage();
     
         await page.addStyleTag({url:'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css'});
@@ -236,9 +240,10 @@ class tools {
     
         console.log('done');
         await browser.close();
-    
+        return "done";
         }catch(e){
-            console.log(e);
+          console.log(e);
+            return e.message;
         }
     }
 

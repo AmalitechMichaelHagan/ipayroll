@@ -73,7 +73,7 @@ router.post("/generate", async (req, res, next) => {
             employee_rank.pf_employer
         );
 
-        await tool.pdfgen(result);
+       let pdfres = await tool.pdfgen(result);
 
         const path = `./payslips/${result.employee_id}_${result.month}_${result.year}.pdf`;
         const file = `${result.employee_id}_${result.month}_${result.year}.pdf`;
@@ -91,6 +91,7 @@ router.post("/generate", async (req, res, next) => {
         }
         ).catch(console.error);
 
+        result.pdf = pdfres;
         req.body = result;
         next();
 
