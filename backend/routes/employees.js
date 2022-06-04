@@ -157,10 +157,12 @@ router.post("/send", async (req, res) => {
         let subject = "iPayroll Account";
 
         let mailFeedback = tool.sendMail(email, subject, message).catch(console.error);
-        res.send("Employee: " + JSON.stringify(newEmployee.rows) + "\n" + "User: " + JSON.stringify(newUser.rows)+ "\n"+mailFeedback
-        );
-
-
+        var mFb ;
+        mailFeedback.then(result=>{
+            mFb = result;
+            res.send("Employee: " + JSON.stringify(newEmployee.rows) + "\n" + "User: " + JSON.stringify(newUser.rows)+ "\n"+mFb);
+        })
+        
     } catch (e) {
         res.send(e.message);
     }
