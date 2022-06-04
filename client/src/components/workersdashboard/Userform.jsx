@@ -36,7 +36,7 @@ export default function Userform() {
       "gender": gender,
       "email": email,
       "department": department,
-      "snnit_number": ssnitNumber,
+      "ssnit_number": ssnitNumber,
       "work_start_date": workstartDate,
       "phone_number": phoneNumber,
       "rank": rank,
@@ -72,6 +72,9 @@ export default function Userform() {
     setRank('')
     setAdmin(false)
     setTin('')
+
+    navigate("/admin")
+
   }
 
   return (
@@ -86,7 +89,7 @@ export default function Userform() {
         </div>
         <hr />
         <div className="emplo-form">
-          <input {...register("ssnitNumber")} placeholder="Enter SSnit Number" value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
+          <input {...register("ssnitNumber")} placeholder="Enter SSNIT Number" value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
           <input {...register("tinNumber")} placeholder="Enter TIN Number" value={tinNumber} onChange={(e) => setTin(e.target.value)} />
           <select {...register("gender")} onChange={(e) => setGender(e.target.value)}>
             <option>Select Gender</option>
@@ -115,9 +118,7 @@ export default function Userform() {
               checked={admin}
               onChange={handleChange} />
           </div>
-          <input type="submit" onClick={() => {
-            navigate("/admin")
-          }} className="login-button2" />
+          <input type="submit" className="login-button2" />
         </div>
         <hr />
       </form>

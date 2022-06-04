@@ -45,7 +45,8 @@ router.put("/update/:id", async (req, res, next) => {
             "work_start_date",
             "ssnit_number",
             "tax_relief",
-            "loan_status"
+            "loan_status",
+            "tin_number"
         ]
 
         let check = true; //Will be used to res.send text if invalid or no collumn name is passed
@@ -97,6 +98,7 @@ router.post("/send", async (req, res) => {
             rank,
             phone_number,
             work_start_date,
+            tin_number,
             ssnit_number,
             admin_role
         } = req.body;
@@ -112,6 +114,7 @@ router.post("/send", async (req, res) => {
             rank,
             phone_number,
             work_start_date,
+            tin_number,
             ssnit_number,
             tax_relief,
             loan_status
@@ -125,6 +128,7 @@ router.post("/send", async (req, res) => {
                 rank,
                 phone_number,
                 work_start_date,
+                tin_number,
                 ssnit_number,
                 false,
                 false])
