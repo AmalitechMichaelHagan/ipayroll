@@ -19,7 +19,7 @@ export function LoginPage() {
 
   async function getUserData() {
     try {
-      return await axios.get("https://localhost:9000/users/all");
+      return await axios.get("https://amalitechipayroll.herokuapp.com/users/all");
     }
     catch (error) {
       console.log(error);
@@ -28,7 +28,7 @@ export function LoginPage() {
 
   async function getUserInfo(email) {
     try {
-      return await axios.get(`https://localhost:9000/employees/retrieve/${email}`);
+      return await axios.get(`https://amalitechipayroll.herokuapp.com/employees/retrieve/${email}`);
     }
     catch (error) {
       console.log(error);
@@ -82,7 +82,7 @@ export function LoginPage() {
   }
 
   useEffect(() => {
-    axios.get(`https://localhost:9000/employees/all`)
+    axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)
       .then(response =>
         setAPIData(response.data));
   }, [])
