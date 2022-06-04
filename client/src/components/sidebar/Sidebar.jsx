@@ -34,7 +34,7 @@ export default function Sidebar() {
                             textDecoration: "none",
                             color: isActive ? "black" : "black",
                             backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
-                            width: isActive? "190px": "100%",
+                            width: isActive? "190px": "10git0%",
                             height: "8vh",
                             textAlign: "center",
                             paddingTop: "0.5em",
