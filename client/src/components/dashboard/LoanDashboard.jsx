@@ -4,7 +4,7 @@ import "./LoanDashboard.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
-import { Payslip } from "../payslip/Payslip";
+import { Payslip } from "../payslip/payslip";
 
 export default function LoanDashboard() {
   const { register, handleSubmit } = useForm();

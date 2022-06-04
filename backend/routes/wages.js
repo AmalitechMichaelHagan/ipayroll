@@ -75,13 +75,13 @@ router.post("/generate", async (req, res, next) => {
 
         await tool.pdfgen(result);
 
-        const path = `./Payslips/${result.employee_id}_${result.month}_${result.year}.pdf`;
+        const path = `./payslips/${result.employee_id}_${result.month}_${result.year}.pdf`;
         const file = `${result.employee_id}_${result.month}_${result.year}.pdf`;
 
         console.log(path,"\n",file);
 
         tool.sendMail(email,"Payslip",`Hello ${employee_data.firstname},
-        find attached your Payslip for ${result.date}
+        find attached your payslip for ${result.date}
         
         Regards,
         Finance`,

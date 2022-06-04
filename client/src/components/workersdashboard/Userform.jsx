@@ -104,9 +104,9 @@ export default function Userform() {
         <div className="emplo-form">
           <select {...register("rank")} onChange={(e) => setRank(e.target.value)} className="rank">
             <option>Select Rank</option>
-            <option value={'Level 1'}>Level 1</option>
-            <option value={'Level 2'}>Level 2</option>
-            <option value={'Level 3'}>Level 3</option>
+            <option value={'Level1'}>Level1</option>
+            <option value={'Level2'}>Level2</option>
+            <option value={'Level3'}>Level3</option>
           </select>
           <div className="check">
             <label>
