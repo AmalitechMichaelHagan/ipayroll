@@ -19,7 +19,7 @@ export function LoginPage() {
 
   async function getUserData() {
     try {
-      return await axios.get("postgres://rhuijitkydpord:14ec022c01b999a5f15363cf63b18f3bb9180f48f1b5c7fa9aabd4cbd336380f@ec2-3-226-163-72.compute-1.amazonaws.com:5432/d6q5704oqrvd16/users/all");
+      return await axios.get("https://amalitechipayroll.herokuapp.com/users/all");
     }
     catch (error) {
       console.log(error);
@@ -28,7 +28,7 @@ export function LoginPage() {
 
   async function getUserInfo(email) {
     try {
-      return await axios.get(`postgres://rhuijitkydpord:14ec022c01b999a5f15363cf63b18f3bb9180f48f1b5c7fa9aabd4cbd336380f@ec2-3-226-163-72.compute-1.amazonaws.com:5432/d6q5704oqrvd16/employees/retrieve/${email}`);
+      return await axios.get(`https://amalitechipayroll.herokuapp.com/employees/retrieve/${email}`);
     }
     catch (error) {
       console.log(error);
@@ -82,7 +82,7 @@ export function LoginPage() {
   }
 
   useEffect(() => {
-    axios.get(`postgres://rhuijitkydpord:14ec022c01b999a5f15363cf63b18f3bb9180f48f1b5c7fa9aabd4cbd336380f@ec2-3-226-163-72.compute-1.amazonaws.com:5432/d6q5704oqrvd16/employees/all`)
+    axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)
       .then(response =>
         setAPIData(response.data));
   }, [])
