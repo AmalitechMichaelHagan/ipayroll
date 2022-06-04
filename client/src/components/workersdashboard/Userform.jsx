@@ -118,9 +118,7 @@ export default function Userform() {
               checked={admin}
               onChange={handleChange} />
           </div>
-          <input type="submit" onClick={() => {
-            navigate("/admin")
-          }} className="login-button2" style={{ color: "white", width: "12em", marginLeft: "2em" }} />
+          <input type="submit" className="login-button2" style={{ color: "white", width: "12em", marginLeft: "2em" }} />
         </div>
         <hr />
       </form>

@@ -24,6 +24,8 @@ router.post("/generate", async (req, res, next) => {
 
         let employee_data = await pool.query("SELECT * FROM employees WHERE email=($1)", [email]);
         employee_data = employee_data.rows[0];
+        console.log(JSON.stringify(employee_data));
+        console.log('\nRank: ',employee_data.rank);
         let employee_rank = await pool.query("SELECT * FROM rates WHERE rank=($1)", [employee_data.rank]);
         employee_rank = employee_rank.rows[0];
 
@@ -96,6 +98,7 @@ router.post("/generate", async (req, res, next) => {
         next();
 
     } catch (e) {
+        console.log(e);
         res.send(e.message)
     }
 
@@ -186,6 +189,7 @@ router.post("/generate", async (req, res) => {
         res.json(newWage.rows);
 
     } catch (e) {
+        console.log(e);
         res.send(e.message);
     }
 })

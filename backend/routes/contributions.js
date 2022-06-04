@@ -102,7 +102,7 @@ router.get("/gra", async (req, res, next) => {
 
             xml += `<employee>
                         <date>${date}</date>
-                        <tinNumber>${employeedata.ssnit_number}</tinNumber>
+                        <tinNumber>${employeedata.tin_number}</tinNumber>
                         <firstName>${employeedata.firstname}</firstName>
                         <lastName>${employeedata.surname}</lastName>
                         <salary>${wages[i].salary}</salary>
