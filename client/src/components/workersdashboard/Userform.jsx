@@ -36,7 +36,7 @@ export default function Userform() {
       "gender": gender,
       "email": email,
       "department": department,
-      "snnit_number": ssnitNumber,
+      "ssnit_number": ssnitNumber,
       "work_start_date": workstartDate,
       "phone_number": phoneNumber,
       "rank": rank,
@@ -72,6 +72,9 @@ export default function Userform() {
     setRank('')
     setAdmin(false)
     setTin('')
+
+    navigate("/admin")
+
   }
 
   return (
@@ -86,7 +89,7 @@ export default function Userform() {
         </div>
         <hr />
         <div className="emplo-form">
-          <input {...register("ssnitNumber")} placeholder="Enter SSnit Number" value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
+          <input {...register("ssnitNumber")} placeholder="Enter SSNIT Number" value={ssnitNumber} onChange={(e) => setSsnitNumber(e.target.value)} />
           <input {...register("tinNumber")} placeholder="Enter TIN Number" value={tinNumber} onChange={(e) => setTin(e.target.value)} />
           <select {...register("gender")} onChange={(e) => setGender(e.target.value)}>
             <option>Select Gender</option>
@@ -101,9 +104,9 @@ export default function Userform() {
         <div className="emplo-form">
           <select {...register("rank")} onChange={(e) => setRank(e.target.value)} className="rank">
             <option>Select Rank</option>
-            <option value={'Level 1'}>Level 1</option>
-            <option value={'Level 2'}>Level 2</option>
-            <option value={'Level 3'}>Level 3</option>
+            <option value={'Level1'}>Level1</option>
+            <option value={'Level2'}>Level2</option>
+            <option value={'Level3'}>Level3</option>
           </select>
           <div className="check">
             <label>

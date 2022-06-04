@@ -83,6 +83,7 @@ class tools {
     console.log("Message sent: %s", info.messageId);
   }catch(e){
     console.log(e.message);
+    return e.message;
   }
   }
 
@@ -207,7 +208,7 @@ class tools {
   }
 
   async compile(data){
-    const filePath = path.join(process.cwd(), 'Payslips/template', `Payslip.hbs`)
+    const filePath = path.join(process.cwd(), 'payslips/template', `payslip.hbs`)
     const html = await fs.readFile(filePath, 'utf-8');
     return hbs.compile(html)(data);
     
@@ -226,7 +227,7 @@ class tools {
         await page.setContent(result);
         await page.emulateMediaType('screen');
         await page.pdf({
-        path: `Payslips/${data.employee_id}_${data.month}_${data.year}.pdf`, //Define where you want files to be stored.
+        path: `payslips/${data.employee_id}_${data.month}_${data.year}.pdf`, //Define where you want files to be stored.
         format: 'A4',
         printBackground: true
         });
@@ -243,7 +244,7 @@ class tools {
 
         const workbook = new excelJS.Workbook();
         const worksheet = workbook.addWorksheet("Sheet 1"); // New Worksheet
-        const path = "./Reports";  // Path to download excel
+        const path = "./reports";  // Path to download excel
         
       let columns = [];
       let keys = Object.keys(data[0]);
