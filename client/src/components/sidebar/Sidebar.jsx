@@ -13,17 +13,17 @@ export default function Sidebar() {
                     <h3 className="sidebarTitle">Dashboard</h3>
                     <div className="menu-container">
                         <NavLink to="/" style={({ isActive }) => ({
-                            listStyle: "none",
-                            textDecoration: "none",
-                            color: isActive ? "white" : "black",
-                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
-                            width: "100%",
-                            height: "8vh",
-                            textAlign: "center",
-                            paddingTop: "0.5em",
-                            paddingLeft: "1em",
-                            // fontWeight: "bold",
-                            fontSize: "1.2em"
+                             listStyle: "none",
+                             textDecoration: "none",
+                             color: isActive ? "white" : "black",
+                             backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
+                             width: isActive? "180px": "100%",
+                             height: "8vh",
+                             textAlign: "center",
+                             paddingTop: "0.5em",
+                             paddingLeft: "1em",
+                             paddingRight: isActive? "4em": "0",
+                             fontSize: "1.2em"
                         })}
                         >
                             Home
@@ -32,13 +32,14 @@ export default function Sidebar() {
                         <NavLink to="/admin" style={({ isActive }) => ({
                             listStyle: "none",
                             textDecoration: "none",
-                            color: isActive ? "white" : "black",
-                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
-                            width: "100%",
+                            color: isActive ? "black" : "black",
+                            backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
+                            width: isActive? "190px": "100%",
                             height: "8vh",
                             textAlign: "center",
                             paddingTop: "0.5em",
                             paddingLeft: "1em",
+                            paddingRight: isActive? "4em": "0",
                             fontSize: "1.2em"
 
                         })}>
@@ -46,16 +47,17 @@ export default function Sidebar() {
                         </NavLink>
 
                         <NavLink to="/employee" style={({ isActive }) => ({
-                            listStyle: "none",
-                            textDecoration: "none",
-                            color: isActive ? "white" : "black",
-                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
-                            width: "100%",
-                            height: "8vh",
-                            textAlign: "center",
-                            paddingTop: "0.5em",
-                            paddingLeft: "1em",
-                            fontSize: "1.2em"
+                             listStyle: "none",
+                             textDecoration: "none",
+                             color: isActive ? "black" : "black",
+                             backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
+                             width: isActive? "190px": "100%",
+                             height: "8vh",
+                             textAlign: "center",
+                             paddingTop: "0.5em",
+                             paddingLeft: "1em",
+                             paddingRight: isActive? "4em": "0",
+                             fontSize: "1.2em"
 
                         })}>
                             Employee
@@ -64,13 +66,14 @@ export default function Sidebar() {
                         <NavLink to="/rate" style={({ isActive }) => ({
                             listStyle: "none",
                             textDecoration: "none",
-                            color: isActive ? "white" : "black",
-                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
-                            width: "100%",
+                            color: isActive ? "black" : "black",
+                            backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
+                            width: isActive? "190px": "100%",
                             height: "8vh",
                             textAlign: "center",
                             paddingTop: "0.5em",
                             paddingLeft: "1em",
+                            paddingRight: isActive? "4em": "0",
                             fontSize: "1.2em"
                         })}>
                             Account
@@ -79,13 +82,14 @@ export default function Sidebar() {
                         <NavLink to="/employee2" style={({ isActive }) => ({
                             listStyle: "none",
                             textDecoration: "none",
-                            color: isActive ? "white" : "black",
-                            backgroundColor: isActive ? "rgb(90, 14, 14)" : "rgb(172, 163, 163)",
-                            width: "100%",
+                            color: isActive ? "black" : "black",
+                            backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
+                            width: isActive? "190px": "100%",
                             height: "8vh",
                             textAlign: "center",
                             paddingTop: "0.5em",
                             paddingLeft: "1em",
+                            paddingRight: isActive? "4em": "0",
                             fontSize: "1.2em"
                         })}>
                             Employee DashBoard

@@ -24,8 +24,9 @@ form {
 }
 
 .admin {
+    position: relative;
     width: 100%;
-    margin-right: 02px;
+    right: 40px;
     margin-top: 35px;
     border-radius: 10px;
 }
@@ -40,6 +41,8 @@ form {
 table {
     border-spacing: 0px;
     width: 100%;
+    margin-left: 5px;
+
 }
 
 .thead-color {
@@ -86,7 +89,8 @@ table {
 }
 
 .button1:hover {
-    background-color: rgba(218, 31, 31, 0)
+    background-color: rgba(218, 31, 31, 0);
+    color: black;
 }
 
 .table .thead-dark th {
