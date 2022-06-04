@@ -41,7 +41,7 @@ export default function Userform() {
       "phone_number": phoneNumber,
       "rank": rank,
       "admin_role": admin,
-      "tin_number":tinNumber
+      "tin_number": tinNumber
     }
 
     console.log(myData)
@@ -50,7 +50,7 @@ export default function Userform() {
 
     axios({
       method: 'post',
-      url: 'https://amalitechipayroll.herokuapp.com/employees/send',
+      url: 'https://localhost:9000/employees/send',
       data: myData,
       headers: { 'Authorization': 'Bearer ...' }
     });
@@ -117,7 +117,7 @@ export default function Userform() {
           </div>
           <input type="submit" onClick={() => {
             navigate("/admin")
-          }} className="login-button2" />
+          }} className="login-button2" style={{ color: "white", width: "12em", marginLeft: "2em" }} />
         </div>
         <hr />
       </form>
