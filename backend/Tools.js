@@ -83,6 +83,7 @@ class tools {
     console.log("Message sent: %s", info.messageId);
   }catch(e){
     console.log(e.message);
+    return e.message;
   }
   }
 
