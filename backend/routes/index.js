@@ -6,7 +6,7 @@ const tool = require(path.join(__dirname,"..","tools.js"));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'iPayroll' });
 });
 
 router.get("/report", async (req, res, next) => {
