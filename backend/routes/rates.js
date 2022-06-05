@@ -2,11 +2,6 @@ var express = require("express");
 var router = express.Router();
 const pool = require("../db");
 
-
-router.get("/", function (req, res, next) {
-    res.send("rate Dashboard");
-});
-
 router.get("/all", async (req, res, next) => {
     try {
         const rates = await pool.query("SELECT * FROM rates");
