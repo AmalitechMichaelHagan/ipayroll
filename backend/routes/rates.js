@@ -70,7 +70,7 @@ router.put("/update/:id", async (req, res, next) => {
 router.delete("/delete/:id", async (req, res, next) => {
     try {
         const { id } = req.params;
-        const del = await pool.query("DELETE FROM rates where rank = $1", [id])
+        const del = await pool.query("DELETE FROM rates where id = $1", [id])
         res.send("rate was succesfully deleted")
     } catch (e) {
         res.send(e.message);
