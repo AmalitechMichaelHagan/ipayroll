@@ -4,10 +4,6 @@ const pool = require("../db");
 const path = require('path');
 const tool = require(path.join(__dirname,"..","tools.js"));
 
-router.get("/", function (req, res, next) {
-    res.send("Employee Dashboard");
-});
-
 router.get("/all", async (req, res, next) => {
     try {
         const employees = await pool.query("SELECT * FROM employees");
