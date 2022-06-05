@@ -2,10 +2,6 @@ var express = require("express");
 var router = express.Router();
 const pool = require("../db");
 
-router.get("/", function (req, res, next) {
-    res.send("Sign In");
-});
-
 router.get("/all", async (req, res, next) => {
     try {
         const tax_reliefs = await pool.query("SELECT * FROM tax_relief");
