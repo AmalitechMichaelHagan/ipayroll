@@ -4,10 +4,6 @@ const pool = require("../db");
 const path = require('path');
 const tool = require(path.join(__dirname,"..","tools.js"));
 
-router.get("/", function (req, res, next) {
-    res.send("wage Dashboard");
-});
-
 router.get("/all", async (req, res, next) => {
     try {
         const wages = await pool.query("SELECT * FROM wages");
@@ -266,7 +262,5 @@ router.delete("/delete/:id", async (req, res, next) => {
     }
 
 })
-
-
 
 module.exports = router;
