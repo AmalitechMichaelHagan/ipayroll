@@ -13,9 +13,10 @@ import Userform from "./components/admindashboard/Userform";
 import LoanDashboard from "./components/dashboard/LoanDashboard";
 import Wages from './components/admindashboard/Wages';
 import EmployeeDashBoard from './components/employeedata/EmployeeDashBoard';
-import Loan from './components/workersdashboard/Loan';
-import Rate from './components/workersdashboard/Rate';
-import TaxRelief from './components/workersdashboard/Tax_Relief';
+import Loan from './components/admindashboard/Loan';
+import Rate from './components/admindashboard/Rate';
+import TaxRelief from './components/admindashboard/Tax_Relief';
+import ReliefForm from './components/admindashboard/TaxRelief'
 
 
 
@@ -32,9 +33,9 @@ function App() {
         <Route path="/loan" element={<Loan />} />
         <Route path="/rate" element={<Rate />} />
         <Route path="/newuser" element={<Userform />} />
-        <Route path="/tax" element={<TaxRelief />} />
         <Route path="/employee2" element={<EmployeeDashBoard/>} />
         <Route path="/relief" element={<TaxRelief/>} />
+        <Route path='/reliefForm' element={<ReliefForm/>} />
       </Routes>
     </BrowserRouter>
   );

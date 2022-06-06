@@ -30,6 +30,7 @@ export default function Rate() {
             <div className="admin2">
                     <div className="Add-User">
                         <button className="button1" onClick={() => {
+                            navigate("/reliefForm")
                         }}>
                             Add Tax Relief
                         </button>
