@@ -30,6 +30,7 @@ export default function Rate() {
             <div className="admin2">
                     <div className="Add-User">
                         <button className="button1" onClick={() => {
+                            navigate("/rform")
                         }}>
                             Add Tax Relief
                         </button>
@@ -52,10 +53,10 @@ export default function Rate() {
                             <thead className="thead-color">
                                 <tr>
                                     <th>id</th>
-                                    <th>Employee email</th>
+                                    <th>Employee_email</th>
                                     <th>Type</th>
-                                    <th>Annual amount</th>
-                                    <th>Monthly amount</th>
+                                    <th>Annual_amount</th>
+                                    <th>Monthly_amount</th>
                                     <th>Description</th>
                                 </tr>
                             </thead>

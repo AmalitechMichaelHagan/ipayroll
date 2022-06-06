@@ -53,12 +53,12 @@ export default function Wages() {
                         <table className="table">
                             <thead className="thead-color">
                                 <tr>
-                                    <th>Employee ID</th>
+                                    <th>Employee_ID</th>
                                     <th>Month</th>
                                     <th>Year</th>
-                                    <th>Total Earnings</th>
-                                    <th>Total Deductions</th>
-                                    <th>Net Salary</th>
+                                    <th>Total_earnings</th>
+                                    <th>Total_deductions</th>
+                                    <th>Net_salary</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -1,4 +1,4 @@
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import "./TaxRelief.css";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -36,16 +36,16 @@ export default function TaxRelief() {
         console.log(myData)
         axios({
             method: 'post',
-            url: 'https://amalitechipayroll.herokuapp.com/employees/send',
+            url: 'https://amalitechipayroll.herokuapp.com/tax_relief/send',
             data: myData,
             headers: { 'Authorization': 'Bearer ...' }
         });
 
-        // Swal.fire(
-        //     'Done',
-        //     'Employee will receive a Login Password for their account',
-        //     'success'
-        // )
+         Swal.fire(
+             'Done',
+             'Tax Relief added for Employee',
+             'success'
+         )
 
         setEmployeeEmail('')
         setTaxrelief('')

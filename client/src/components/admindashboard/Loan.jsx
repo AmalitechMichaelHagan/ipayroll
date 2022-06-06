@@ -47,14 +47,15 @@ export default function Loan() {
                         <table className="table">
                             <thead className="thead-color">
                                 <tr>
-                                    <th>id</th>
-                                    <th>employee_id</th>
-                                    <th>month</th>
-                                    <th>year</th>
-                                    <th>initial_amount</th>
-                                    <th>amount_left</th>
-                                    <th>deduction_rate</th>
-                                    <th>approval_status</th>
+                                    <th>ID</th>
+                                    <th>Employee_id</th>
+                                    <th>Month</th>
+                                    <th>Year</th>
+                                    <th>Initial_amount</th>
+                                    <th>Amount_left</th>
+                                    <th>Deduction_rate</th>
+                                    <th>Approval_status</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
