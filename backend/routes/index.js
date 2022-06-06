@@ -9,8 +9,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'iPayroll' });
 });
 
-router.get("/report", async (req, res, next) => {
-  const {table} = req.body;
+router.get("/report/:table", async (req, res, next) => {
+  const {table} = req.params;
   try {
       let data = await pool.query(`SELECT * FROM ${table}`);
       data = data.rows;
