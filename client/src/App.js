@@ -8,13 +8,14 @@ import {
 import Home from "./pages/home/Home"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
-import Hresource from "./components/workersdashboard/Hresource";
-import Userform from "./components/workersdashboard/Userform";
+import Hresource from "./components/admindashboard/Hresource";
+import Userform from "./components/admindashboard/Userform";
 import LoanDashboard from "./components/dashboard/LoanDashboard";
-import Wages from './components/workersdashboard/Wages';
+import Wages from './components/admindashboard/Wages';
 import EmployeeDashBoard from './components/employeedata/EmployeeDashBoard';
-import Loan from './components/workersdashboard/Loan';
-import Rate from './components/workersdashboard/Rate';
+import Loan from './components/admindashboard/Loan';
+import Rate from './components/admindashboard/Rate';
+import TaxRelief from './components/admindashboard/TaxRelief';
 
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/loan" element={<Loan />} />
         <Route path="/rate" element={<Rate />} />
         <Route path="/newuser" element={<Userform />} />
+        <Route path="/tax" element={<TaxRelief />} />
         <Route path="/employee2" element={<EmployeeDashBoard/>} />
       </Routes>
     </BrowserRouter>

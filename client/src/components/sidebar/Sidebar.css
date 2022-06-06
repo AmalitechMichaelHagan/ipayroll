@@ -14,12 +14,6 @@
     list-style: none;
 }
 
-.sidebarItems {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border-radius: 5px;
-}
 
 .sidebarItems.active,
 .sidebarItems:hover {
@@ -39,6 +33,7 @@
 
 .sidebarLists {
     list-style: none;
+
 }
 
 ul {
@@ -48,6 +43,7 @@ ul {
 
 .sidebarItems {
     font-family: bold;
+    font-family: 'Dancing Script', cursive;
     cursor: pointer;
     display: flex;
     align-items: center;

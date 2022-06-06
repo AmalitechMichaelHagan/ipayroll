@@ -3,12 +3,12 @@ import "./Wages.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
 export default function Wages() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)

@@ -15,22 +15,6 @@ export default function EmployeeSideBar() {
                         <li className="sidebarItems active" onClick={() => {
                             navigate("/")
                         }}> Home  </li>
-                        {/* <li className="sidebarItems" onClick={() => {
-                            navigate("/admin")
-                        }}>
-                            Administrator
-                        </li> */}
-                        {/* <li className="sidebarItems" onClick={() => {
-                            navigate("/employee")
-                        }}>
-                            Employee
-                        </li> */}
-                        {/* <li className="sidebarItems"onClick={() => {
-                            navigate("/rate")
-                        }}>
-                            Account
-                            </li> */}
-
                     </ul>
                 </div>
             </div>

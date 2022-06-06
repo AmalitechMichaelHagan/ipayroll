@@ -1,11 +1,9 @@
 import "./Sidebar.css"
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 export default function Sidebar() {
     
-    const navigate = useNavigate()
-
     return (
         <div className="sidebar">
             <div className="sidebarWrapper">
@@ -107,6 +105,21 @@ export default function Sidebar() {
                             fontSize: "1.2em"
                         })}>
                             Rate
+                        </NavLink>
+                        <NavLink to="/tax" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "black" : "black",
+                            backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
+                            width: isActive? "190px": "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            paddingRight: isActive? "4em": "0",
+                            fontSize: "1.2em"
+                        })}>
+                            tax_relief
                         </NavLink>
 
 

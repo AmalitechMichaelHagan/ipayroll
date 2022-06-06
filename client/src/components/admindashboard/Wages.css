@@ -13,8 +13,10 @@
 }
 
 main2 {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 4fr;
+
 
 
 
@@ -26,7 +28,7 @@ form {
 
 .admin2 {
     position: relative;
-    width: 100%;
+    width: 110%;
     left: 57%;
     margin-top: 35px;
     border-radius: 10px;
@@ -42,9 +44,10 @@ form {
 
 
 table {
-    border-spacing: 0px;
+    border-spacing: 5px;
     width: 100%;
     margin-left: 5px;
+    padding: 20px;
 }
 
 .thead-color {
