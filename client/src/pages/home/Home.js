@@ -163,7 +163,7 @@ export default function Home() {
                             <GiRank3 />
                             </div>
                             <h2 className="grid">Rank</h2>
-                            <h4 className="grid2"> {current.rank} </h4>
+                            <p className="grid2"> {current.rank} </p>
                             <p className="grid2"></p>
                         </div>
                         <div className="shadow">

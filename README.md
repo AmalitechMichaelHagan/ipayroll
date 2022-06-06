@@ -20,7 +20,7 @@ A web application that seeks to simplify the tasks related to payroll management
 
 ![Screenshot of iPayroll Employee GUI](Screenshot.png)
 
-![Screenshot of iPayroll Administrator GUI](Screenshot.png)
+![Screenshot of iPayroll Administrator GUI](Screenshot2.png)
 
 ## Technologies
 
