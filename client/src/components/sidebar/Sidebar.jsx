@@ -10,9 +10,9 @@ export default function Sidebar() {
         <div className="sidebar">
             <div className="sidebarWrapper">
                 <div className="sidebarMenu">
-                    <h3 className="sidebarTitle">Dashboard</h3>
+                    <h3 className="sidebarTitle">Admin Dashboard</h3>
                     <div className="menu-container">
-                        <NavLink to="/" style={({ isActive }) => ({
+                        <NavLink to="/home" style={({ isActive }) => ({
                              listStyle: "none",
                              textDecoration: "none",
                              color: isActive ? "white" : "black",
@@ -43,10 +43,10 @@ export default function Sidebar() {
                             fontSize: "1.2em"
 
                         })}>
-                            Administrator
+                            Employee
                         </NavLink>
 
-                        <NavLink to="/employee" style={({ isActive }) => ({
+                        {/* <NavLink to="/employee" style={({ isActive }) => ({
                              listStyle: "none",
                              textDecoration: "none",
                              color: isActive ? "black" : "black",
@@ -61,8 +61,38 @@ export default function Sidebar() {
 
                         })}>
                             Employee
-                        </NavLink>
+                        </NavLink> */}
 
+                        <NavLink to="/wages" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "black" : "black",
+                            backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
+                            width: isActive? "190px": "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            paddingRight: isActive? "4em": "0",
+                            fontSize: "1.2em"
+                        })}>
+                            Wages
+                        </NavLink>
+                        <NavLink to="/loan" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "black" : "black",
+                            backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
+                            width: isActive? "190px": "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            paddingRight: isActive? "4em": "0",
+                            fontSize: "1.2em"
+                        })}>
+                            Loan
+                        </NavLink>
                         <NavLink to="/rate" style={({ isActive }) => ({
                             listStyle: "none",
                             textDecoration: "none",
@@ -76,10 +106,11 @@ export default function Sidebar() {
                             paddingRight: isActive? "4em": "0",
                             fontSize: "1.2em"
                         })}>
-                            Account
+                            Rate
                         </NavLink>
 
-                        <NavLink to="/employee2" style={({ isActive }) => ({
+
+                        {/* <NavLink to="/employee2" style={({ isActive }) => ({
                             listStyle: "none",
                             textDecoration: "none",
                             color: isActive ? "black" : "black",
@@ -93,7 +124,7 @@ export default function Sidebar() {
                             fontSize: "1.2em"
                         })}>
                             Employee DashBoard
-                        </NavLink>
+                        </NavLink> */}
                     </div>
                 </div>
             </div>

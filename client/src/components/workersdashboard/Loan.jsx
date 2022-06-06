@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from 'react';
-import "./Rate.css"
+import "./Loan.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-export default function Rate() {
+export default function Loan() {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -41,14 +41,12 @@ export default function Rate() {
                             <thead className="thead-color">
                                 <tr>
                                     <th>id</th>
-                                    <th>Rank</th>
-                                    <th>Salary</th>
-                                    <th>Allowance</th>
-                                    <th>Pf_employee</th>
-                                    <th>Pf_employer</th>
-                                    <th>SSNI_tier_one</th>
-                                    <th>SSNI_tier_two</th>
-
+                                    <th>employee_id</th>
+                                    <th>name</th>
+                                    <th>initial_amount</th>
+                                    <th>amount_left</th>
+                                    <th>loan_deduction</th>
+                                    <th>approval_status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,14 +57,12 @@ export default function Rate() {
                                     return (
                                         <tr>
                                             <td>{data.id}</td>
-                                            <td>{data.rank}</td>
-                                            <td>{data.salary}</td>
-                                            <td>{data.cash_allowance}</td>
-                                            <td>{data.Pf_employee}</td>
-                                            <td>{data.pf_employer}</td>
-                                            <td>{data.ssnit_tier_one}</td>
-                                            <td>{data.ssnit_tier_two}</td>
-
+                                            <td>{data.employee_id}</td>
+                                            <td>{data.surname}</td>
+                                            <td>{data.initial_amount}</td>
+                                            <td>{data.amount_left}</td>
+                                            <td>{data.loan_deduction_rate}</td>
+                                            <td>{data.approval_status}</td>
                                         </tr>
                                     )
                                 })}

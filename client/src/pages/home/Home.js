@@ -1,6 +1,5 @@
 import "./Home.css";
 import "bootstrap/dist/css/bootstrap.min.css"
-// import Stat from './stat'
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { GiRank3, GiReceiveMoney, GiPayMoney } from 'react-icons/gi';
@@ -12,7 +11,6 @@ import { useSelector } from "react-redux";
 import Swal from 'sweetalert2';
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import Footer from "../../components/footer/Footer";
 
 
 export default function Home() {
@@ -201,8 +199,6 @@ export default function Home() {
         <div style={{minHeight:"100vh"}}>
         <div className="color-backgroung">
             <Topbar />
-            {/* <Stat /> */}
-            {/* <Footer /> */}
             <div className="wrapper" style={{margin:"2em auto"}}>
 
                 <div className="header" style={{margin:"2em auto"}}>
