@@ -39,9 +39,11 @@ A web application that seeks to simplify the tasks related to payroll management
 ## Features
 
 The GUI entails two forms, an employee UI and an administrator UI.
+
 The Employee UI allows users to:
 * View their records
 * Apply for Loans
+
 The Admin UI allows users to:
 * Manage Rates. This denotes the salaries, cash allowances and deductions for a particular Rank.
 * Manage Employees.
@@ -49,8 +51,9 @@ The Admin UI allows users to:
 * Manage Loans. This includes accepting with deduction rates, and declining loans applied by employees.
 * Manage Tax Reliefs.
 * Download Reports on each table in xlsx(excel) format.
+
 The API also contains endpoints that returns filing data for ssnit and gra for a given month.
-Refer to the Swagger docs for more info on the API.
+Refer to the Swagger docs for more info.
 
 
 ## Status
@@ -65,4 +68,4 @@ This was a capstone project that climaxed the graduate trainee program by Amalit
 
 [Michael Hagan](https://github.com/amalitechmichaelhagan)
 
-[Francis Coffie](https://github.com/francis.coffie@amalitech.org)
+[Francis Coffie](https://github.com/francis-coffie)
