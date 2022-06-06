@@ -3,13 +3,13 @@ import "./Wages.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const FileDownload = require('js-file-download');
 
 
 export default function Wages() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`https://amalitechipayroll.herokuapp.com/wages/all`)
