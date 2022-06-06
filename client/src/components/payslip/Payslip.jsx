@@ -1,5 +1,5 @@
 import moment from "moment";
-// import axios from "axios";
+import axios from "axios";
 
 
 export function Payslip({ paySlipData }) {

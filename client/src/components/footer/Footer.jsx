@@ -5,7 +5,10 @@ const Footer = () => {
   return (
     <footer className='footer'>
       <div className="footer-content">
-        <p> IPAYROLL SYSTEM | AmaliTech Training Center |
+        <h4>
+          <strong></strong> Payroll System
+        </h4>
+        <p>AmaliTech Training Center |
         TTU Main Campus,
         Takoradi
         </p>

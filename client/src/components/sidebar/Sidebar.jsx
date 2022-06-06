@@ -1,9 +1,11 @@
 import "./Sidebar.css"
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 
 export default function Sidebar() {
     
+    const navigate = useNavigate()
+
     return (
         <div className="sidebar">
             <div className="sidebarWrapper">
@@ -121,6 +123,7 @@ export default function Sidebar() {
                         })}>
                             Tax_Relief
                         </NavLink>
+
 
                         {/* <NavLink to="/employee2" style={({ isActive }) => ({
                             listStyle: "none",
