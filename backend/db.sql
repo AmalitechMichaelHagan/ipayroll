@@ -27,8 +27,7 @@ CREATE TABLE employees(
     loan_status BOOLEAN DEFAULT false
 );
 CREATE TABLE users(
-    id SERIAL PRIMARY KEY,
-    email VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(50) PRIMARY KEY,
     user_password VARCHAR(10) NOT NULL,
     admin_role BOOLEAN NOT NULL,
     FOREIGN KEY (email) REFERENCES employees(email) ON DELETE CASCADE

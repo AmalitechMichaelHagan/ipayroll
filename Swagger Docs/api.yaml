@@ -1,0 +1,1520 @@
+openapi: 3.0.3
+info:
+  title: iPayroll
+  version: 1.0.0
+  description: An express API for managing payrolls
+paths:
+  /rates/all:
+    summary: Get all rates
+    description: This end point will be used to retrieve all rates data
+    get:
+      summary: Returns json data for all rates
+      description: This endpoint returns all data for the rates table
+      operationId: get_rates
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                rates:
+                  value: |-
+                    [
+                      {
+                          "id": 1,
+                          "rank": "Level1",
+                          "salary": 10000,
+                          "cash_allowance": 1500,
+                          "pf_employee": 6,
+                          "pf_employer": 10.5,
+                          "ssnit_tier_one": 5.5,
+                          "ssnit_tier_two": 13.5
+                      },
+                      {
+                          "id": 2,
+                          "rank": "Level2",
+                          "salary": 75000,
+                          "cash_allowance": 1000,
+                          "pf_employee": 6,
+                          "pf_employer": 10.5,
+                          "ssnit_tier_one": 5.5,
+                          "ssnit_tier_two": 13.5
+                      },
+                      {
+                          "id": 3,
+                          "rank": "Level3",
+                          "salary": 5000,
+                          "cash_allowance": 500,
+                          "pf_employee": 5,
+                          "pf_employer": 11.5,
+                          "ssnit_tier_one": 5.5,
+                          "ssnit_tier_two": 13.5
+                      }
+                    ]
+      tags:
+        - Rates
+  /rates/{id}:
+    summary: Get a record from rates
+    description: This will be used to retrieve data for a given rate
+    get:
+      summary: Get rate record for a given id
+      description: Returns a single json file containing data for a given rate ID
+      operationId: get_rates_id
+      parameters:
+        - name: id
+          in: path
+          description: The id of the rate.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                rates:
+                  value: |-
+                        {
+                            "id": 2,
+                            "rank": "Level2",
+                            "salary": 75000,
+                            "cash_allowance": 1000,
+                            "pf_employee": 6,
+                            "pf_employer": 10.5,
+                            "ssnit_tier_one": 5.5,
+                            "ssnit_tier_two": 13.5
+                        }
+      tags:
+        - Rates
+  /rates/send:
+    summary: Send data to rates table
+    description: This endpoint will be used to send data to the rates table
+    post:
+      summary: Send data to rates table
+      description: This endpoint will be used to send data to the rates table
+      operationId: post_rates
+      requestBody:
+        description: A new rate object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rates'
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                rates:
+                  value: |-
+                         {
+                             "id": 4,
+                             "rank": "Level4",
+                             "salary": 45000,
+                             "cash_allowance": 800,
+                             "pf_employee": 6,
+                             "pf_employer": 10.5,
+                             "ssnit_tier_one": 5.5,
+                             "ssnit_tier_two": 13.5
+                         }                     
+      tags:
+        - Rates
+  /rates/update/{id}:
+    summary: 'Edit a record from the rates table '
+    description: Edits a record from the rates table
+    put:
+      summary: Edit a record from the rates table
+      description: Edits a record from the rates table
+      operationId: put_rates
+      requestBody:
+        description: The value(s) to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rates'
+      parameters:
+        - name: id
+          in: path
+          description: The id of the rate.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                rates:
+                  value: Rate salary was updated with value 5000
+      tags:
+        - Rates
+  /rates/delete/{id}:
+    summary: Delete a given rate
+    description: 'This endpoint will be used to delete a given rate'
+    delete:
+      summary: Deletes a given record
+      description: This endpoint will be used to delete a given rate's data
+      operationId: delete_rates
+      parameters:
+        - name: id
+          in: path
+          description: The id of the rate.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                rate:
+                  value: Rate was succesfully deleted
+      tags:
+        - Rates
+  /employees/all:
+    summary: Get all employees
+    description: This end point will be used to retrieve all employees data
+    get:
+      summary: Returns json data for all employees
+      description: This endpoint returns all data for the  table
+      operationId: get_employees
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                employees:
+                  value: |-
+                    [
+                      {
+                          "id": 1,
+                          "firstname": "admin",
+                          "surname": "admin",
+                          "date_of_birth": "2000-01-01T00:00:00.000Z",
+                          "gender": "Other",
+                          "email": "admin",
+                          "department": "admin",
+                          "rank": "Level1",
+                          "phone_number": "00000000",
+                          "work_start_date": "2000-10-10T00:00:00.000Z",
+                          "ssnit_number": "00000000",
+                          "tax_relief": false,
+                          "tin_number": null,
+                          "loan_status": false
+                      },
+                      {
+                          "id": 2,
+                          "firstname": "Michael",
+                          "surname": "Hagan",
+                          "date_of_birth": "1997-08-07T00:00:00.000Z",
+                          "gender": "Male",
+                          "email": "hagan871@gmail.com",
+                          "department": "I.T",
+                          "rank": "Level2",
+                          "phone_number": "0503203084",
+                          "work_start_date": "2022-01-07T00:00:00.000Z",
+                          "ssnit_number": "23456789",
+                          "tax_relief": false,
+                          "tin_number": "GHA335512222",
+                          "loan_status": false
+                      },
+                      {
+                          "id": 3,
+                          "firstname": "Michael",
+                          "surname": "Hagan",
+                          "date_of_birth": "1997-08-07T00:00:00.000Z",
+                          "gender": "Male",
+                          "email": "michael.hagan@amalitech.org",
+                          "department": "I.T",
+                          "rank": "Level1",
+                          "phone_number": "0503203084",
+                          "work_start_date": "2022-01-07T00:00:00.000Z",
+                          "ssnit_number": "23456789",
+                          "tax_relief": false,
+                          "tin_number": "GHA335512222",
+                          "loan_status": false
+                      }
+                    ]
+      tags:
+        - Employees
+  /employees/{id}:
+    summary: Get a record from employees
+    description: This will be used to retrieve data for a given employee
+    get:
+      summary: Get employee record for a given id
+      description: Returns a single json file containing data for a given employee ID
+      operationId: get_employees_id
+      parameters:
+        - name: id
+          in: path
+          description: The id of the employee.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                employees:
+                  value: |-
+                      {
+                          "id": 2,
+                          "firstname": "Michael",
+                          "surname": "Hagan",
+                          "date_of_birth": "1997-08-07T00:00:00.000Z",
+                          "gender": "Male",
+                          "email": "hagan871@gmail.com",
+                          "department": "I.T",
+                          "rank": "Level2",
+                          "phone_number": "0503203084",
+                          "work_start_date": "2022-01-07T00:00:00.000Z",
+                          "ssnit_number": "23456789",
+                          "tax_relief": false,
+                          "tin_number": "GHA335512222",
+                          "loan_status": false
+                      }
+      tags:
+        - Employees
+  /employees/retrieve/{email}:
+    summary: Get a record from employees
+    description: This will be used to retrieve data for a given employee
+    get:
+      summary: Get employee record for a given email
+      description: Returns a single json file containing data for a given employee ID
+      operationId: get_employees_email
+      parameters:
+        - name: email
+          in: path
+          description: The email of the employee.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                employees:
+                  value: |-
+                      {
+                          "id": 2,
+                          "firstname": "Michael",
+                          "surname": "Hagan",
+                          "date_of_birth": "1997-08-07T00:00:00.000Z",
+                          "gender": "Male",
+                          "email": "hagan871@gmail.com",
+                          "department": "I.T",
+                          "rank": "Level2",
+                          "phone_number": "0503203084",
+                          "work_start_date": "2022-01-07T00:00:00.000Z",
+                          "ssnit_number": "23456789",
+                          "tax_relief": false,
+                          "tin_number": "GHA335512222",
+                          "loan_status": false
+                      }
+      tags:
+        - Employees      
+  /employees/send:
+    summary: Send data to employees table
+    description: This endpoint will be used to send data to the employees table, sends an email to the provided email containing login password
+    post:
+      summary: Send data to employees table
+      description: This endpoint will be used to send data to the employees table
+      operationId: post_employees
+      requestBody:
+        description: A new employee object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employees'
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                employees:
+                  value: |-
+                      {
+                          "id": 2,
+                          "firstname": "Michael",
+                          "surname": "Hagan",
+                          "date_of_birth": "1997-08-07T00:00:00.000Z",
+                          "gender": "Male",
+                          "email": "hagan871@gmail.com",
+                          "department": "I.T",
+                          "rank": "Level2",
+                          "phone_number": "0503203084",
+                          "work_start_date": "2022-01-07T00:00:00.000Z",
+                          "ssnit_number": "23456789",
+                          "tax_relief": false,
+                          "tin_number": "GHA335512222",
+                          "loan_status": false
+                      }
+      tags:
+        - Employees
+  /employees/update/{id}:
+    summary: 'Edit a record from the employees table '
+    description: Edits a record from the employees table
+    put:
+      summary: Edit a record from the employees table
+      description: Edits a record from the employees table
+      operationId: put_employees
+      requestBody:
+        description: The value(s) to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employees'
+      parameters:
+        - name: id
+          in: path
+          description: The id of the employee.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                employees:
+                  value: Employee salary was updated with value 5000
+      tags:
+        - Employees
+  /employees/delete/{id}:
+    summary: Delete a given employee
+    description: This endpoint will be used to delete a given employee
+    delete:
+      summary: Deletes a given record
+      description: This endpoint will be used to delete a given employee's data
+      operationId: delete_employees
+      parameters:
+        - name: id
+          in: path
+          description: The id of the employee.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                employee:
+                  value: Employee was succesfully deleted
+      tags:
+        - Employees
+  /wages/all:
+    summary: Get all employees
+    description: This end point will be used to retrieve all wages data
+    get:
+      summary: Returns json data for all wages
+      description: This endpoint returns all data for the wages table
+      operationId: get_wages
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                wages:
+                  value: |-
+                   [
+                      {
+                          "id"  : 1,
+                          "employee_id": 2,
+                          "month": 4,
+                          "year": 2022,
+                          "salary": 75000,
+                          "cash_allowance": 1000,
+                          "tax_relief": 0,
+                          "paye": 10642.25,
+                          "loan_deduction": 0,
+                          "loan_remainder": 0,
+                          "ssnit_tier_one": 4125,
+                          "ssnit_tier_two": 10125,
+                          "ssnit_tier_total": 14250,
+                          "pf_employee": 4500,
+                          "pf_employer": 7875,
+                          "pf_total": 12375,
+                          "total_earnings": 76000,
+                          "total_deductions": 19267.25,
+                          "take_home_salary": 56732.75
+                      },
+                      {
+                          "id": 2,
+                          "employee_id": 3,
+                          "month": 4,
+                          "year": 2022,
+                          "salary": 10000,
+                          "cash_allowance": 1500,
+                          "tax_relief": 0,
+                          "paye": 2229.75,
+                          "loan_deduction": 0,
+                          "loan_remainder": 0,
+                          "ssnit_tier_one": 550,
+                          "ssnit_tier_two": 1350,
+                          "ssnit_tier_total": 1900,
+                          "pf_employee": 600,
+                          "pf_employer": 1050,
+                          "pf_total": 1650,
+                          "total_earnings": 11500,
+                          "total_deductions": 3379.75,
+                          "take_home_salary": 8120.25
+                      }
+                    ]
+      tags:
+        - Wages
+  /wages/{id}:
+    summary: Get a record from wages
+    description: This will be used to retrieve data for a given wage
+    get:
+      summary: Get wage record for a given id
+      description: Returns a single json file containing data for a given wage ID
+      operationId: get_wages_id
+      parameters:
+        - name: id
+          in: path
+          description: The id of the wage.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                wages:
+                  value: |-
+                      {
+                          "id"  : 1,
+                          "employee_id": 2,
+                          "month": 4,
+                          "year": 2022,
+                          "salary": 75000,
+                          "cash_allowance": 1000,
+                          "tax_relief": 0,
+                          "paye": 10642.25,
+                          "loan_deduction": 0,
+                          "loan_remainder": 0,
+                          "ssnit_tier_one": 4125,
+                          "ssnit_tier_two": 10125,
+                          "ssnit_tier_total": 14250,
+                          "pf_employee": 4500,
+                          "pf_employer": 7875,
+                          "pf_total": 12375,
+                          "total_earnings": 76000,
+                          "total_deductions": 19267.25,
+                          "take_home_salary": 56732.75
+                      }
+      tags:
+        - Wages
+  /wages/generate:
+    summary: Send data to wages table
+    description: This endpoint will be used to send data to the wages table, sends an email to the provided email in the request body with the wage record 
+    post:
+      summary: Send data to wages table
+      description: This endpoint will be used to send data to the wages table
+      operationId: post_wages
+      requestBody:
+        description: A new wage object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wages'
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                wages:
+                  value: |-
+                      {
+                          "id"  : 1,
+                          "employee_id": 2,
+                          "month": 4,
+                          "year": 2022,
+                          "salary": 75000,
+                          "cash_allowance": 1000,
+                          "tax_relief": 0,
+                          "paye": 10642.25,
+                          "loan_deduction": 0,
+                          "loan_remainder": 0,
+                          "ssnit_tier_one": 4125,
+                          "ssnit_tier_two": 10125,
+                          "ssnit_tier_total": 14250,
+                          "pf_employee": 4500,
+                          "pf_employer": 7875,
+                          "pf_total": 12375,
+                          "total_earnings": 76000,
+                          "total_deductions": 19267.25,
+                          "take_home_salary": 56732.75
+                      }
+      tags:
+        - Wages
+  /wages/update/{id}:
+    summary: 'Edit a record from the wages table '
+    description: Edits a record from the wages table
+    put:
+      summary: Edit a record from the wages table
+      description: Edits a record from the wages table
+      operationId: put_wages
+      requestBody:
+        description: The value(s) to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wages'
+      parameters:
+        - name: id
+          in: path
+          description: The id of the wage.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                wages:
+                  value: Wage salary was updated with value 5000
+      tags:
+        - Wages
+  /wages/delete/{id}:
+    summary: Delete a given wage
+    description: 'This endpoint will be used to delete a given wage'
+    delete:
+      summary: Deletes a given record
+      description: This endpoint will be used to delete a given wage's data
+      operationId: delete_wages
+      parameters:
+        - name: id
+          in: path
+          description: The id of the wage.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                wage:
+                  value: wage was succesfully deleted
+      tags:
+        - Wages
+  /loans/all:
+    summary: Get all employees
+    description: This end point will be used to retrieve all wages data
+    get:
+      summary: Returns json data for all loans
+      description: This endpoint returns all data for the wages table
+      operationId: get_loans
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                wages:
+                  value: |-
+                    [
+                        {
+                            "id": 1,
+                            "employee_id": 3,
+                            "month": 6,
+                            "year": 2022,
+                            "initial_amount": 5000,
+                            "amount_left": 5000,
+                            "loan_deduction_rate": 0,
+                            "approval_status": false
+                        }
+                    ]
+      tags:
+        - Loans
+  /loans/{id}:
+    summary: Get a record from loans
+    description: This will be used to retrieve data for a given loan
+    get:
+      summary: Get loan record for a given id
+      description: Returns a single json file containing data for a given loan ID
+      operationId: get_loans_id
+      parameters:
+        - name: id
+          in: path
+          description: The id of the loan.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                wages:
+                  value: |-
+                        {
+                            "id": 1,
+                            "employee_id": 3,
+                            "month": 6,
+                            "year": 2022,
+                            "initial_amount": 5000,
+                            "amount_left": 5000,
+                            "loan_deduction_rate": 0,
+                            "approval_status": false
+                        }
+      tags:
+        - Loans
+  /loans/send:
+    summary: Send data to loans table
+    description: This endpoint will be used to send data to the loans table
+    post:
+      summary: Send data to loans table
+      description: This endpoint will be used to send data to the loans table
+      operationId: post_loans
+      requestBody:
+        description: A new loan object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Loans'
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                loans:
+                  value: |-
+                        {
+                            "id": 1,
+                            "employee_id": 3,
+                            "month": 6,
+                            "year": 2022,
+                            "initial_amount": 5000,
+                            "amount_left": 5000,
+                            "loan_deduction_rate": 0,
+                            "approval_status": false
+                        }
+      tags:
+        - Loans
+  /loans/update/{id}:
+    summary: 'Edit a record from the loans table '
+    description: Edits a record from the loans table
+    put:
+      summary: Edit a record from the loans table
+      description: Edits a record from the loans table
+      operationId: put_loans
+      requestBody:
+        description: The value(s) to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Loans'
+      parameters:
+        - name: id
+          in: path
+          description: The id of the loan.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                loans:
+                  value: loan salary was updated with value 5000
+      tags:
+        - Loans
+  /loans/review:
+    summary: 'Accept or Decline a loan application'
+    description: Edits a record from the loans table and updates loan status from employees table
+    put:
+      summary: Edit a record from the loans table
+      description: Edits a record from the loans table
+      operationId: put_loans_review
+      requestBody:
+        description: The value(s) to update.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                response:
+                  type: boolean
+                  description: Decision on loan. True for accepted, False for rejected, deletes record and sends feedback via mail to employee
+                employee_id:
+                  type: integer
+                  description: ID of employee
+                deduction_rate:
+                  type: number
+                  description: Rate deducted from monthly salary to pay off loan
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                loans:
+                  value: Loan updated
+      tags:
+        - Loans
+        
+  /loans/delete/{id}:
+    summary: Delete a given loan
+    description: 'This endpoint will be used to delete a given loan'
+    delete:
+      summary: Deletes a given record
+      description: This endpoint will be used to delete a given loan's data
+      operationId: delete_loans
+      parameters:
+        - name: id
+          in: path
+          description: The id of the loan.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                loan:
+                  value: loan was succesfully deleted
+      tags:
+        - Loans
+  /tax_relief/all:
+    summary: Get all employees
+    description: This end point will be used to retrieve all tax_reliefs data
+    get:
+      summary: Returns json data for all tax_reliefs
+      description: This endpoint returns all data for the tax_reliefs table
+      operationId: get_tax_relief
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                tax_reliefs:
+                  value: |-
+                    [
+                        {
+                            "id": 1,
+                            "employee_email": "michael.hagan@amalitech.org",
+                            "tax_relief_type": "Educational",
+                            "annual_amount": 5000,
+                            "monthly_amount": 416.67,
+                            "relief_desc": "Tax Relief for students"
+                        }
+                    ]
+      tags:
+        - TaxRelief
+  /tax_relief/{id}:
+    summary: Get a record from tax_reliefs
+    description: This will be used to retrieve data for a given tax_relief
+    get:
+      summary: Get tax_relief record for a given id
+      description: Returns a single json file containing data for a given tax_relief ID
+      operationId: get_tax_relief_id
+      parameters:
+        - name: id
+          in: path
+          description: The id of the tax_relief.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                tax_reliefs:
+                  value: |-
+                        {
+                            "id": 1,
+                            "employee_email": "michael.hagan@amalitech.org",
+                            "tax_relief_type": "Educational",
+                            "annual_amount": 5000,
+                            "monthly_amount": 416.67,
+                            "relief_desc": "Tax Relief for students"
+                        }
+      tags:
+        - TaxRelief
+  /tax_relief/send:
+    summary: Send data to tax_reliefs table
+    description: This endpoint will be used to send data to the tax_reliefs table
+    post:
+      summary: Send data to tax_reliefs table
+      description: This endpoint will be used to send data to the tax_reliefs table
+      operationId: post_tax_relief
+      requestBody:
+        description: A new tax_relief object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxRelief'
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                tax_reliefs:
+                  value: |-
+                        {
+                            "id": 1,
+                            "employee_email": "michael.hagan@amalitech.org",
+                            "tax_relief_type": "Educational",
+                            "annual_amount": 5000,
+                            "monthly_amount": 416.67,
+                            "relief_desc": "Tax Relief for students"
+                        }
+      tags:
+        - TaxRelief
+  /tax_relief/update/{id}:
+    summary: 'Edit a record from the tax_reliefs table '
+    description: Edits a record from the tax_reliefs table
+    put:
+      summary: Edit a record from the tax_reliefs table
+      description: Edits a record from the tax_reliefs table
+      operationId: put_tax_relief
+      requestBody:
+        description: The value(s) to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaxRelief'
+      parameters:
+        - name: id
+          in: path
+          description: The id of the tax_relief.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                tax_reliefs:
+                  value: tax_relief salary was updated with value 5000
+      tags:
+        - TaxRelief
+  /tax_relief/delete/{id}:
+    summary: Delete a given tax_relief
+    description: 'This endpoint will be used to delete a given tax_relief'
+    delete:
+      summary: Deletes a given record
+      description: This endpoint will be used to delete a given tax_relief's data
+      operationId: delete_tax_relief
+      parameters:
+        - name: id
+          in: path
+          description: The id of the tax_relief.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                tax_relief:
+                  value: tax_relief was succesfully deleted
+      tags:
+        - TaxRelief
+  /users/all:
+    summary: Get all employees
+    description: This end point will be used to retrieve all users data
+    get:
+      summary: Returns json data for all users
+      description: This endpoint returns all data for the users table
+      operationId: get_users
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                users:
+                  value: |-
+                    [
+                        {
+                            "id": 1,
+                            "email": "admin",
+                            "user_password": "admin",
+                            "admin_role": true
+                        },
+                        {
+                            "id": 2,
+                            "email": "hagan871@gmail.com",
+                            "user_password": "456wg3&3",
+                            "admin_role": false
+                        },
+                        {
+                            "id": 3,
+                            "email": "michael.hagan@amalitech.org",
+                            "user_password": "?$.573g!",
+                            "admin_role": false
+                        }
+                    ]
+      tags:
+        - Users
+  /users/{id}:
+    summary: Get a record from users
+    description: This will be used to retrieve data for a given user
+    get:
+      summary: Get user record for a given id
+      description: Returns a single json file containing data for a given user ID
+      operationId: get_users_id
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                users:
+                  value: |-
+                        {
+                            "id": 2,
+                            "email": "hagan871@gmail.com",
+                            "user_password": "456wg3&3",
+                            "admin_role": false
+                        }
+      tags:
+        - Users
+  /users/send:
+    summary: Send data to users table
+    description: This endpoint will be used to send data to the users table
+    post:
+      summary: Send data to users table
+      description: This endpoint will be used to send data to the users table
+      operationId: post_users
+      requestBody:
+        description: A new user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                users:
+                  value: |-
+                        {
+                            "id": 2,
+                            "email": "hagan871@gmail.com",
+                            "user_password": "456wg3&3",
+                            "admin_role": false
+                        }
+      tags:
+        - Users
+  /users/update/{id}:
+    summary: 'Edit a record from the users table '
+    description: Edits a record from the users table
+    put:
+      summary: Edit a record from the users table
+      description: Edits a record from the users table
+      operationId: put_users
+      requestBody:
+        description: The value(s) to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                users:
+                  value: user salary was updated with value 5000
+      tags:
+        - Users
+  /users/delete/{id}:
+    summary: Delete a given user
+    description: 'This endpoint will be used to delete a given user'
+    delete:
+      summary: Deletes a given record
+      description: This endpoint will be used to delete a given user's data
+      operationId: delete_users
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user.
+          required: true
+          schema:
+            type: integer
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            text/plain; charset=utf-8:
+              examples:
+                user:
+                  value: user was succesfully deleted
+      tags:
+        - Users
+  /filing/gra:
+    summary: Retrieve GRA records in xml for filing
+    description: This will be used to retrieve GRA records in xml for filing for a given month
+    post:
+      summary: Retrieve GRA records in xml for filing
+      description: Returns a single xml file containing data for a given month
+      operationId: get_filing_gra
+      requestBody:
+        description: The value for the month and year
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                month:
+                  type: integer
+                  description: month section of date
+                year:
+                  type: integer
+                  description: year section of date
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            xml:
+              examples:
+                filing:
+                  value: |-
+                        <?xml version="1.0" encoding="UTF-8"?>
+                          <record>
+                              <employee>
+                                  <date>April 2022</date>
+                                  <tinNumber>GHA335512222</tinNumber>
+                                  <firstName>Michael</firstName>
+                                  <lastName>Hagan</lastName>
+                                  <salary>75000</salary>
+                                  <cashAllowance>1000</cashAllowance>
+                                  <ssnitTearOne>4125</ssnitTearOne>
+                                  <providentFund>4500</providentFund>
+                                  <taxRelief>0</taxRelief>
+                                  <paye>10642.25</paye>
+                              </employee>
+                              <employee>
+                                  <date>April 2022</date>
+                                  <tinNumber>GHA335512222</tinNumber>
+                                  <firstName>Michael</firstName>
+                                  <lastName>Hagan</lastName>
+                                  <salary>10000</salary>
+                                  <cashAllowance>1500</cashAllowance>
+                                  <ssnitTearOne>550</ssnitTearOne>
+                                  <providentFund>600</providentFund>
+                                  <taxRelief>0</taxRelief>
+                                  <paye>2229.75</paye>
+                              </employee>
+                          </record>
+      tags:
+        - Filing
+  /filing/ssnit:
+    summary: Retrieve SSNIT records in xml for filing
+    description: This will be used to retrieve SSNIT records in xml for filing for a given month
+    post:
+      summary: Retrieve SSNIT records in xml for filing
+      description: Returns a single xml file containing data for a given month
+      operationId: get_filing_ssnit
+      requestBody:
+        description: The value for the month and year
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                month:
+                  type: integer
+                  description: month section of date
+                year:
+                  type: integer
+                  description: year section of date
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            xml:
+              examples:
+                filing:
+                  value: |-
+                        <?xml version="1.0" encoding="UTF-8"?>
+                            <record>
+                                <employee>
+                                    <date>April 2022</date>
+                                    <ssnitId>23456789</ssnitId>
+                                    <firstName>Michael</firstName>
+                                    <lastName>Hagan</lastName>
+                                    <salary>75000</salary>
+                                    <tearOneRate>5.5</tearOneRate>
+                                    <tearTwoRate>13.5</tearTwoRate>
+                                    <tearOneAmount>4125</tearOneAmount>
+                                    <tearTwoAmount>10125</tearTwoAmount>
+                                    <totalContribution>14250</totalContribution>
+                                </employee>
+                                <employee>
+                                    <date>April 2022</date>
+                                    <ssnitId>23456789</ssnitId>
+                                    <firstName>Michael</firstName>
+                                    <lastName>Hagan</lastName>
+                                    <salary>10000</salary>
+                                    <tearOneRate>5.5</tearOneRate>
+                                    <tearTwoRate>13.5</tearTwoRate>
+                                    <tearOneAmount>550</tearOneAmount>
+                                    <tearTwoAmount>1350</tearTwoAmount>
+                                    <totalContribution>1900</totalContribution>
+                                </employee>
+                            </record>
+      tags:
+        - Filing
+  /report/{table}:
+    summary: Downloads a report for the given table in excel
+    description: This will be used to download a report for the given table in excel
+    get:
+      summary: Download a report for a given table
+      description: Returns an excel file. (Response not handled by Swagger. Type directly into url to test)
+      operationId: get_report
+      parameters:
+        - name: table
+          in: path
+          description: The table to generate report from
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Default error sample response
+      tags:
+        - Reports          
+components:
+  schemas:
+    Rates:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The auto generated ID for a rate
+        rank:
+          type: integer
+          description: >-
+            The rank of the employee corresponding to how much he earns, and his
+            deduction rates.
+        salary:
+          type: number
+          description: How much the employee earns in a month
+        cash_allowance:
+          type: number
+          description: Cash allowance for a given month
+        pf_employee:
+          type: number
+          description: Rate deducted for provident fund contribution from employee salary
+        pf_employer:
+          type: number
+          description: >-
+            Rate paid by employer as provident fund calculated with respect to
+            employee salary but is not deducted from salary
+        ssnit_tier_one:
+          type: number
+          description: Rate deducted for ssnit contribution from employee salary
+        ssnit_tier_two:
+          type: number
+          description: >-
+            Rate paid by employer as ssnit calculated with respect to employee
+            salary but is not deducted from salary
+      example:
+        id: 2
+        rank: Level3
+        salary: 20000
+        cash_allowance: 1500
+        pf_employee: 6
+        pf_employer: 10.5
+        ssnit_tier_one: 5.5
+        ssnit_tier_two: 13.5
+      xml:
+        name: Rates
+    Employees:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The auto generated ID for an employee
+        rank:
+          type: integer
+          description: The employee rank denoting salary, rates and others.
+        firstname:
+          type: string
+          description: Employee's firstname
+        surname:
+          type: string
+          description: Employee's surname
+        date_of_birth:
+          type: string
+          description: Employee's Date of Birth
+        gender:
+          type: string
+          description: Employee's gender
+        email:
+          type: string
+          description: Employee's email
+        phone_number:
+          type: string
+          description: Employee's phone number
+        work_start_date:
+          type: string
+          description: Date employee commenced work
+        ssnit_number:
+          type: string
+          description: SSNIT identification number of empployee
+        tax_relief:
+          type: boolean
+          description: Tax_Relief Status
+        tin_number:
+          type: string
+          description: Employee's TIN number
+        loan_status:
+          type: boolean
+          description: Loan Status
+        department:
+          type: string
+          description: Employee's Department
+      example:
+                id: 2
+                firstname: Michael
+                surname: Hagan
+                date_of_birth: 1997-08-07T00:00:00.000Z
+                gender: Male
+                email: hagan871@gmail.com
+                department: I.T
+                rank: Level2
+                phone_number: 0503203084
+                work_start_date: 2022-01-07T00:00:00.000Z
+                ssnit_number: 23456789
+                tax_relief: false
+                tin_number: GHA335512222
+                loan_status: false
+      xml:
+        name: Employees
+    Wages:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The auto generated ID for a wage record
+        employee_id:
+          type: string
+          description: >-
+            The employeeID for the given wage
+        month:
+          type: number
+          description: wage month
+        year:
+          type: number
+          description: Wage year
+        salary:
+          type: number
+          description: Salary record for the given wage
+        cash_allowance:
+          type: number
+          description: Cash allowance record for the given wage
+        tax_relief:
+          type: number
+          description: Rate deducted from taxable income corresponding to tax relief benefit
+        paye:
+          type: number
+          description: Income tax
+        loan_deduction:
+          type: number
+          description: Rate deducted for loan payment
+        loan_remainder:
+          type: number
+          description: Loan amount left
+        ssnit_tier_one:
+          type: number
+          description: Amount deducted for ssnit contribution from employee salary
+        ssnit_tear_two:
+          type: number
+          description: Amount paid by employer as ssnit contribution
+        ssnit_tier_total:
+          type: number
+          description: Total amount paid as ssnit contribution
+        pf_employee:
+          type: number
+          description: Provident fund deducted from employee salary
+        pf_employer:
+          type: number
+          description: Provident fund paid by employer
+        pf_total:
+          type: number
+          description: Total amount paid as provident fund contribution
+        total_earnings:
+          type: number
+          description: Total earnings
+        total_deductions:
+          type: number
+          description: Total Deductions
+        take_home_salary:
+          type: number
+          description: Net Salary                        
+      example:
+            id: 2
+            employee_id: 3
+            month: 4
+            year: 2022
+            salary: 10000
+            cash_allowance: 1500
+            tax_relief: 0
+            paye: 2229.75
+            loan_deduction: 0
+            loan_remainder: 0
+            ssnit_tier_one: 550
+            ssnit_tier_two: 1350
+            ssnit_tier_total: 1900
+            pf_employee: 600
+            pf_employer: 1050
+            pf_total: 1650
+            total_earnings: 11500
+            total_deductions: 3379.75
+            take_home_salary: 8120.25
+      xml:
+        name: Wages
+    Loans:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The auto generated ID for a loan record
+        employee_id:
+          type: integer
+          description: The ID of the employee that applied for the loan
+        month:
+          type: integer
+          description: Integer representation of the month employee applied for loan
+        year:
+          type: integer
+          description: Integer representation of the year employee applied for loan
+        initial_amount:
+          type: number
+          description: Amount applied for
+        amount_left:
+          type: number
+          description: Amount left to be paid
+        loan_deduction_rate:
+          type: number
+          description: Rate deducted from employee salary to pay for loan each month
+        approval_status:
+          type: boolean
+          description: Status of loan. Accepted or Pending Approval
+      example:
+            id: 1
+            employee_id: 3
+            month: 6
+            year: 2022
+            initial_amount: 5000
+            amount_left: 5000
+            loan_deduction_rate: 0
+            approval_status: false
+      xml:
+        name: Loans
+    TaxRelief:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The auto generated ID for a tax relief record
+        employee_email:
+          type: string
+          description: Email of employee
+        tax_relief_type:
+          type: string
+          description: The relief type the employee is qualified for
+        annual_amount:
+          type: number
+          description: Relief amount for a year
+        monthly_amount:
+          type: number
+          description: Relief amount for a month, deducted from taxable income
+        relief_desc:
+          type: string
+          description: Description of tax relief
+      example:
+            id: 1
+            employee_email: michael.hagan@amalitech.org
+            tax_relief_type: Educational
+            annual_amount: 5000
+            monthly_amount: 416.67
+            relief_desc: Tax Relief for students
+      xml:
+        name: TaxRelief
+    Users:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The auto generated ID for a user
+        email:
+          type: string
+          description: email for a given user
+        user_password:
+          type: string
+          description: Password for a given user
+        admin_role:
+          type: boolean
+          description: Denotes whether a user has admin privileges or not
+      example:
+            id: 1
+            email": michael.hagan@amalitech.org
+            user_password: admin
+            admin_role: true
+      xml:
+        name: Loans            
+servers:
+  - url: https://amalitechipayroll.herokuapp.com
+    variables:
+      '':
+        default: ''
+        enum:
+          - ''
+        description: ''
