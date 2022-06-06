@@ -132,9 +132,7 @@ export default function Home() {
         <div style={{minHeight:"100vh"}}>
             <div className="color-backgroung">
                 <Topbar />
-                {/* <Stat /> */}
                 <Sidebar />
-                {/* <Footer /> */}
                 <div className="wrapper">
                     <div className="header">
                         <h2>Welcome {current.firstname}</h2>

@@ -46,9 +46,7 @@ export default function Userform() {
 
     console.log(myData)
 
-
-
-    axios({
+     axios({
       method: 'post',
       url: 'https://amalitechipayroll.herokuapp.com/employees/send',
       data: myData,

@@ -1,17 +1,17 @@
 import React, {  useEffect, useState } from 'react';
-import "./Rate.css"
+import "./Loan.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const FileDownload = require('js-file-download');
 
-export default function Rate() {
-    const navigate = useNavigate();
+
+export default function Loan() {
+    // const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://amalitechipayroll.herokuapp.com/rates/all`)
+        axios.get(`https://amalitechipayroll.herokuapp.com/loans/all`)
             .then(response => {
                 setAPIData(response.data);
             })
@@ -29,13 +29,9 @@ export default function Rate() {
             <Sidebar />
             <div className="admin2">
                     <div className="Add-User">
-                        <button className="button1" onClick={() => {
-                        }}>
-                            Add Rate
-                        </button>
-                        <button className="button1" onClick={async() => {
+                    <button className="button1" onClick={async() => {
                        axios({
-                        url: 'https://amalitechipayroll.herokuapp.com/report/rates',
+                        url: 'https://amalitechipayroll.herokuapp.com/report/loans',
                         method: 'GET',
                         responseType: 'blob', // Important
                       }).then((response) => {
@@ -52,14 +48,13 @@ export default function Rate() {
                             <thead className="thead-color">
                                 <tr>
                                     <th>id</th>
-                                    <th>Rank</th>
-                                    <th>Salary</th>
-                                    <th>Allowance</th>
-                                    <th>Pf_employee</th>
-                                    <th>Pf_employer</th>
-                                    <th>SSNIT_tier_one</th>
-                                    <th>SSNIT_tier_two</th>
-
+                                    <th>employee_id</th>
+                                    <th>month</th>
+                                    <th>year</th>
+                                    <th>initial_amount</th>
+                                    <th>amount_left</th>
+                                    <th>deduction_rate</th>
+                                    <th>approval_status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,14 +65,13 @@ export default function Rate() {
                                     return (
                                         <tr>
                                             <td>{data.id}</td>
-                                            <td>{data.rank}</td>
-                                            <td>{data.salary}</td>
-                                            <td>{data.cash_allowance}</td>
-                                            <td>{data.pf_employee}</td>
-                                            <td>{data.pf_employer}</td>
-                                            <td>{data.ssnit_tier_one}</td>
-                                            <td>{data.ssnit_tier_two}</td>
-
+                                            <td>{data.employee_id}</td>
+                                            <td>{data.month}</td>
+                                            <td>{data.year}</td>
+                                            <td>{data.initial_amount}</td>
+                                            <td>{data.amount_left}</td>
+                                            <td>{data.loan_deduction_rate}</td>
+                                            <td>{data.approval_status?"Approved":"Pending"}</td>
                                         </tr>
                                     )
                                 })}
