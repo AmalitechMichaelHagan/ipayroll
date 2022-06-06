@@ -108,6 +108,21 @@ export default function Sidebar() {
                         })}>
                             Rates
                         </NavLink>
+                        <NavLink to="/relief" style={({ isActive }) => ({
+                            listStyle: "none",
+                            textDecoration: "none",
+                            color: isActive ? "black" : "black",
+                            backgroundColor: isActive ? "white" : "rgb(172, 163, 163)",
+                            width: isActive? "190px": "100%",
+                            height: "8vh",
+                            textAlign: "center",
+                            paddingTop: "0.5em",
+                            paddingLeft: "1em",
+                            paddingRight: isActive? "4em": "0",
+                            fontSize: "1.2em"
+                        })}>
+                            Tax_Relief
+                        </NavLink>
 
 
                         {/* <NavLink to="/employee2" style={({ isActive }) => ({

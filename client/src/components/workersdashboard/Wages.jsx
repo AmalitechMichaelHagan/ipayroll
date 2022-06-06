@@ -30,10 +30,10 @@ export default function Wages() {
             <Sidebar />
             <div className="admin2">
                     <div className="Add-User">
-                        <button className="button2" onClick={() => {
-                            // navigate("/form")
+                        <button className="button1" onClick={() => {
+                           
                         }}>
-                            Send employees payslips
+                            Send employee payslips
                         </button>
                         <button className="button1" onClick={async() => {
                        axios({

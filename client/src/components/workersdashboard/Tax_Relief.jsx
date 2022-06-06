@@ -11,7 +11,7 @@ export default function Rate() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://amalitechipayroll.herokuapp.com/rates/all`)
+        axios.get(`https://amalitechipayroll.herokuapp.com/tax_relief/all`)
             .then(response => {
                 setAPIData(response.data);
             })
@@ -31,11 +31,11 @@ export default function Rate() {
                     <div className="Add-User">
                         <button className="button1" onClick={() => {
                         }}>
-                            Add Rate
+                            Add Tax Relief
                         </button>
                         <button className="button1" onClick={async() => {
                        axios({
-                        url: 'https://amalitechipayroll.herokuapp.com/report/rates',
+                        url: 'https://amalitechipayroll.herokuapp.com/report/tax_relief',
                         method: 'GET',
                         responseType: 'blob', // Important
                       }).then((response) => {
@@ -52,14 +52,11 @@ export default function Rate() {
                             <thead className="thead-color">
                                 <tr>
                                     <th>id</th>
-                                    <th>Rank</th>
-                                    <th>Salary</th>
-                                    <th>Allowance</th>
-                                    <th>Pf_employee</th>
-                                    <th>Pf_employer</th>
-                                    <th>SSNIT_tier_one</th>
-                                    <th>SSNIT_tier_two</th>
-
+                                    <th>Employee email</th>
+                                    <th>Type</th>
+                                    <th>Annual amount</th>
+                                    <th>Monthly amount</th>
+                                    <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,14 +67,11 @@ export default function Rate() {
                                     return (
                                         <tr>
                                             <td>{data.id}</td>
-                                            <td>{data.rank}</td>
-                                            <td>{data.salary}</td>
-                                            <td>{data.cash_allowance}</td>
-                                            <td>{data.pf_employee}</td>
-                                            <td>{data.pf_employer}</td>
-                                            <td>{data.ssnit_tier_one}</td>
-                                            <td>{data.ssnit_tier_two}</td>
-
+                                            <td>{data.employee_email}</td>
+                                            <td>{data.tax_relief_type}</td>
+                                            <td>{data.annual_amount}</td>
+                                            <td>{data.monthly_amount}</td>
+                                            <td>{data.relief_desc}</td>
                                         </tr>
                                     )
                                 })}

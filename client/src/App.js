@@ -15,6 +15,7 @@ import Wages from './components/workersdashboard/Wages';
 import EmployeeDashBoard from './components/employeedata/EmployeeDashBoard';
 import Loan from './components/workersdashboard/Loan';
 import Rate from './components/workersdashboard/Rate';
+import TaxRelief from './components/workersdashboard/Tax_Relief';
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/rate" element={<Rate />} />
         <Route path="/newuser" element={<Userform />} />
         <Route path="/employee2" element={<EmployeeDashBoard/>} />
+        <Route path="/relief" element={<TaxRelief/>} />
       </Routes>
     </BrowserRouter>
   );
