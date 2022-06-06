@@ -5,13 +5,13 @@ import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+const FileDownload = require('js-file-download');
 
 export default function Rate() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)
+        axios.get(`https://amalitechipayroll.herokuapp.com/rates/all`)
             .then(response => {
                 setAPIData(response.data);
             })
@@ -32,7 +32,19 @@ export default function Rate() {
                         <button className="button2" onClick={() => {
                             // navigate("/form")
                         }}>
-                            Send employee payslip
+                            Add Rate
+                        </button>
+                        <button className="button1" onClick={async() => {
+                       axios({
+                        url: 'https://amalitechipayroll.herokuapp.com/report/rates',
+                        method: 'GET',
+                        responseType: 'blob', // Important
+                      }).then((response) => {
+                          FileDownload(response.data, 'report.xlsx');
+                      });   
+                       
+                       }}>
+                            Download Report
                         </button>
                     </div>
 
@@ -46,8 +58,8 @@ export default function Rate() {
                                     <th>Allowance</th>
                                     <th>Pf_employee</th>
                                     <th>Pf_employer</th>
-                                    <th>SSNI_tier_one</th>
-                                    <th>SSNI_tier_two</th>
+                                    <th>SSNIT_tier_one</th>
+                                    <th>SSNIT_tier_two</th>
 
                                 </tr>
                             </thead>
@@ -62,7 +74,7 @@ export default function Rate() {
                                             <td>{data.rank}</td>
                                             <td>{data.salary}</td>
                                             <td>{data.cash_allowance}</td>
-                                            <td>{data.Pf_employee}</td>
+                                            <td>{data.pf_employee}</td>
                                             <td>{data.pf_employer}</td>
                                             <td>{data.ssnit_tier_one}</td>
                                             <td>{data.ssnit_tier_two}</td>

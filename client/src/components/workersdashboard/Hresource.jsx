@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import Footer from "../footer/Footer";
+const FileDownload = require('js-file-download');
 
 
 export default function Hresource() {
@@ -37,20 +38,33 @@ export default function Hresource() {
                         }}>
                             Add Employee
                         </button>
+                        <button className="button1" onClick={async() => {
+                       axios({
+                        url: 'https://amalitechipayroll.herokuapp.com/report/employees',
+                        method: 'GET',
+                        responseType: 'blob', // Important
+                      }).then((response) => {
+                          FileDownload(response.data, 'report.xlsx');
+                      });   
+                       
+                       }}>
+                            Download Report
+                        </button>
                     </div>
 
                     <form action="/" method="POST">
                         <table className="table">
                             <thead className="thead-color">
                                 <tr>
-                                    <th>First</th>
-                                    <th>Last</th>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Gender</th>
                                     <th>E-mail</th>
                                     <th>Phone </th>
                                     <th>SSNIT</th>
-                                    <th>Gender</th>
+                                    <th>TIN</th>
                                     <th>Department</th>
-                                    <th>Start Date</th>
                                     <th>Rank</th>
                                 </tr>
                             </thead>
@@ -61,14 +75,15 @@ export default function Hresource() {
 
                                     return (
                                         <tr>
+                                            <td>{data.id}</td>
                                             <td>{data.firstname}</td>
                                             <td>{data.surname}</td>
+                                            <td>{data.gender}</td>
                                             <td>{data.email}</td>
                                             <td>{data.phone_number}</td>
                                             <td>{data.ssnit_number}</td>
-                                            <td>{data.gender}</td>
+                                            <td>{data.tin_number}</td>
                                             <td>{data.department}</td>
-                                            <td>{data.work_start_date}</td>
                                             <td>{data.rank}</td>
                                         </tr>
                                     )

@@ -125,7 +125,7 @@ export default function Home() {
 
     }
 
-    console.log("2",current,"\n")
+
     
     return (
         current.isAdmin?
@@ -183,7 +183,7 @@ export default function Home() {
                             <p className="grid2">{loanState}</p>
                             <p className="grid2"></p>
                         </div>
-                        <div className="shadow">
+                        <div id="hover" className="shadow" style={{cursor:"pointer"}} onClick={loanApply}>
                         <div className="icons">
                             <GiReceiveMoney />
                             </div>

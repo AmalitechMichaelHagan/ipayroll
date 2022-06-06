@@ -43,7 +43,7 @@ export default function Sidebar() {
                             fontSize: "1.2em"
 
                         })}>
-                            Employee
+                            Employees
                         </NavLink>
 
                         {/* <NavLink to="/employee" style={({ isActive }) => ({
@@ -91,7 +91,7 @@ export default function Sidebar() {
                             paddingRight: isActive? "4em": "0",
                             fontSize: "1.2em"
                         })}>
-                            Loan
+                            Loans
                         </NavLink>
                         <NavLink to="/rate" style={({ isActive }) => ({
                             listStyle: "none",
@@ -106,7 +106,7 @@ export default function Sidebar() {
                             paddingRight: isActive? "4em": "0",
                             fontSize: "1.2em"
                         })}>
-                            Rate
+                            Rates
                         </NavLink>
 
 

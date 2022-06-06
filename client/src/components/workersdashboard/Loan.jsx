@@ -5,13 +5,14 @@ import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const FileDownload = require('js-file-download');
 
 
 export default function Loan() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)
+        axios.get(`https://amalitechipayroll.herokuapp.com/loans/all`)
             .then(response => {
                 setAPIData(response.data);
             })
@@ -29,10 +30,17 @@ export default function Loan() {
             <Sidebar />
             <div className="admin2">
                     <div className="Add-User">
-                        <button className="button2" onClick={() => {
-                            // navigate("/form")
-                        }}>
-                            Send employee payslip
+                    <button className="button1" onClick={async() => {
+                       axios({
+                        url: 'https://amalitechipayroll.herokuapp.com/report/loans',
+                        method: 'GET',
+                        responseType: 'blob', // Important
+                      }).then((response) => {
+                          FileDownload(response.data, 'report.xlsx');
+                      });   
+                       
+                       }}>
+                            Download Report
                         </button>
                     </div>
 
@@ -42,10 +50,11 @@ export default function Loan() {
                                 <tr>
                                     <th>id</th>
                                     <th>employee_id</th>
-                                    <th>name</th>
+                                    <th>month</th>
+                                    <th>year</th>
                                     <th>initial_amount</th>
                                     <th>amount_left</th>
-                                    <th>loan_deduction</th>
+                                    <th>deduction_rate</th>
                                     <th>approval_status</th>
                                 </tr>
                             </thead>
@@ -58,11 +67,12 @@ export default function Loan() {
                                         <tr>
                                             <td>{data.id}</td>
                                             <td>{data.employee_id}</td>
-                                            <td>{data.surname}</td>
+                                            <td>{data.month}</td>
+                                            <td>{data.year}</td>
                                             <td>{data.initial_amount}</td>
                                             <td>{data.amount_left}</td>
                                             <td>{data.loan_deduction_rate}</td>
-                                            <td>{data.approval_status}</td>
+                                            <td>{data.approval_status?"Approved":"Pending"}</td>
                                         </tr>
                                     )
                                 })}

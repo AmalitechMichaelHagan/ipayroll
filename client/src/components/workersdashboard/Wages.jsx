@@ -5,13 +5,14 @@ import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const FileDownload = require('js-file-download');
 
 
 export default function Wages() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)
+        axios.get(`https://amalitechipayroll.herokuapp.com/wages/all`)
             .then(response => {
                 setAPIData(response.data);
             })
@@ -32,7 +33,19 @@ export default function Wages() {
                         <button className="button2" onClick={() => {
                             // navigate("/form")
                         }}>
-                            Send employee payslip
+                            Send employees payslips
+                        </button>
+                        <button className="button1" onClick={async() => {
+                       axios({
+                        url: 'https://amalitechipayroll.herokuapp.com/report/wages',
+                        method: 'GET',
+                        responseType: 'blob', // Important
+                      }).then((response) => {
+                          FileDownload(response.data, 'report.xlsx');
+                      });   
+                       
+                       }}>
+                            Download Report
                         </button>
                     </div>
 
@@ -40,14 +53,12 @@ export default function Wages() {
                         <table className="table">
                             <thead className="thead-color">
                                 <tr>
-                                    <th>id</th>
-                                    <th>name</th>
-                                    <th>month</th>
-                                    <th>year</th>
-                                    <th>total_earning</th>
-                                    <th>total_deduction</th>
-                                    <th>take_home_salary</th>
-                                    <th>rank</th>
+                                    <th>Employee ID</th>
+                                    <th>Month</th>
+                                    <th>Year</th>
+                                    <th>Total Earnings</th>
+                                    <th>Total Deductions</th>
+                                    <th>Net Salary</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,14 +68,12 @@ export default function Wages() {
 
                                     return (
                                         <tr>
-                                            <td>{data.id}</td>
-                                            <td>{data.surname}</td>
+                                            <td>{data.employee_id}</td>
                                             <td>{data.month}</td>
                                             <td>{data.year}</td>
                                             <td>{data.total_earnings}</td>
                                             <td>{data.total_deductions}</td>
                                             <td>{data.take_home_salary}</td>
-                                            <td>{data.rank}</td>
                                         </tr>
                                     )
                                 })}
