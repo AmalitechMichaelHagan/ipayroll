@@ -47,7 +47,7 @@ export default function Hresource() {
                                     <th>Last</th>
                                     <th>E-mail</th>
                                     <th>Phone </th>
-                                    <th>SSNIT Number</th>
+                                    <th>SSNIT</th>
                                     <th>Gender</th>
                                     <th>Department</th>
                                     <th>Start Date</th>

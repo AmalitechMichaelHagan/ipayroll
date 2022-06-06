@@ -1,14 +1,10 @@
 import React from 'react';
 import "./Topbar.css";
 import PayrollImg from "../../assets/ipayroll.jpeg";
-import { useNavigate, NavLink } from "react-router-dom";
-import { Button } from 'bootstrap';
+import {  NavLink } from "react-router-dom";
 
 
 export default function Topbar() {
-
-    const navigate = useNavigate()
-
 
     return (
         <div className="topbar">

@@ -11,8 +11,10 @@ import "./App.css"
 import Hresource from "./components/workersdashboard/Hresource";
 import Userform from "./components/workersdashboard/Userform";
 import LoanDashboard from "./components/dashboard/LoanDashboard";
-import Rate from './components/workersdashboard/Rate';
+import Wages from './components/workersdashboard/Wages';
 import EmployeeDashBoard from './components/employeedata/EmployeeDashBoard';
+import Loan from './components/workersdashboard/Loan';
+import Rate from './components/workersdashboard/Rate';
 
 
 
@@ -25,6 +27,8 @@ function App() {
         <Route path="/admin" element={<Hresource />} />
         <Route path="/form" element={<Userform />} />
         <Route path="/employee" element={<LoanDashboard />} />
+        <Route path="/wages" element={<Wages />} />
+        <Route path="/loan" element={<Loan />} />
         <Route path="/rate" element={<Rate />} />
         <Route path="/newuser" element={<Userform />} />
         <Route path="/employee2" element={<EmployeeDashBoard/>} />
