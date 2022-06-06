@@ -3,7 +3,7 @@ var router = express.Router();
 const pool = require("../db");
 const xml = require('xml');
 
-router.get("/ssnit", async (req, res, next) => {
+router.post("/ssnit", async (req, res, next) => {
 
     try {
 
@@ -68,7 +68,7 @@ router.get("/ssnit", async (req, res, next) => {
 })
 
 
-router.get("/gra", async (req, res, next) => {
+router.post("/gra", async (req, res, next) => {
     try {
 
         const { month, year } = req.body;
