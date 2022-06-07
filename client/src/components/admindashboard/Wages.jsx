@@ -28,9 +28,9 @@ export default function Wages() {
             <Topbar />
             <main2>
             <Sidebar />
-            <div className="admin2">
+            <div className="admin3">
                     <div className="Add-User">
-                        <button className="button2" onClick={() => {
+                        <button className="button4" onClick={() => {
                            
                         }}>
                             Send employee payslips

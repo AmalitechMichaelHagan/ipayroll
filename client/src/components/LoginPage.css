@@ -5,14 +5,23 @@ button[type="button"]:hover {
   }
 
   .login-form{
-      margin-top: 10%;
+    position: relative;
+      margin-top: 5%;
       display: flex;
       justify-content: center;
       position: relative;
-      /* background-image: url("../assets/ipayroii.jpg"); */
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
+  }
+  .back{
+    width: 100%;
+    position: absolute;
+    /* background-image: url("../assets/ipayroii.jpg"); */
+    /* border: 1px solid red; */
+    padding: 15%;
+    background-color: rgb(164, 159, 159);
+
   }
 
   .login-title{
@@ -26,7 +35,7 @@ button[type="button"]:hover {
       color: wheat;
   }
   .form-style2{
-      background-color: rgb(95, 6, 12);
+      background-color:#330808;
       width: 40%;
       border-color: rgba(29, 27, 28, 0.185);
       border-radius: 10px;

@@ -10,8 +10,6 @@ const FileDownload = require('js-file-download');
 
 
 export default function Loan() {
-    // const navigate = useNavigate();
-
     useEffect(() => {
         axios.get(`https://amalitechipayroll.herokuapp.com/loans/all`)
             .then(response => {
@@ -101,9 +99,9 @@ export default function Loan() {
             <Topbar />
             <main2>
             <Sidebar />
-            <div className="admin2">
+            <div className="admin3">
                     <div className="Add-User">
-                    <button className="button1" onClick={async() => {
+                    <button className="button3" onClick={async() => {
                        axios({
                         url: 'https://amalitechipayroll.herokuapp.com/report/loans',
                         method: 'GET',
