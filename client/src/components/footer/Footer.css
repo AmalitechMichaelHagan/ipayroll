@@ -1,5 +1,5 @@
 footer {
-    position: absolute;
+    position: fixed;
     display: flex;
     margin: 0;
     bottom: 0;
