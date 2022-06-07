@@ -50,6 +50,7 @@ export default function Wages() {
             case 10: date = `October ${year}`;break;
             case 11: date = `November ${year}`;break;
             case 12: date = `December ${year}`;break;
+            default: date = 'This month';
           }
 
                 Swal.fire({
