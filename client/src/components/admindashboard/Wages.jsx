@@ -54,7 +54,6 @@ export default function Wages() {
                             <thead className="thead-color">
                                 <tr>
                                     <th>Employee_ID</th>
-                                    <th>User_Name</th>
                                     <th>Month</th>
                                     <th>Year</th>
                                     <th>Total_earnings</th>
@@ -70,7 +69,6 @@ export default function Wages() {
                                     return (
                                         <tr>
                                             <td>{data.employee_id}</td>
-                                            <td>{data.surname}</td>
                                             <td>{data.month}</td>
                                             <td>{data.year}</td>
                                             <td>{data.total_earnings}</td>
