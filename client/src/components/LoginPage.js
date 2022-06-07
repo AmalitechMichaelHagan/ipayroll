@@ -4,7 +4,7 @@ import './LoginPage.css';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2';
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import {setUser} from '../store/userSlice'
 
 
@@ -15,7 +15,7 @@ export function LoginPage() {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  let userData = useSelector(state => state.users);
+  // let userData = useSelector(state => state.users);
 
   async function getUserData() {
     try {
@@ -94,7 +94,7 @@ export function LoginPage() {
 
   return (
     <div className="login-form">
-      <form className='form-style2' onSubmit={handleSubmit((APIData) => setAPIData(JSON.stringify(APIData)))}>
+      <form className='form-style2' onSubmit={handleSubmit((APIData))}>
         <div className="loh-header">
           <h1 className='login-title'>LOGIN</h1>
         </div>
