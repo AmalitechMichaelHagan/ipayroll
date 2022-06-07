@@ -27,9 +27,9 @@ export default function Rate() {
             <Topbar />
             <main2>
             <Sidebar />
-            <div className="admin2">
+            <div className="admin4">
                     <div className="Add-User">
-                        <button className="button1" onClick={() => {
+                        <button className="button2" onClick={() => {
                             navigate("/form")
                         }}>
                             Add Tax Relief
