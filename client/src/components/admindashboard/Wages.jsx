@@ -3,6 +3,7 @@ import "./Wages.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
+import Swal from 'sweetalert2';
 // import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const FileDownload = require('js-file-download');
@@ -16,12 +17,59 @@ export default function Wages() {
             .then(response => {
                 setAPIData(response.data);
             })
+            axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)
+            .then(response => {
+                setUserData(response.data);
+            })
     }, [])
 
     const [APIData, setAPIData] = useState([]);
-    useEffect(() => {
+    const [userData,setUserData] = useState([]);
 
-    }, [])
+
+    const sendPayslips = () =>{
+                let date_ob = new Date();
+
+                var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+                
+                if(month[0] === "0"){month = month.slice(1)}
+
+                var year = date_ob.getFullYear();
+
+                Swal.fire({
+                    title: `This will generate and send employee payslips`,
+                    text: "You won't be able to revert this. Do you wish to proceed?",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#551515',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                    userData.forEach((user)=>{
+                        let myData = {
+                            "email":user.email, 
+                            "month":month, 
+                            "year":year
+                          }
+                      
+                          axios({
+                            method: 'post',
+                            url: 'https://amalitechipayroll.herokuapp.com/wages/generate',
+                            data: myData,
+                            headers: { 'Authorization': 'Bearer ...' }
+                          });
+                      })
+                      Swal.fire(
+                        `Payslips issued`,
+                        'Employees will receive slips via mail',
+                        'success'
+                      )
+                    }
+                    
+                  })
+
+    }
 
     return (
         <>
@@ -30,9 +78,7 @@ export default function Wages() {
             <Sidebar />
             <div className="admin2">
                     <div className="Add-User">
-                        <button className="button1" onClick={() => {
-                           
-                        }}>
+                        <button className="button1" onClick={sendPayslips}>
                             Send employee payslips
                         </button>
                         <button className="button1" onClick={async() => {

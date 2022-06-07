@@ -34,6 +34,7 @@ export default function Loan() {
             },
             showCancelButton: true,
             confirmButtonText: 'Submit',
+            confirmButtonColor:'#551515',
             showLoaderOnConfirm: true,
             preConfirm: (rate) => {
             if(isNaN(rate)||rate === ""||rate>100){
@@ -70,7 +71,7 @@ export default function Loan() {
             text: "You won't be able to revert this",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#551515',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Delete'
           }).then((result) => {

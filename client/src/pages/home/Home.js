@@ -75,6 +75,7 @@ export default function Home() {
             },
             showCancelButton: true,
             confirmButtonText: 'Submit',
+            confirmButtonColor: '#551515',
             showLoaderOnConfirm: true,
             preConfirm: (amount) => {
             if(isNaN(amount)||amount === ""){
@@ -92,7 +93,7 @@ export default function Home() {
                 
                 var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
                 
-                if(month[0] === "0"){month.slice(1)}
+                if(month[0] === "0"){month = month.slice(1)}
 
                 var year = date_ob.getFullYear();
                 
