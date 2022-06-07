@@ -116,9 +116,12 @@ export default function Userform() {
               checked={admin}
               onChange={handleChange} />
           </div>
+          </div>
+          <hr />
+          <div className="emplo-form">
           <input type="submit" className="login-button2" style={{ color: "white", width: "12em", marginLeft: "2em" }} />
-        </div>
         <hr />
+        </div>
       </form>
     </div>
   );
