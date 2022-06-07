@@ -16,9 +16,14 @@ router.get("/all", async (req, res, next) => {
 
 router.post("/generate", async (req, res, next) => {
     try {
-        const { email, month, year } = req.body;
+        const {month,year} = req.body
 
-        let employee_data = await pool.query("SELECT * FROM employees WHERE email=($1)", [email]);
+        let employees = await pool.query("SELECT * FROM employees");
+        employees = employees.rows;
+        const resultList=[];
+
+        for(const employee of employees){
+        let employee_data = await pool.query("SELECT * FROM employees WHERE email=($1)", [employee.email]);
         employee_data = employee_data.rows[0];
         console.log(JSON.stringify(employee_data));
         console.log('\nRank: ',employee_data.rank);
@@ -43,7 +48,7 @@ router.post("/generate", async (req, res, next) => {
 
         if (employee_data.tax_relief) {
 
-            let tax_relief_data = await pool.query("SELECT monthly_amount FROM tax_relief WHERE employee_email=($1)", [email]);
+            let tax_relief_data = await pool.query("SELECT monthly_amount FROM tax_relief WHERE employee_email=($1)", [employee.email]);
             tax_relief_data = tax_relief_data.rows[0];
             tax_relief = tax_relief_data.monthly_amount;
 
@@ -78,7 +83,7 @@ router.post("/generate", async (req, res, next) => {
 
         console.log(path,"\n",file);
 
-        tool.sendMail(email,"Payslip",`Hello ${employee_data.firstname},
+        tool.sendMail(employee.email,"Payslip",`Hello ${employee_data.firstname},
         find attached your payslip for ${result.date}
         
         Regards,
@@ -89,8 +94,10 @@ router.post("/generate", async (req, res, next) => {
         }
         ).catch(console.error);
 
-        result.pdf = pdfres;
-        req.body = result;
+        console.log(pdfres);
+        resultList.push(result);
+    }
+        req.body.resultList = resultList;
         next();
 
     } catch (e) {
@@ -102,6 +109,11 @@ router.post("/generate", async (req, res, next) => {
 
 router.post("/generate", async (req, res) => {
     try {
+        const wageList = req.body.resultList;
+
+        console.log(wageList);
+
+        for(const wage of wageList){
         const {
             employee_id,
             month,
@@ -121,7 +133,7 @@ router.post("/generate", async (req, res) => {
             total_earnings,
             total_deductions,
             take_home_salary
-        } = req.body;
+        } = wage;
 
         const newWage = await pool.query(`INSERT INTO wages(
             employee_id,
@@ -181,8 +193,10 @@ router.post("/generate", async (req, res) => {
             [loan_remainder, employee_id]);
                 
         }
+    }
+        
 
-        res.json(newWage.rows);
+        res.send(wageList);
 
     } catch (e) {
         console.log(e);
@@ -260,6 +274,23 @@ router.delete("/delete/:id", async (req, res, next) => {
     } catch (e) {
         res.send(e.message);
     }
+
+})
+
+router.post("/broadcast",async(req,res)=>{
+try{
+
+
+
+
+
+
+}catch(e){
+    console.log(e.message);
+    res.send(e);
+}
+
+
 
 })
 
