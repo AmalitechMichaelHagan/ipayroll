@@ -78,9 +78,11 @@ export default function Wages() {
             <Topbar />
             <main2>
             <Sidebar />
-            <div className="admin2">
+            <div className="admin3">
                     <div className="Add-User">
-                        <button className="button1" onClick={sendPayslips}>
+                        <button className="button4" onClick={() => {
+                           
+                        }}>
                             Send employee payslips
                         </button>
                         <button className="button1" onClick={async() => {

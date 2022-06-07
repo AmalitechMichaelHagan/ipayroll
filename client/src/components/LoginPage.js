@@ -93,6 +93,7 @@ export function LoginPage() {
   }, [])
 
   return (
+    <div className="back">
     <div className="login-form">
       <form className='form-style2' onSubmit={handleSubmit((APIData))}>
         <div className="loh-header">
@@ -102,6 +103,7 @@ export function LoginPage() {
         <input {...register("password")} placeholder="Enter password" className="inner-shadow" value={pass} onChange={(e) => setPass(e.target.value)} />
         <input type="submit" onClick={handleClick} className="login-button" />
       </form>
+    </div>
     </div>
   );
 }
