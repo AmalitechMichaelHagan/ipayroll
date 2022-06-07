@@ -522,17 +522,24 @@ paths:
         - Wages
   /wages/generate:
     summary: Send data to wages table
-    description: This endpoint will be used to send data to the wages table, sends an email to the provided email in the request body with the wage record 
+    description: This endpoint will be used to send data to the wages table. Sends an email to all employees at the provided month and year with their payslips. 
     post:
       summary: Send data to wages table
-      description: This endpoint will be used to send data to the wages table
+      description: This endpoint will be used to send data to the wages table. Sends an email to all employees at the provided month and year month with their payslips.
       operationId: post_wages
       requestBody:
-        description: A new wage object
+        description: The value(s) to update.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Wages'
+              type: object
+              properties:
+                month:
+                  type: integer
+                  description: The numerical value of the month to generate payslips for.
+                year:
+                  type: integer
+                  description: The numerical value of the month to generate payslips for.
       responses:
         default:
           description: Default error sample response
@@ -541,27 +548,158 @@ paths:
               examples:
                 wages:
                   value: |-
-                      {
-                          "id"  : 1,
-                          "employee_id": 2,
-                          "month": 4,
-                          "year": 2022,
-                          "salary": 75000,
-                          "cash_allowance": 1000,
-                          "tax_relief": 0,
-                          "paye": 10642.25,
-                          "loan_deduction": 0,
-                          "loan_remainder": 0,
-                          "ssnit_tier_one": 4125,
-                          "ssnit_tier_two": 10125,
-                          "ssnit_tier_total": 14250,
-                          "pf_employee": 4500,
-                          "pf_employer": 7875,
-                          "pf_total": 12375,
-                          "total_earnings": 76000,
-                          "total_deductions": 19267.25,
-                          "take_home_salary": 56732.75
-                      }
+                      [
+                        {
+                            "employee_id": 1,
+                            "month": 2,
+                            "year": 2022,
+                            "salary": 10000,
+                            "cash_allowance": 2000,
+                            "tax_relief": 0,
+                            "paye": 2354.75,
+                            "loan_deduction": 0,
+                            "loan_remainder": 0,
+                            "ssnit_tier_one": 550,
+                            "ssnit_tier_two": 1350,
+                            "ssnit_tier_total": 1900,
+                            "pf_employee": 600,
+                            "pf_employer": 1050,
+                            "pf_total": 1650,
+                            "total_earnings": 12000,
+                            "total_deductions": 3504.75,
+                            "take_home_salary": 8495.25,
+                            "full_name": "admin admin",
+                            "date": "February 2022",
+                            "department": "admin",
+                            "ssnit_number": "00000000",
+                            "rank": "Level1"
+                        },
+                        {
+                            "employee_id": 4,
+                            "month": 2,
+                            "year": 2022,
+                            "salary": 10000,
+                            "cash_allowance": 2000,
+                            "tax_relief": 0,
+                            "paye": 2354.75,
+                            "loan_deduction": 0,
+                            "loan_remainder": 0,
+                            "ssnit_tier_one": 550,
+                            "ssnit_tier_two": 1350,
+                            "ssnit_tier_total": 1900,
+                            "pf_employee": 600,
+                            "pf_employer": 1050,
+                            "pf_total": 1650,
+                            "total_earnings": 12000,
+                            "total_deductions": 3504.75,
+                            "take_home_salary": 8495.25,
+                            "full_name": "Jon Snow",
+                            "date": "February 2022",
+                            "department": "Accountant",
+                            "ssnit_number": "653785",
+                            "rank": "Level1"
+                        },
+                        {
+                            "employee_id": 3,
+                            "month": 2,
+                            "year": 2022,
+                            "salary": 10000,
+                            "cash_allowance": 2000,
+                            "tax_relief": 416.67,
+                            "paye": 2250.58,
+                            "loan_deduction": 500,
+                            "loan_remainder": 2000,
+                            "ssnit_tier_one": 550,
+                            "ssnit_tier_two": 1350,
+                            "ssnit_tier_total": 1900,
+                            "pf_employee": 600,
+                            "pf_employer": 1050,
+                            "pf_total": 1650,
+                            "total_earnings": 12000,
+                            "total_deductions": 3900.58,
+                            "take_home_salary": 8099.42,
+                            "full_name": "Michael Hagan",
+                            "date": "February 2022",
+                            "department": "I.T",
+                            "ssnit_number": "23456789",
+                            "rank": "Level1"
+                        },
+                        {
+                            "employee_id": 11,
+                            "month": 2,
+                            "year": 2022,
+                            "salary": 5000,
+                            "cash_allowance": 500,
+                            "tax_relief": 0,
+                            "paye": 886,
+                            "loan_deduction": 0,
+                            "loan_remainder": 0,
+                            "ssnit_tier_one": 275,
+                            "ssnit_tier_two": 675,
+                            "ssnit_tier_total": 950,
+                            "pf_employee": 250,
+                            "pf_employer": 575,
+                            "pf_total": 825,
+                            "total_earnings": 5500,
+                            "total_deductions": 1411,
+                            "take_home_salary": 4089,
+                            "full_name": "francis coffie",
+                            "date": "February 2022",
+                            "department": "account",
+                            "ssnit_number": "2655526655",
+                            "rank": "Level3"
+                        },
+                        {
+                            "employee_id": 2,
+                            "month": 2,
+                            "year": 2022,
+                            "salary": 75000,
+                            "cash_allowance": 1000,
+                            "tax_relief": 100,
+                            "paye": 10642.25,
+                            "loan_deduction": 0,
+                            "loan_remainder": 0,
+                            "ssnit_tier_one": 4125,
+                            "ssnit_tier_two": 10125,
+                            "ssnit_tier_total": 14250,
+                            "pf_employee": 4500,
+                            "pf_employer": 7875,
+                            "pf_total": 12375,
+                            "total_earnings": 76000,
+                            "total_deductions": 19267.25,
+                            "take_home_salary": 56732.75,
+                            "full_name": "Michael Hagan",
+                            "date": "February 2022",
+                            "department": "I.T",
+                            "ssnit_number": "23456789",
+                            "rank": "Level2"
+                        },
+                        {
+                            "employee_id": 12,
+                            "month": 2,
+                            "year": 2022,
+                            "salary": 10000,
+                            "cash_allowance": 2000,
+                            "tax_relief": 0,
+                            "paye": 2354.75,
+                            "loan_deduction": 0,
+                            "loan_remainder": 0,
+                            "ssnit_tier_one": 550,
+                            "ssnit_tier_two": 1350,
+                            "ssnit_tier_total": 1900,
+                            "pf_employee": 600,
+                            "pf_employer": 1050,
+                            "pf_total": 1650,
+                            "total_earnings": 12000,
+                            "total_deductions": 3504.75,
+                            "take_home_salary": 8495.25,
+                            "full_name": "Michael Hagan",
+                            "date": "February 2022",
+                            "department": "I.T",
+                            "ssnit_number": "23456789",
+                            "rank": "Level1"
+                        }
+                      ]
       tags:
         - Wages
   /wages/update/{id}:
