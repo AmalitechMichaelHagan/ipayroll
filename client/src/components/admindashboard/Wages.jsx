@@ -17,27 +17,43 @@ export default function Wages() {
             .then(response => {
                 setAPIData(response.data);
             })
-            axios.get(`https://amalitechipayroll.herokuapp.com/employees/all`)
-            .then(response => {
-                setUserData(response.data);
-            })
     }, [])
 
     const [APIData, setAPIData] = useState([]);
-    const [userData,setUserData] = useState([]);
 
 
     const sendPayslips =  () =>{
-                let date_ob = new Date();
 
-                var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-                
-                if(month[0] === "0"){month = month.slice(1)}
 
-                var year = date_ob.getFullYear();
+        let date_ob = new Date();
+
+        let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+        
+        if(month[0] === "0"){month = month.slice(1)}
+
+        month = parseInt(month);
+
+        let year = date_ob.getFullYear();
+
+        let date = '';
+
+        switch(month){
+            case 1: date = `January ${year}`;break;
+            case 2: date = `February ${year}`;break;
+            case 3: date = `March ${year}`;break;
+            case 4: date = `April ${year}`;break;
+            case 5: date = `May ${year}`;break;
+            case 6: date = `June ${year}`;break;
+            case 7: date = `July ${year}`;break;
+            case 8: date = `August ${year}`;break;
+            case 9: date = `September ${year}`;break;
+            case 10: date = `October ${year}`;break;
+            case 11: date = `November ${year}`;break;
+            case 12: date = `December ${year}`;break;
+          }
 
                 Swal.fire({
-                    title: `This will generate and send employee payslips`,
+                    title: `This will generate and send employee payslips for ${date}`,
                     text: "You won't be able to revert this. Do you wish to proceed?",
                     icon: 'question',
                     showCancelButton: true,
@@ -46,22 +62,16 @@ export default function Wages() {
                     confirmButtonText: 'Yes'
                   }).then((result) => {
                     if (result.isConfirmed) {
-                    userData.forEach((user)=>{
-                        let myData = {
-                            "email":user.email, 
-                            "month":month, 
-                            "year":year
-                          }
-
-                          console.log(myData)
-                      
                           axios({
                             method: 'post',
+                            data:{
+                                "month":month,
+                                "year":year
+                            },
                             url: 'https://amalitechipayroll.herokuapp.com/wages/generate',
-                            data: myData,
                             headers: { 'Authorization': 'Bearer ...' }
                           });
-                      })
+                      
                       Swal.fire(
                         `Payslips issued`,
                         'Employees will receive slips via mail',
@@ -80,9 +90,7 @@ export default function Wages() {
             <Sidebar />
             <div className="admin3">
                     <div className="Add-User">
-                        <button className="button4" onClick={() => {
-                           
-                        }}>
+                        <button className="button4" onClick={sendPayslips}>
                             Send employee payslips
                         </button>
                         <button className="button1" onClick={async() => {
@@ -103,6 +111,7 @@ export default function Wages() {
                         <table className="table">
                             <thead className="thead-color">
                                 <tr>
+                                    <th>ID</th>
                                     <th>Employee_ID</th>
                                     <th>Month</th>
                                     <th>Year</th>
@@ -118,6 +127,7 @@ export default function Wages() {
 
                                     return (
                                         <tr>
+                                            <td>{data.id}</td>
                                             <td>{data.employee_id}</td>
                                             <td>{data.month}</td>
                                             <td>{data.year}</td>
