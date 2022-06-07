@@ -6,6 +6,7 @@ import axios from 'axios';
 import Footer from '../footer/Footer';
 import Topbar from '../topbar/Topbar';
 import Sidebar from '../sidebar/Sidebar';
+import { useNavigate } from "react-router-dom";
 
 
 export default function TaxRelief() {
@@ -15,13 +16,14 @@ export default function TaxRelief() {
     const [amount, setAmount] = useState('');
     const [monthlyamount, setMounthlyamount] = useState('');
     const [reliefdesc, setReliefdesc] = useState('');
+    const navigate = useNavigate();
 
     const postData = e => {
         e.preventDefault();
         let myData = {
             "employee_email": email,
             "tax_relief_type": taxrelief,
-            "anual_amount": amount,
+            "annual_amount": amount,
             "monthly_amount": monthlyamount,
             "relief_desc": reliefdesc,
         }
@@ -46,7 +48,7 @@ export default function TaxRelief() {
         setMounthlyamount('')
         setReliefdesc('')
 
-        // navigate("/admin")
+        navigate("/relief")
 
     }
 
@@ -64,7 +66,7 @@ export default function TaxRelief() {
                 </div>
                 <hr />
                 <div className="emplo-form3">
-                    <input {...register("monthlyamount")} placeholder="Enter Mounthly Amount" value={monthlyamount} onChange={(e) => setMounthlyamount(e.target.value)} />
+                    <input {...register("monthlyamount")} placeholder="Enter Monthly Amount" value={monthlyamount} onChange={(e) => setMounthlyamount(e.target.value)} />
                     <input {...register("reliefdesc")} placeholder="Enter Relief_Desc" value={reliefdesc} onChange={(e) => setReliefdesc(e.target.value)} />
                 </div>
                 <hr />
