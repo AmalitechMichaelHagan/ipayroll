@@ -1,9 +1,11 @@
+import Swal from 'sweetalert2';
 import React, {  useEffect, useState } from 'react';
 import "./Loan.css"
 import Topbar from "../topbar/Topbar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import axios from "axios";
+import {IoIosCheckmarkCircle,IoIosCloseCircle} from "react-icons/io"
 const FileDownload = require('js-file-download');
 
 
@@ -21,6 +23,78 @@ export default function Loan() {
     useEffect(() => {
 
     }, [])
+
+
+    const acceptLoan = (id) =>{
+        Swal.fire({
+            title: 'Enter Loan Deduction Rate',
+            input: 'text',
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            showLoaderOnConfirm: true,
+            preConfirm: (rate) => {
+            if(isNaN(rate)||rate === ""||rate>100){
+                Swal.showValidationMessage(
+                    `Enter Valid input`
+                  )
+            }else{
+
+                let myData = {
+                    "response": true,
+                    "employee_id": id,
+                    "deduction_rate":rate
+                  }
+              
+                  axios({
+                    method: 'put',
+                    url: 'https://amalitechipayroll.herokuapp.com/loans/review',
+                    data: myData,
+                    headers: { 'Authorization': 'Bearer ...' }
+                  });
+                Swal.fire(
+                    `Done`,
+                    `Loan Request accepted`,
+                    'success'
+                  )
+            }
+        }
+          })
+    }
+
+    const denyLoan = (id) =>{
+        Swal.fire({
+            title: 'Are you sure you want to decline this loan?',
+            text: "You won't be able to revert this",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Delete'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                let myData = {
+                    "response": false,
+                    "employee_id": id,
+                  }
+              
+                  axios({
+                    method: 'put',
+                    url: 'https://amalitechipayroll.herokuapp.com/loans/review',
+                    data: myData,
+                    headers: { 'Authorization': 'Bearer ...' }
+                  });
+
+              Swal.fire(
+                'Loan Rejected',
+                'Loan record has been deleted',
+                'success'
+              )
+            }
+          })
+    }
 
     return (
         <>
@@ -43,7 +117,7 @@ export default function Loan() {
                         </button>
                     </div>
 
-                    <form action="/" method="POST">
+                   
                         <table className="table">
                             <thead className="thead-color">
                                 <tr>
@@ -55,15 +129,13 @@ export default function Loan() {
                                     <th>Amount_left</th>
                                     <th>Deduction_rate</th>
                                     <th>Approval_status</th>
-                                    <th></th>
+                                    <th>Review</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 {APIData.map((data) => {
-
-
-                                    return (
+                                    return(
                                         <tr>
                                             <td>{data.id}</td>
                                             <td>{data.employee_id}</td>
@@ -73,12 +145,13 @@ export default function Loan() {
                                             <td>{data.amount_left}</td>
                                             <td>{data.loan_deduction_rate}</td>
                                             <td>{data.approval_status?"Approved":"Pending"}</td>
+                                            <td><button className='review' onClick={()=>{acceptLoan(data.employee_id)}}><IoIosCheckmarkCircle /></button> <button className='review' onClick={()=>{denyLoan(data.employee_id)}}><IoIosCloseCircle /></button></td>
                                         </tr>
                                     )
                                 })}
                             </tbody>
                         </table>
-                    </form>
+                   
                 </div>
                 </main2>
 
