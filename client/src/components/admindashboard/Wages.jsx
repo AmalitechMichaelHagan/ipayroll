@@ -27,7 +27,7 @@ export default function Wages() {
     const [userData,setUserData] = useState([]);
 
 
-    const sendPayslips = () =>{
+    const sendPayslips =  () =>{
                 let date_ob = new Date();
 
                 var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -42,7 +42,7 @@ export default function Wages() {
                     icon: 'question',
                     showCancelButton: true,
                     confirmButtonColor: '#551515',
-                    cancelButtonColor: '#d33',
+                    cancelButtonColor: '#aca3a3',
                     confirmButtonText: 'Yes'
                   }).then((result) => {
                     if (result.isConfirmed) {
@@ -52,6 +52,8 @@ export default function Wages() {
                             "month":month, 
                             "year":year
                           }
+
+                          console.log(myData)
                       
                           axios({
                             method: 'post',
@@ -100,6 +102,7 @@ export default function Wages() {
                             <thead className="thead-color">
                                 <tr>
                                     <th>Employee_ID</th>
+                                    <th>User_Name</th>
                                     <th>Month</th>
                                     <th>Year</th>
                                     <th>Total_earnings</th>
@@ -115,6 +118,7 @@ export default function Wages() {
                                     return (
                                         <tr>
                                             <td>{data.employee_id}</td>
+                                            <td>{data.surname}</td>
                                             <td>{data.month}</td>
                                             <td>{data.year}</td>
                                             <td>{data.total_earnings}</td>

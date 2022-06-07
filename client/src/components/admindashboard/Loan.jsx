@@ -72,7 +72,7 @@ export default function Loan() {
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#551515',
-            cancelButtonColor: '#d33',
+            cancelButtonColor: '#aca3a3',
             confirmButtonText: 'Delete'
           }).then((result) => {
             if (result.isConfirmed) {

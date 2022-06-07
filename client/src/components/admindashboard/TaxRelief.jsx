@@ -3,7 +3,6 @@ import "./TaxRelief.css";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
-// import { useNavigate } from "react-router-dom";
 import Footer from '../footer/Footer';
 import Topbar from '../topbar/Topbar';
 import Sidebar from '../sidebar/Sidebar';
@@ -16,12 +15,6 @@ export default function TaxRelief() {
     const [amount, setAmount] = useState('');
     const [monthlyamount, setMounthlyamount] = useState('');
     const [reliefdesc, setReliefdesc] = useState('');
-
-
-    // const navigate = useNavigate();
-    // const handleChange = () => {
-        // setAdmin(!admin);
-    // };
 
     const postData = e => {
         e.preventDefault();
