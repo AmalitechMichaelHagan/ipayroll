@@ -33,7 +33,7 @@ export default function Rate() {
                         }}>
                             Add Rate
                         </button>
-                        <button className="button1" onClick={async() => {
+                        <button className="button2" onClick={async() => {
                        axios({
                         url: 'https://amalitechipayroll.herokuapp.com/report/rates',
                         method: 'GET',

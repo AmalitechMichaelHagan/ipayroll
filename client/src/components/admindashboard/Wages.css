@@ -29,8 +29,8 @@ form {
 .admin2 {
     position: relative;
     width: 110%;
-    left: 57%;
-    margin-top: 35px;
+    right:50%;
+    margin-top: 25px;
     border-radius: 10px;
     border: 2px solid rgb(128, 25, 25);
 }
@@ -45,7 +45,7 @@ form {
 table {
     border-spacing: 5px;
     width: 100%;
-    margin-left: 5px;
+    /* margin-left: 5px; */
     padding: 20px;
 }
 

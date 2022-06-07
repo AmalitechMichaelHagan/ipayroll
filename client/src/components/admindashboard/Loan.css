@@ -25,12 +25,12 @@ form {
 }
 
 .admin2 {
-    position: relative;
+    position: absolute;
     width: 100%;
-    left: 57%;
+    left: 20%;
     margin-top: 35px;
     border-radius: 10px;
-    border: 2px solid rgb(128, 25, 25);
+    border: 1px solid rgb(49, 9, 212);
 
 }
 

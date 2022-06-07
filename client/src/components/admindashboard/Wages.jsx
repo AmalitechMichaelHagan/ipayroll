@@ -30,12 +30,12 @@ export default function Wages() {
             <Sidebar />
             <div className="admin2">
                     <div className="Add-User">
-                        <button className="button1" onClick={() => {
+                        <button className="button2" onClick={() => {
                            
                         }}>
                             Send employee payslips
                         </button>
-                        <button className="button1" onClick={async() => {
+                        <button className="button2" onClick={async() => {
                        axios({
                         url: 'https://amalitechipayroll.herokuapp.com/report/wages',
                         method: 'GET',
@@ -54,6 +54,7 @@ export default function Wages() {
                             <thead className="thead-color">
                                 <tr>
                                     <th>Employee_ID</th>
+                                    <th>User_Name</th>
                                     <th>Month</th>
                                     <th>Year</th>
                                     <th>Total_earnings</th>
@@ -69,6 +70,7 @@ export default function Wages() {
                                     return (
                                         <tr>
                                             <td>{data.employee_id}</td>
+                                            <td>{data.surname}</td>
                                             <td>{data.month}</td>
                                             <td>{data.year}</td>
                                             <td>{data.total_earnings}</td>

@@ -30,11 +30,11 @@ export default function Rate() {
             <div className="admin2">
                     <div className="Add-User">
                         <button className="button1" onClick={() => {
-                            navigate("/rform")
+                            navigate("/form")
                         }}>
                             Add Tax Relief
                         </button>
-                        <button className="button1" onClick={async() => {
+                        <button className="button2" onClick={async() => {
                        axios({
                         url: 'https://amalitechipayroll.herokuapp.com/report/tax_relief',
                         method: 'GET',
